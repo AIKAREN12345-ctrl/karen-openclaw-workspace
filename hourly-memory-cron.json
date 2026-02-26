@@ -1,0 +1,9 @@
+{
+  "id": "hourly-memory-log",
+  "name": "hourly-memory-log",
+  "schedule": "cron 0 * * * * @ Europe/Dublin",
+  "target": "telegram:8378714141",
+  "agentId": "main",
+  "message": "HEARTBEAT: Create hourly memory log entry. Check current system state, active tasks, and document in memory/YYYY-MM-DD.md",
+  "isolated": false
+}
