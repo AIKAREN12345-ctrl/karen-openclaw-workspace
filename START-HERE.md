@@ -122,16 +122,17 @@ openclaw nodes status
 2. `openclaw node run`
 3. Check firewall
 
-### Gateway Restart After Config Changes (Manual Procedure):
+### Gateway Restart (Reliable Procedure):
 **⚠️ This disconnects Karen - do when ready**
 
-**If you just changed gateway.auth.token:**
+**Note:** `openclaw gateway restart` often times out. Use this procedure instead:
+
 ```powershell
 # 1. Stop everything
 taskkill /F /IM node.exe
 openclaw gateway stop
 
-# 2. Sync the new token to the service
+# 2. Sync token to service (do this even if token didn't change - it's more reliable)
 openclaw gateway install --force
 
 # 3. Start gateway
@@ -142,18 +143,10 @@ openclaw gateway start
 openclaw node run
 ```
 
-**If you changed other settings only (no token change):**
-```powershell
-# Simple restart should work
-openclaw gateway restart
-
-# If it times out, use full procedure above
-```
-
 **Common issues:**
-- "Token mismatch" → Run `openclaw gateway install --force`
-- "Timed out waiting for port 18788" → Check if port is stuck: `netstat -ano | findstr 18788`
+- "Timed out waiting for port 18788" → Port stuck, run `taskkill /F /IM node.exe` again
 - "Connection refused" → Wait 10s, gateway still starting
+- "Token mismatch" → `install --force` should fix this
 
 ### If I Forget Everything:
 1. Read this file (START-HERE.md)
