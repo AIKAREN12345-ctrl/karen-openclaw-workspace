@@ -122,6 +122,32 @@ openclaw nodes status
 2. `openclaw node run`
 3. Check firewall
 
+### Gateway Restart After Config Changes (Manual Procedure):
+**⚠️ This disconnects Karen - do when ready**
+
+```powershell
+# 1. Stop everything
+taskkill /F /IM node.exe
+openclaw gateway stop
+
+# 2. If token was changed, sync it
+openclaw gateway install --force
+
+# 3. Start gateway
+openclaw gateway start
+
+# 4. Wait for "Gateway healthy" message
+# 5. Restart node (in new window)
+openclaw node run
+
+# 6. Karen will reconnect via Telegram
+```
+
+**Common issues:**
+- "Token mismatch" → Run `openclaw gateway install --force`
+- "Port in use" → Run `taskkill /F /IM node.exe` again
+- "Connection refused" → Wait 10s, gateway still starting
+
 ### If I Forget Everything:
 1. Read this file (START-HERE.md)
 2. Read SOUL.md
