@@ -21,6 +21,7 @@ def ollama_generate(
     model: str = DEFAULT_MODEL,
     format_mode: Optional[str] = None,
     stream: bool = False,
+    keep_alive: str = "0",
     options: Optional[Dict[str, Any]] = None
 ) -> Dict[str, Any]:
     """
@@ -31,6 +32,7 @@ def ollama_generate(
         model: Model name (default: qwen2.5:7b)
         format_mode: "json" for JSON mode, or JSON schema dict
         stream: Whether to stream response
+        keep_alive: How long to keep model loaded (default "0" = unload immediately)
         options: Additional model options (temperature, etc.)
     
     Returns:
@@ -41,7 +43,8 @@ def ollama_generate(
     payload = {
         "model": model,
         "prompt": prompt,
-        "stream": stream
+        "stream": stream,
+        "keep_alive": keep_alive
     }
     
     if format_mode:
