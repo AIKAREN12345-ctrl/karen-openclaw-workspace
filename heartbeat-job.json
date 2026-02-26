@@ -1,0 +1,11 @@
+{
+  "name": "karen-heartbeat",
+  "cron": "0 */2 * * *",
+  "tz": "Europe/Dublin",
+  "agent": "main",
+  "model": "kimi-coding/k2p5",
+  "message": "Send a Telegram message to chat 8378714141 saying '🦞 Karen heartbeat check - online and ready. All systems operational.'",
+  "channel": "telegram",
+  "to": "8378714141",
+  "announce": true
+}
