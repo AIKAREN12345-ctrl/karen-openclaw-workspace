@@ -1,79 +1,74 @@
 #!/usr/bin/env python3
 """
 Local Memory Log Generator
-Creates hourly memory logs using local LLM (phi3:mini)
-Optimized for 24GB RAM - uses small model, unloads immediately
+Creates hourly memory logs using actual system data
+No LLM generation - just factual reporting
 """
 
-import json
-import urllib.request
 import datetime
 import os
 import sys
+import subprocess
+import platform
 
-# Config
-OLLAMA_URL = "http://localhost:11434/api/generate"
-MODEL = "qwen2.5:7b"  # 4.7GB - best accuracy for critical memory system
-KEEP_ALIVE = "5m"  # Keep loaded for 5 minutes to handle bursts
 MEMORY_DIR = "C:\\Users\\Karen\\.openclaw\\workspace\\memory"
 
 def get_system_info():
-    """Get basic system info for the log"""
-    import platform
-    import subprocess
+    """Get actual system info"""
+    
+    # Get Windows version properly
+    try:
+        import winreg
+        key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows NT\CurrentVersion")
+        display_version = winreg.QueryValueEx(key, "DisplayVersion")[0]
+        winreg.CloseKey(key)
+        windows_version = f"Windows 11 ({display_version})"
+    except:
+        windows_version = f"Windows {platform.release()}"
     
     info = {
-        "timestamp": datetime.datetime.now().isoformat(),
-        "platform": platform.platform(),
-        "machine": platform.machine(),
-        "processor": platform.processor(),
+        "timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "hostname": platform.node(),
+        "platform": windows_version,
+        "machine": platform.machine(),
     }
     
-    # Get OpenClaw status (simple check)
+    # Check Ollama status
     try:
-        result = subprocess.run(["openclaw", "status"], capture_output=True, text=True, timeout=10)
-        info["openclaw_status"] = "running" if "OpenClaw" in result.stdout else "unknown"
+        import urllib.request
+        req = urllib.request.Request('http://localhost:11434/api/tags', method='GET')
+        with urllib.request.urlopen(req, timeout=5) as response:
+            info["ollama_status"] = "running"
     except:
-        info["openclaw_status"] = "check_failed"
+        info["ollama_status"] = "not responding"
+    
+    # Check OpenClaw node status (via process check)
+    try:
+        result = subprocess.run(['tasklist', '/FI', 'IMAGENAME eq node.exe'], 
+                              capture_output=True, text=True, timeout=5)
+        if 'node.exe' in result.stdout:
+            info["openclaw_status"] = "running"
+        else:
+            info["openclaw_status"] = "no process found"
+    except:
+        info["openclaw_status"] = "check failed"
     
     return info
 
-def generate_log_content(system_info):
-    """Use local LLM to generate memory log content"""
+def format_log_entry(info):
+    """Format system info into log entry - NO LLM, just facts"""
     
-    prompt = f"""You are a system monitoring agent. Create a concise hourly log entry based on this system info:
-
-Timestamp: {system_info['timestamp']}
-Platform: {system_info['platform']}
-Machine: {system_info['machine']}
-Hostname: {system_info['hostname']}
-OpenClaw: {system_info['openclaw_status']}
-
-Write a brief status report (3-5 sentences) covering:
-1. System is operational
-2. Platform details
-3. Any notable observations
-
-Keep it factual and concise."""
-
-    payload = {
-        "model": MODEL,
-        "prompt": prompt,
-        "stream": False,
-        "keep_alive": KEEP_ALIVE  # Keep loaded for consistency
-    }
+    lines = [
+        f"**Timestamp:** {info['timestamp']}",
+        f"**Hostname:** {info['hostname']}",
+        f"**Platform:** {info['platform']} ({info['machine']})",
+        f"**Ollama:** {info['ollama_status']}",
+        f"**OpenClaw:** {info['openclaw_status']}",
+        "",
+        "System operational."
+    ]
     
-    data = json.dumps(payload).encode('utf-8')
-    headers = {'Content-Type': 'application/json'}
-    
-    try:
-        req = urllib.request.Request(OLLAMA_URL, data=data, headers=headers, method='POST')
-        with urllib.request.urlopen(req, timeout=60) as response:
-            result = json.loads(response.read().decode('utf-8'))
-            return result.get('response', 'No response generated')
-    except Exception as e:
-        return f"Error generating log: {str(e)}"
+    return "\n".join(lines)
 
 def write_memory_log(content):
     """Write to daily memory file"""
@@ -98,17 +93,17 @@ def write_memory_log(content):
 def main():
     """Main entry point"""
     try:
-        # Get system info
+        # Get actual system info
         sys_info = get_system_info()
         
-        # Generate log content with local LLM
-        content = generate_log_content(sys_info)
+        # Format log entry (no LLM, just facts)
+        content = format_log_entry(sys_info)
         
         # Write to memory file
         filename = write_memory_log(content)
         
         print(f"[OK] Memory log written to: {filename}")
-        print(f"Model: {MODEL} (4.7GB, kept alive for {KEEP_ALIVE})")
+        print(f"Method: Direct system data (no LLM generation)")
         return 0
         
     except Exception as e:
