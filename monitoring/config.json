@@ -1,0 +1,15 @@
+{
+  "telegram_bot_token": "YOUR_BOT_TOKEN_HERE",
+  "telegram_chat_id": "YOUR_CHAT_ID_HERE",
+  "check_interval": 60,
+  "alert_thresholds": {
+    "cpu_percent": 90,
+    "memory_percent": 90,
+    "disk_percent": 90
+  },
+  "auto_remediate": {
+    "enabled": true,
+    "restart_services": ["ollama", "openclaw-gateway"],
+    "max_restarts_per_hour": 3
+  }
+}
