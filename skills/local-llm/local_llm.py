@@ -13,7 +13,7 @@ from typing import Optional, Dict, Any
 # Configuration
 OLLAMA_HOST = "localhost"
 OLLAMA_PORT = 11434
-DEFAULT_MODEL = "qwen2.5:3b"
+DEFAULT_MODEL = "qwen2.5:7b"
 FALLBACK_MODELS = ["llama3.2:8b", "phi3:mini", "gemma:2b"]
 
 def ollama_generate(
