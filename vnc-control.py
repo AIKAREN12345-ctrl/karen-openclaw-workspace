@@ -66,8 +66,12 @@ def key_combo(*keys):
 
 def capture(filename):
     """Capture screenshot"""
-    if run_vncdo(["capture", filename]):
-        print(f"[VNC] Screenshot saved: {filename}")
+    import os
+    # Save to workspace directory
+    workspace = r"C:\Users\Karen\.openclaw\workspace"
+    filepath = os.path.join(workspace, filename)
+    if run_vncdo(["capture", filepath]):
+        print(f"[VNC] Screenshot saved: {filepath}")
         return True
     return False
 

@@ -1,0 +1,23 @@
+# Ollama Agent Configuration for OpenClaw
+# This agent uses local Ollama for subagent tasks
+
+name: local-ollama
+model: ollama/qwen2.5:7b
+api_base: http://localhost:11434
+
+# Fallback to Kimi if Ollama fails
+fallback_model: kimi-coding/k2p5
+
+# Use for subagents only
+session_target: isolated
+
+# Configuration
+max_tokens: 4096
+temperature: 0.7
+
+# System prompt for subagent tasks
+system_prompt: |
+  You are a research assistant running on local Ollama.
+  Provide concise, accurate information.
+  Use tools when available.
+  If you encounter errors, report them clearly.

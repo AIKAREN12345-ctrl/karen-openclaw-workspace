@@ -11,7 +11,9 @@ import sys
 import subprocess
 import platform
 
-MEMORY_DIR = "C:\\Users\\Karen\\.openclaw\\workspace\\memory"
+# Use absolute paths for cron compatibility
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+MEMORY_DIR = os.path.join(os.path.dirname(os.path.dirname(SCRIPT_DIR)), "memory")
 
 def get_system_info():
     """Get actual system info"""
@@ -104,10 +106,22 @@ def main():
         
         print(f"[OK] Memory log written to: {filename}")
         print(f"Method: Direct system data (no LLM generation)")
+        print(f"Memory dir: {MEMORY_DIR}")
+        print(f"Script dir: {SCRIPT_DIR}")
         return 0
         
     except Exception as e:
-        print(f"[ERROR] Failed to create memory log: {str(e)}")
+        error_msg = f"[ERROR] Failed to create memory log: {str(e)}"
+        print(error_msg, file=sys.stderr)
+        
+        # Also try to write error to a debug file
+        try:
+            debug_file = os.path.join(MEMORY_DIR, "debug_errors.log")
+            with open(debug_file, 'a') as f:
+                f.write(f"{datetime.datetime.now()}: {error_msg}\n")
+        except:
+            pass
+        
         return 1
 
 if __name__ == "__main__":
