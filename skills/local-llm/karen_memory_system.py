@@ -284,6 +284,9 @@ def cmd_morning():
 
 def cmd_full():
     """Load complete history"""
+    import sys
+    sys.stdout.reconfigure(encoding='utf-8')
+    
     print("=" * 60)
     print("COMPLETE HISTORY")
     print("=" * 60)

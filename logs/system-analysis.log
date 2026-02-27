@@ -214,3 +214,30 @@ OVERALL STATUS
 System healthy
 
 ============================================================
+
+Detailed System Analysis - 2026-02-27 14:07:44
+================================================
+
+SYSTEM INFO
+-----------
+Hostname: DESKTOP-M8AO8LN
+Platform: Windows 10 (AMD64)
+
+RESOURCES
+---------
+CPU: 0.7% used (16 cores)
+Memory: 10.3GB / 19.8GB (51.9%)
+Disk: 119.4GB / 930.4GB (12.8%)
+
+SERVICES
+--------
+Ollama: 1 model(s) loaded: qwen2.5:7b
+Node.js (OpenClaw): running
+VNC Server: running
+Ollama Process: running
+
+OVERALL STATUS
+--------------
+System healthy
+
+============================================================
