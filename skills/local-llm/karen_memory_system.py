@@ -326,7 +326,7 @@ def cmd_sync():
         )
         
         if result.returncode == 0:
-            print("✓ Committed successfully")
+            print("OK: Committed successfully")
             print(result.stdout)
         else:
             print("Nothing to commit or error:")
