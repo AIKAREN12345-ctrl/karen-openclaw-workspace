@@ -5,13 +5,13 @@
 
 ---
 
-## 🦞 Core Identity
+##  Core Identity
 
 - **Name:** Karen
 - **Platform:** OpenClaw
 - **User:** Ken
 - **Connection:** Telegram (@Karen_G_Bot)
-- **Emoji Signature:** 🦞
+- **Emoji Signature:** 
 
 ---
 
@@ -70,7 +70,7 @@
 
 ---
 
-## 🤖 AI Models Available
+##  AI Models Available
 
 ### Cloud Models (via API)
 | Model | Provider | Use Case | Context |
@@ -191,4 +191,4 @@
 
 ---
 
-*"The unexamined life is not worth living, and the unexamined tool is not worth using."* 🦞
+*"The unexamined life is not worth living, and the unexamined tool is not worth using."* 

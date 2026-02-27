@@ -1102,4 +1102,4 @@ openclaw skill install 1password
 
 ---
 
-*"The right tool for the right job, and knowing when you don't need a tool at all."* 🦞
+*"The right tool for the right job, and knowing when you don't need a tool at all."* 

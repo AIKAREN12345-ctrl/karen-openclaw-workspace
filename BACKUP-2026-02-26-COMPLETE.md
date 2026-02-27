@@ -71,7 +71,7 @@
 
 ---
 
-## 🤖 CUSTOM SCRIPTS CREATED
+##  CUSTOM SCRIPTS CREATED
 
 ### 1. memory_log_local.py
 **Location:** C:\Users\Karen\.openclaw\workspace\skills\local-llm\memory_log_local.py
@@ -109,7 +109,7 @@
 
 ---
 
-## 🧠 MEMORY SYSTEM
+##  MEMORY SYSTEM
 
 ### Memory Files
 **Location:** C:\Users\Karen\.openclaw\workspace\memory\
@@ -126,7 +126,7 @@
 
 ---
 
-## 🦞 OLLAMA SETUP
+##  OLLAMA SETUP
 
 ### Models Available
 1. **qwen2.5:7b** (4.7 GB) - PRIMARY LOCAL MODEL
@@ -263,4 +263,4 @@ Backup at: C:\Users\Karen\.openclaw\openclaw.json.bak
 **BACKUP CREATED: 2026-02-26 23:30**
 **NEXT CHECK: Morning routine**
 
-🦞 Karen is ready. Goodnight!
+ Karen is ready. Goodnight!

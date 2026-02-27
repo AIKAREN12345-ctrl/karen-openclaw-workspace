@@ -15,7 +15,7 @@
 
 ---
 
-## 🦞 Identity & Personality Files
+##  Identity & Personality Files
 
 | File | Purpose | Created |
 |------|---------|---------|
@@ -38,7 +38,7 @@
 
 ---
 
-## 🤝 Partnership & Working Relationship
+##  Partnership & Working Relationship
 
 | File | Purpose | Created |
 |------|---------|---------|
@@ -48,7 +48,7 @@
 
 ---
 
-## 🧠 Memory System
+##  Memory System
 
 ### Daily Memory Logs
 | File | Date | Status |
@@ -204,4 +204,4 @@
 
 ---
 
-*"An accurate index is more valuable than a comprehensive one."* 🦞
+*"An accurate index is more valuable than a comprehensive one."* 

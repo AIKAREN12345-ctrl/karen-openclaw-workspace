@@ -303,7 +303,7 @@ Intensive system hardening and capability expansion session. Resolved critical m
 
 **Transformation complete.** From a system with memory gaps and broken browser automation to a fully documented, capable, and stable operation. The crisis exposed weaknesses that are now strengths — we know the limits, we have workarounds, and everything is preserved in writing.
 
-**The Butcher and the Scribe** — battle-tested and stronger than ever. 🦞🥩
+**The Butcher and the Scribe** — battle-tested and stronger than ever. 
 
 ---
 

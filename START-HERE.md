@@ -205,7 +205,7 @@ openclaw node run
 
 ---
 
-*"The best time to document was when it happened. The second best time is right now."* 🦞
+*"The best time to document was when it happened. The second best time is right now."* 
 
 ---
 

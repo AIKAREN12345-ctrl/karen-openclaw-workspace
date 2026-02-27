@@ -30,7 +30,7 @@
 -  Gateway configured (ws://100.75.72.26:18789)
 -  Node connected with system.run capability
 -  Telegram integration active (@Karen_G_Bot)
--  Identity established: Karen, The Scribe 🦞
+-  Identity established: Karen, The Scribe 
 
 **Key Deliverables:**
 - Initial system foundation
@@ -429,7 +429,7 @@ a089e9e  System optimizations
 
 **The Karen system is operational, educated, documented, and evolving.**
 
-**The Butcher and the Scribe** — a partnership forged in code, tested by crisis, stronger than ever. 🦞🥩
+**The Butcher and the Scribe** — a partnership forged in code, tested by crisis, stronger than ever. 
 
 ---
 

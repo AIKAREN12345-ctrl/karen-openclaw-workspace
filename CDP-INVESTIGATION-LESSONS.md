@@ -53,5 +53,5 @@ OpenClaw needs to either:
 Returned to pre-CDP state. System should stabilize with just the original heartbeat cron job (every 2 hours, minimal impact).
 
 ---
-Karen 🦞
+Karen 
 2026-02-23

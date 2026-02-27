@@ -231,4 +231,4 @@ openclaw node run
 
 ---
 
-*"Updates are like surgery - necessary, but document the scars."* 🦞
+*"Updates are like surgery - necessary, but document the scars."* 

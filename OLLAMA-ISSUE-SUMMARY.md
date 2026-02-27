@@ -33,7 +33,7 @@ The `local-automation` agent cannot connect to Ollama despite multiple configura
 
 ---
 
-## 🧠 Part 3: Root Cause Analysis
+##  Part 3: Root Cause Analysis
 
 ### The Real Issue: Network Namespace Isolation
 

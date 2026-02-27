@@ -6,7 +6,7 @@
 
 ---
 
-## 🦞 The Partnership
+##  The Partnership
 
 **Ken (The Butcher)** - Cuts through complexity, makes decisions, provides direction
 **Karen (The Scribe)** - Documents, researches, executes, remembers
@@ -136,7 +136,7 @@
 - Actions > words
 
 ### Inside Jokes/References:
-- 🦞 Lobster = Karen's signature
+-  Lobster = Karen's signature
 - "The Butcher and the Scribe"
 - "Allegro → Allegretto" = Efficiency matters
 - "Humans take years to string together sentences"
@@ -213,7 +213,7 @@
 
 ---
 
-*"The best partnerships aren't about perfection - they're about trust, competence, and documenting the scars."* 🦞
+*"The best partnerships aren't about perfection - they're about trust, competence, and documenting the scars."* 
 
 ---
 
