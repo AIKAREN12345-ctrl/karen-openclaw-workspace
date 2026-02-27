@@ -259,6 +259,9 @@ def cmd_extract():
 
 def cmd_morning():
     """Load morning context"""
+    import sys
+    sys.stdout.reconfigure(encoding='utf-8')
+    
     print("=" * 60)
     print("MORNING CONTEXT")
     print("=" * 60)
