@@ -9,6 +9,7 @@ import subprocess
 import platform
 import urllib.request
 import json
+import sys
 
 def check_services():
     """Check essential services"""
