@@ -111,11 +111,11 @@ def write_monitoring_log(metrics, analysis):
     status_icons = []
     for check, data in metrics["checks"].items():
         if data.get("status") == "running" or data.get("status") == "ok":
-            status_icons.append(f"✅ {check}")
+            status_icons.append(f" {check}")
         elif data.get("status") == "low":
-            status_icons.append(f"⚠️ {check}")
+            status_icons.append(f" {check}")
         else:
-            status_icons.append(f"❌ {check}")
+            status_icons.append(f" {check}")
     
     log_entry = f"""\n## {timestamp} - System Monitor (Ollama-Powered)
 

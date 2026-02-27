@@ -21,11 +21,11 @@ Intensive system hardening and capability expansion session. Resolved critical m
 - Memory files: Missing Feb 21-22
 
 ### Capabilities
-- Basic chat ✅
-- Heartbeats ✅
-- PowerShell (limited use) ✅
-- Browser automation ❌ (broken)
-- Email sending ❌ (untested)
+- Basic chat 
+- Heartbeats 
+- PowerShell (limited use) 
+- Browser automation  (broken)
+- Email sending  (untested)
 
 ### Documentation
 - MEMORY.md: Up to Feb 20 only
@@ -37,7 +37,7 @@ Intensive system hardening and capability expansion session. Resolved critical m
 
 ## COMPLETED TASKS
 
-### ✅ Phase 1: Memory Recovery (08:00-09:00)
+###  Phase 1: Memory Recovery (08:00-09:00)
 
 **Problem:** Missing 2 days of memory (Feb 21-22)
 
@@ -62,7 +62,7 @@ Intensive system hardening and capability expansion session. Resolved critical m
 
 ---
 
-### ✅ Phase 2: CDP Browser Automation (09:00-10:00)
+###  Phase 2: CDP Browser Automation (09:00-10:00)
 
 **Problem:** Browser CDP port conflict (18792 in use)
 
@@ -81,7 +81,7 @@ Intensive system hardening and capability expansion session. Resolved critical m
 
 ---
 
-### ✅ Phase 3: Email Capability Proven (10:00-11:00)
+###  Phase 3: Email Capability Proven (10:00-11:00)
 
 **Problem:** Email sending untested
 
@@ -105,7 +105,7 @@ Intensive system hardening and capability expansion session. Resolved critical m
 
 ---
 
-### ✅ Phase 4: Node Bug Discovery & Containment (10:00-12:00)
+###  Phase 4: Node Bug Discovery & Containment (10:00-12:00)
 
 **Problem:** Node processes accumulating rapidly (1 → 48+)
 
@@ -138,7 +138,7 @@ Intensive system hardening and capability expansion session. Resolved critical m
 
 ---
 
-### ✅ Phase 5: Documentation & Knowledge Capture (Ongoing)
+###  Phase 5: Documentation & Knowledge Capture (Ongoing)
 
 **Created:**
 - `KAREN-VOICE.md` — Personality and tone guide
@@ -173,13 +173,13 @@ Intensive system hardening and capability expansion session. Resolved critical m
 ### Capabilities
 | Capability | Before | After |
 |------------|--------|-------|
-| Basic Chat | ✅ | ✅ |
-| Heartbeats | ✅ | ✅ |
-| PowerShell | ✅ Limited | ✅ Known limits |
-| Browser CDP | ❌ | ✅ Working |
-| Email Sending | ❌ Untested | ✅ Proven |
-| Web Automation | ❌ | ✅ Via CDP |
-| Memory Logging | ❌ Gaps | ✅ Hourly (cron disabled) |
+| Basic Chat |  |  |
+| Heartbeats |  |  |
+| PowerShell |  Limited |  Known limits |
+| Browser CDP |  |  Working |
+| Email Sending |  Untested |  Proven |
+| Web Automation |  |  Via CDP |
+| Memory Logging |  Gaps |  Hourly (cron disabled) |
 | System Documentation | Minimal | Comprehensive |
 
 ### Tool Knowledge
@@ -195,12 +195,12 @@ Intensive system hardening and capability expansion session. Resolved critical m
 
 ## PENDING / NOT COMPLETED
 
-### ❌ Node Screen Recording
+###  Node Screen Recording
 **Status:** Not achievable on Windows node host
 **Reason:** Windows node doesn't support native screen recording (macOS/Android feature)
 **Alternatives:**
-- Browser CDP for web screenshots ✅
-- VNC scripts for desktop capture ✅
+- Browser CDP for web screenshots 
+- VNC scripts for desktop capture 
 - Accept limitation and use alternatives
 
 **Decision:** Skip — use alternatives
@@ -234,18 +234,18 @@ Intensive system hardening and capability expansion session. Resolved critical m
 ## OPERATIONAL PLAYBOOK (Summary)
 
 ### DO:
-- ✅ Use CDP as default for web tasks
-- ✅ Use PowerShell sparingly (5-10 commands max per session)
-- ✅ Close browser tabs when done
-- ✅ Monitor node count via Task Manager
-- ✅ Restart gateway if nodes >10
-- ✅ Document in memory files
+-  Use CDP as default for web tasks
+-  Use PowerShell sparingly (5-10 commands max per session)
+-  Close browser tabs when done
+-  Monitor node count via Task Manager
+-  Restart gateway if nodes >10
+-  Document in memory files
 
 ### DON'T:
-- ❌ Rapid-fire PowerShell commands
-- ❌ Check node count via `nodes action=run` repeatedly
-- ❌ Leave browser tabs open
-- ❌ Create frequent cron jobs using `nodes action=run`
+-  Rapid-fire PowerShell commands
+-  Check node count via `nodes action=run` repeatedly
+-  Leave browser tabs open
+-  Create frequent cron jobs using `nodes action=run`
 
 ### Emergency Procedures:
 - **Nodes accumulating:** Stop PowerShell use, run `openclaw doctor --fix`, restart

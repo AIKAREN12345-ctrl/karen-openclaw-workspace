@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Robust VNC Screenshot - Fixed struct parsing
 Uses correct RFB protocol format for UltraVNC

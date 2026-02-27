@@ -26,20 +26,20 @@ def check_memory_files():
     missing = []
     for file_path, description in files_to_check:
         if not os.path.exists(file_path):
-            missing.append(f"❌ {description}: {file_path}")
+            missing.append(f" {description}: {file_path}")
         else:
-            print(f"✅ {description}: Found")
+            print(f" {description}: Found")
     
     if missing:
-        print("\n⚠️  Missing files:")
+        print("\n  Missing files:")
         for item in missing:
             print(f"   {item}")
     else:
-        print("\n✅ All memory files present")
+        print("\n All memory files present")
     
     # Reminder to read checklist
-    print("\n📝 REMINDER: Read SESSION-START-CHECKLIST.md at every session start!")
-    print("📝 REMINDER: Check memory files for continuity!")
+    print("\n REMINDER: Read SESSION-START-CHECKLIST.md at every session start!")
+    print(" REMINDER: Check memory files for continuity!")
     
     return len(missing) == 0
 

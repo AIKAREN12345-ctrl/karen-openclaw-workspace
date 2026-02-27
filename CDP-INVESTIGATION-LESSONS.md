@@ -29,10 +29,10 @@ NOT caused by CDP itself. CDP/browser automation works fine. The issue is:
 
 ## What Works Without Node Spawning
 
-- ✅ Browser CDP automation (evaluate, navigate, snapshot)
-- ✅ Basic chat responses
-- ❌ PowerShell/system commands (requires nodes action=run)
-- ❌ File operations via node (requires nodes action=run)
+-  Browser CDP automation (evaluate, navigate, snapshot)
+-  Basic chat responses
+-  PowerShell/system commands (requires nodes action=run)
+-  File operations via node (requires nodes action=run)
 
 ## The Real Fix Needed
 

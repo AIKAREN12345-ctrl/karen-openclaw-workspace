@@ -1,4 +1,4 @@
-﻿from sentence_transformers import SentenceTransformer
+from sentence_transformers import SentenceTransformer
 import json
 import numpy as np
 from pathlib import Path

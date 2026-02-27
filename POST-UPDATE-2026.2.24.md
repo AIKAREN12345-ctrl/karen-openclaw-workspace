@@ -7,7 +7,7 @@
 
 ---
 
-## 🎯 Why We Updated
+##  Why We Updated
 
 **Expected fixes:**
 - GitHub Issue #18198 - Ollama localhost fetch bug
@@ -15,13 +15,13 @@
 - General stability
 
 **Actual result:**
-- ❌ Ollama issue NOT fixed (separate research doc)
-- ✅ Security model changed (breaking changes)
-- ✅ Node connection required reconfiguration
+-  Ollama issue NOT fixed (separate research doc)
+-  Security model changed (breaking changes)
+-  Node connection required reconfiguration
 
 ---
 
-## ⚠️ Breaking Changes Encountered
+##  Breaking Changes Encountered
 
 ### 1. Control UI Security (BLOCKER)
 **Error:** `non-loopback Control UI requires gateway.controlUi.allowedOrigins`
@@ -69,7 +69,7 @@ taskkill /F /IM node.exe
 
 ---
 
-## 🔧 Update Procedure (For Future Reference)
+##  Update Procedure (For Future Reference)
 
 ### Step 1: Pre-Update
 ```powershell
@@ -123,7 +123,7 @@ openclaw nodes status
 
 ---
 
-## 📊 Issues During Update
+##  Issues During Update
 
 | Issue | Severity | Resolution | Time to Fix |
 |-------|----------|------------|-------------|
@@ -136,7 +136,7 @@ openclaw nodes status
 
 ---
 
-## ✅ What Worked
+##  What Worked
 
 1. **Config backup mindset** - We didn't lose settings
 2. **Manual node.json edit** - Direct fix for connection issue
@@ -145,7 +145,7 @@ openclaw nodes status
 
 ---
 
-## ❌ What Didn't Work
+##  What Didn't Work
 
 1. **Automatic update** - `openclaw update` failed (not git install)
 2. **npm install** - Timed out, required manual retry
@@ -154,7 +154,7 @@ openclaw nodes status
 
 ---
 
-## 🎯 Key Lessons
+##  Key Lessons
 
 ### For Next Update:
 1. **Always backup configs first**
@@ -171,7 +171,7 @@ openclaw nodes status
 
 ---
 
-## 🔐 Security Changes in 2026.2.24
+##  Security Changes in 2026.2.24
 
 ### New Requirements:
 1. **Control UI origin validation** - Must specify allowed origins
@@ -187,7 +187,7 @@ openclaw nodes status
 
 ---
 
-## 📚 Related Documentation
+##  Related Documentation
 
 - OLLAMA-ISSUE-SUMMARY.md - Why the update didn't fix our main issue
 - TOOLS.md - Current system capabilities
@@ -195,7 +195,7 @@ openclaw nodes status
 
 ---
 
-## 🔄 Rollback Procedure (If Needed)
+##  Rollback Procedure (If Needed)
 
 ```powershell
 # Stop services
@@ -215,17 +215,17 @@ openclaw node run
 
 ---
 
-## 💡 Final Thoughts
+##  Final Thoughts
 
 **The update was necessary** for security, but **disruptive** due to breaking changes.
 
 **The Ollama issue was NOT fixed** by this update - separate architectural problem.
 
 **Our system is now:**
-- ✅ More secure
-- ✅ Properly configured for localhost-only operation
-- ✅ Documented for future updates
-- ⚠️ Still has Ollama limitation (documented separately)
+-  More secure
+-  Properly configured for localhost-only operation
+-  Documented for future updates
+-  Still has Ollama limitation (documented separately)
 
 **Next update:** Will be smoother with this documentation.
 

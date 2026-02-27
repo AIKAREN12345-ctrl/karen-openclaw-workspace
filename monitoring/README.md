@@ -46,17 +46,17 @@ Every 5 minutes:
 
 You'll get Telegram messages like:
 ```
-🚨 Ollama: Not responding
-🚨 OpenClaw: Process not found
-⚠️ High RAM: 95%
+ Ollama: Not responding
+ OpenClaw: Process not found
+ High RAM: 95%
 ```
 
 ## Autonomy Level
 
 With this running, Karen can:
-- ✅ Detect issues automatically
-- ✅ Alert you immediately
-- ✅ Log everything for review
+-  Detect issues automatically
+-  Alert you immediately
+-  Log everything for review
 - ⏳ Auto-remediate (coming soon)
 - ⏳ Spawn subagents to investigate (coming soon)
 

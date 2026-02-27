@@ -130,15 +130,15 @@ def perform_checks():
     # Check services
     ollama_ok, ollama_status = check_ollama()
     if not ollama_ok:
-        issues.append(f"🚨 Ollama: {ollama_status}")
+        issues.append(f" Ollama: {ollama_status}")
     
     openclaw_ok, openclaw_status = check_openclaw()
     if not openclaw_ok:
-        issues.append(f"🚨 OpenClaw: {openclaw_status}")
+        issues.append(f" OpenClaw: {openclaw_status}")
     
     vnc_ok, vnc_status = check_vnc()
     if not vnc_ok:
-        issues.append(f"⚠️ VNC: {vnc_status}")
+        issues.append(f" VNC: {vnc_status}")
     
     # Check resources
     resources_ok, resource_alerts = check_resources()

@@ -6,7 +6,7 @@
 
 ---
 
-## 🎯 EXECUTIVE SUMMARY
+##  EXECUTIVE SUMMARY
 
 **Total Skills:** 51
 **Ready to Use:** 3
@@ -21,9 +21,9 @@
 
 ---
 
-## ✅ READY TO USE (3 Skills)
+##  READY TO USE (3 Skills)
 
-### 1. healthcheck ⭐⭐⭐⭐⭐
+### 1. healthcheck 
 **Status:** Ready | **Priority:** HIGH
 
 **What it does:**
@@ -33,15 +33,15 @@
 - Periodic security checks via cron
 
 **Usefulness to us:**
-- ✅ Already using this (system security)
-- ✅ Automated security monitoring
-- ✅ Perfect for our "trusted but verified" approach
+-  Already using this (system security)
+-  Automated security monitoring
+-  Perfect for our "trusted but verified" approach
 
 **Verdict:** KEEP USING
 
 ---
 
-### 2. skill-creator ⭐⭐⭐⭐⭐
+### 2. skill-creator 
 **Status:** Ready | **Priority:** HIGH
 
 **What it does:**
@@ -50,15 +50,15 @@
 - Update existing skills
 
 **Usefulness to us:**
-- ✅ Essential for extending capabilities
-- ✅ Could create custom VNC control skill
-- ✅ Package our automation scripts as skills
+-  Essential for extending capabilities
+-  Could create custom VNC control skill
+-  Package our automation scripts as skills
 
 **Verdict:** USE TO CREATE CUSTOM SKILLS
 
 ---
 
-### 3. weather ⭐⭐⭐
+### 3. weather 
 **Status:** Ready | **Priority:** LOW
 
 **What it does:**
@@ -67,7 +67,7 @@
 - No API key needed
 
 **Usefulness to us:**
-- ⚠️ Nice to have but not essential
+-  Nice to have but not essential
 - Could add to morning briefings
 - Low priority given our automation focus
 
@@ -75,11 +75,11 @@
 
 ---
 
-## ❌ MISSING SKILLS - DETAILED REVIEWS
+##  MISSING SKILLS - DETAILED REVIEWS
 
 ### DEVELOPMENT & CODING
 
-#### 4. coding-agent ⭐⭐⭐⭐⭐
+#### 4. coding-agent 
 **Status:** Missing | **Priority:** CRITICAL
 
 **What it does:**
@@ -95,10 +95,10 @@
 - Complex multi-file changes
 
 **Usefulness to us:**
-- ✅ PERFECT for our automation scripts
-- ✅ Could handle complex VNC control implementations
-- ✅ Background coding while we do other things
-- ✅ Handles file exploration automatically
+-  PERFECT for our automation scripts
+-  Could handle complex VNC control implementations
+-  Background coding while we do other things
+-  Handles file exploration automatically
 
 **Blockers:**
 - Requires bash tool with pty:true (we have exec)
@@ -108,7 +108,7 @@
 
 ---
 
-#### 5. github ⭐⭐⭐⭐⭐
+#### 5. github 
 **Status:** Missing | **Priority:** CRITICAL
 
 **What it does:**
@@ -124,10 +124,10 @@
 - View CI run logs
 
 **Usefulness to us:**
-- ✅ PERFECT for our documentation workflow
-- ✅ Could automate GitHub issue tracking
-- ✅ Monitor OpenClaw GitHub for updates
-- ✅ Track our own project issues
+-  PERFECT for our documentation workflow
+-  Could automate GitHub issue tracking
+-  Monitor OpenClaw GitHub for updates
+-  Track our own project issues
 
 **Blockers:**
 - Requires gh auth configuration
@@ -137,7 +137,7 @@
 
 ---
 
-#### 6. gh-issues ⭐⭐⭐⭐⭐
+#### 6. gh-issues 
 **Status:** Missing | **Priority:** HIGH
 
 **What it does:**
@@ -154,10 +154,10 @@
 - Continuous monitoring
 
 **Usefulness to us:**
-- ✅ Could track OpenClaw issues automatically
-- ✅ Implement fixes for known bugs
-- ✅ Monitor our own project issues
-- ⚠️ Sub-agent spawning has issues with Ollama (but works with cloud models)
+-  Could track OpenClaw issues automatically
+-  Implement fixes for known bugs
+-  Monitor our own project issues
+-  Sub-agent spawning has issues with Ollama (but works with cloud models)
 
 **Verdict:** INSTALL - Powerful for automation, but note sub-agent limitations
 
@@ -165,7 +165,7 @@
 
 ### COMMUNICATION & MESSAGING
 
-#### 7. himalaya ⭐⭐⭐⭐
+#### 7. himalaya 
 **Status:** Missing | **Priority:** MEDIUM-HIGH
 
 **What it does:**
@@ -182,10 +182,10 @@
 - Email-based workflows
 
 **Usefulness to us:**
-- ✅ Could complete our email automation
-- ✅ Send automated reports
-- ✅ Monitor inbox for triggers
-- ⚠️ We have partial email setup (send-only scripts)
+-  Could complete our email automation
+-  Send automated reports
+-  Monitor inbox for triggers
+-  We have partial email setup (send-only scripts)
 
 **Blockers:**
 - Requires IMAP/SMTP configuration
@@ -195,7 +195,7 @@
 
 ---
 
-#### 8. slack ⭐⭐⭐⭐
+#### 8. slack 
 **Status:** Missing | **Priority:** MEDIUM
 
 **What it does:**
@@ -210,7 +210,7 @@
 - Channel management
 
 **Usefulness to us:**
-- ⚠️ We use Telegram, not Slack
+-  We use Telegram, not Slack
 - Would need Slack workspace
 - Nice for team integration but not essential
 
@@ -218,7 +218,7 @@
 
 ---
 
-#### 9. discord ⭐⭐⭐
+#### 9. discord 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -229,14 +229,14 @@
 - Server management
 
 **Usefulness to us:**
-- ⚠️ We use Telegram
+-  We use Telegram
 - No Discord integration needed
 
 **Verdict:** SKIP - Not needed
 
 ---
 
-#### 10. imsg ⭐⭐⭐
+#### 10. imsg 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -249,14 +249,14 @@
 - SMS notifications
 
 **Usefulness to us:**
-- ⚠️ macOS only (we're on Windows)
+-  macOS only (we're on Windows)
 - Not applicable
 
 **Verdict:** SKIP - macOS only
 
 ---
 
-#### 11. bluebubbles ⭐⭐⭐
+#### 11. bluebubbles 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -267,14 +267,14 @@
 - iMessage on non-Apple devices
 
 **Usefulness to us:**
-- ⚠️ iMessage focused
+-  iMessage focused
 - We use Telegram
 
 **Verdict:** SKIP - Not needed
 
 ---
 
-#### 12. wacli ⭐⭐⭐
+#### 12. wacli 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -286,7 +286,7 @@
 - WhatsApp automation
 
 **Usefulness to us:**
-- ⚠️ We use Telegram
+-  We use Telegram
 - Different platform
 
 **Verdict:** SKIP - Not needed
@@ -295,7 +295,7 @@
 
 ### PRODUCTIVITY & NOTES
 
-#### 13. notion ⭐⭐⭐⭐
+#### 13. notion 
 **Status:** Missing | **Priority:** MEDIUM
 
 **What it does:**
@@ -310,7 +310,7 @@
 - Documentation
 
 **Usefulness to us:**
-- ⚠️ We use markdown files in workspace
+-  We use markdown files in workspace
 - Would require Notion account
 - Nice but not essential given our file-based approach
 
@@ -318,7 +318,7 @@
 
 ---
 
-#### 14. obsidian ⭐⭐⭐⭐
+#### 14. obsidian 
 **Status:** Missing | **Priority:** MEDIUM
 
 **What it does:**
@@ -332,7 +332,7 @@
 - Zettelkasten method
 
 **Usefulness to us:**
-- ⚠️ We use markdown files already
+-  We use markdown files already
 - Similar to our current setup
 - Could migrate but not necessary
 
@@ -340,7 +340,7 @@
 
 ---
 
-#### 15. bear-notes ⭐⭐⭐
+#### 15. bear-notes 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -351,14 +351,14 @@
 - Note taking (macOS)
 
 **Usefulness to us:**
-- ⚠️ macOS only
+-  macOS only
 - Not applicable
 
 **Verdict:** SKIP - macOS only
 
 ---
 
-#### 16. apple-notes ⭐⭐
+#### 16. apple-notes 
 **Status:** Missing | **Priority:** NONE
 
 **What it does:**
@@ -366,35 +366,35 @@
 - Create, view, edit, delete
 
 **Usefulness to us:**
-- ❌ macOS only
+-  macOS only
 - Not applicable
 
 **Verdict:** SKIP
 
 ---
 
-#### 17. apple-reminders ⭐⭐
+#### 17. apple-reminders 
 **Status:** Missing | **Priority:** NONE
 
 **What it does:**
 - Apple Reminders via remindctl
 
 **Usefulness to us:**
-- ❌ macOS only
+-  macOS only
 - Not applicable
 
 **Verdict:** SKIP
 
 ---
 
-#### 18. things-mac ⭐⭐
+#### 18. things-mac 
 **Status:** Missing | **Priority:** NONE
 
 **What it does:**
 - Things 3 task management
 
 **Usefulness to us:**
-- ❌ macOS only
+-  macOS only
 - Not applicable
 
 **Verdict:** SKIP
@@ -403,7 +403,7 @@
 
 ### MEDIA & ENTERTAINMENT
 
-#### 19. spotify-player ⭐⭐⭐
+#### 19. spotify-player 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -416,14 +416,14 @@
 - Playlist management
 
 **Usefulness to us:**
-- ⚠️ Nice but not essential
+-  Nice but not essential
 - Entertainment vs productivity
 
 **Verdict:** SKIP - Not essential for our setup
 
 ---
 
-#### 20. sonoscli ⭐⭐
+#### 20. sonoscli 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -431,28 +431,28 @@
 - Discover, play, volume, group
 
 **Usefulness to us:**
-- ⚠️ Requires Sonos speakers
+-  Requires Sonos speakers
 - Not essential
 
 **Verdict:** SKIP
 
 ---
 
-#### 21. blucli ⭐⭐
+#### 21. blucli 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
 - BluOS speaker control
 
 **Usefulness to us:**
-- ⚠️ Requires BluOS devices
+-  Requires BluOS devices
 - Not essential
 
 **Verdict:** SKIP
 
 ---
 
-#### 22. openai-whisper ⭐⭐⭐⭐
+#### 22. openai-whisper 
 **Status:** Missing | **Priority:** MEDIUM
 
 **What it does:**
@@ -466,15 +466,15 @@
 - Meeting transcription
 
 **Usefulness to us:**
-- ✅ Could transcribe voice messages
-- ✅ Local processing (privacy)
-- ⚠️ Requires audio input setup
+-  Could transcribe voice messages
+-  Local processing (privacy)
+-  Requires audio input setup
 
 **Verdict:** CONSIDER - Useful for voice workflows
 
 ---
 
-#### 23. openai-whisper-api ⭐⭐⭐
+#### 23. openai-whisper-api 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -482,14 +482,14 @@
 - OpenAI API
 
 **Usefulness to us:**
-- ⚠️ Cloud-based (costs tokens)
+-  Cloud-based (costs tokens)
 - Local version preferred
 
 **Verdict:** SKIP - Use local whisper instead
 
 ---
 
-#### 24. sag ⭐⭐⭐⭐⭐
+#### 24. sag 
 **Status:** Missing | **Priority:** HIGH
 
 **What it does:**
@@ -503,16 +503,16 @@
 - Accessibility
 
 **Usefulness to us:**
-- ✅ PERFECT for voice storytelling
-- ✅ "Storytime" mode for summaries
-- ✅ More engaging than text
-- ⚠️ Requires ElevenLabs API key
+-  PERFECT for voice storytelling
+-  "Storytime" mode for summaries
+-  More engaging than text
+-  Requires ElevenLabs API key
 
 **Verdict:** INSTALL - Great for user experience
 
 ---
 
-#### 25. sherpa-onnx-tts ⭐⭐⭐⭐
+#### 25. sherpa-onnx-tts 
 **Status:** Missing | **Priority:** MEDIUM
 
 **What it does:**
@@ -525,15 +525,15 @@
 - Privacy-preserving TTS
 
 **Usefulness to us:**
-- ✅ Local processing
-- ✅ No API costs
-- ⚠️ Lower quality than ElevenLabs
+-  Local processing
+-  No API costs
+-  Lower quality than ElevenLabs
 
 **Verdict:** CONSIDER - Alternative to sag if no API key
 
 ---
 
-#### 26. songsee ⭐⭐
+#### 26. songsee 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -541,14 +541,14 @@
 - Feature visualization
 
 **Usefulness to us:**
-- ⚠️ Niche audio analysis
+-  Niche audio analysis
 - Not essential
 
 **Verdict:** SKIP
 
 ---
 
-#### 27. video-frames ⭐⭐⭐
+#### 27. video-frames 
 **Status:** Missing | **Priority:** MEDIUM
 
 **What it does:**
@@ -561,15 +561,15 @@
 - Frame sampling
 
 **Usefulness to us:**
-- ✅ Could analyze video content
-- ✅ Works with VNC recordings
-- ⚠️ Requires ffmpeg
+-  Could analyze video content
+-  Works with VNC recordings
+-  Requires ffmpeg
 
 **Verdict:** CONSIDER - Useful for video workflows
 
 ---
 
-#### 28. openai-image-gen ⭐⭐⭐
+#### 28. openai-image-gen 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -578,27 +578,27 @@
 - Gallery generation
 
 **Usefulness to us:**
-- ⚠️ API costs
+-  API costs
 - Not essential for our workflow
 
 **Verdict:** SKIP - Not needed
 
 ---
 
-#### 29. nano-banana-pro ⭐⭐
+#### 29. nano-banana-pro 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
 - Image generation via Gemini 3 Pro
 
 **Usefulness to us:**
-- ⚠️ Image generation not essential
+-  Image generation not essential
 
 **Verdict:** SKIP
 
 ---
 
-#### 30. camsnap ⭐⭐⭐
+#### 30. camsnap 
 **Status:** Missing | **Priority:** MEDIUM
 
 **What it does:**
@@ -610,9 +610,9 @@
 - Visual verification
 
 **Usefulness to us:**
-- ✅ Could complement VNC
-- ✅ Security camera integration
-- ⚠️ Requires camera setup
+-  Could complement VNC
+-  Security camera integration
+-  Requires camera setup
 
 **Verdict:** CONSIDER - If we add cameras
 
@@ -620,7 +620,7 @@
 
 ### AI & AUTOMATION
 
-#### 31. gemini ⭐⭐⭐⭐
+#### 31. gemini 
 **Status:** Missing | **Priority:** MEDIUM-HIGH
 
 **What it does:**
@@ -635,15 +635,15 @@
 - Different AI perspective
 
 **Usefulness to us:**
-- ✅ Alternative AI model
-- ✅ Different capabilities than Kimi
-- ✅ Free tier available
+-  Alternative AI model
+-  Different capabilities than Kimi
+-  Free tier available
 
 **Verdict:** INSTALL - Good AI alternative
 
 ---
 
-#### 32. summarize ⭐⭐⭐⭐
+#### 32. summarize 
 **Status:** Missing | **Priority:** MEDIUM-HIGH
 
 **What it does:**
@@ -657,15 +657,15 @@
 - Document extraction
 
 **Usefulness to us:**
-- ✅ PERFECT for research
-- ✅ Could summarize web pages
-- ✅ YouTube/video transcripts
+-  PERFECT for research
+-  Could summarize web pages
+-  YouTube/video transcripts
 
 **Verdict:** INSTALL - Great for research workflow
 
 ---
 
-#### 33. oracle ⭐⭐⭐
+#### 33. oracle 
 **Status:** Missing | **Priority:** MEDIUM
 
 **What it does:**
@@ -675,14 +675,14 @@
 - File attachment patterns
 
 **Usefulness to us:**
-- ⚠️ Advanced prompt engineering
+-  Advanced prompt engineering
 - Not essential for current workflow
 
 **Verdict:** OPTIONAL
 
 ---
 
-#### 34. nano-pdf ⭐⭐⭐
+#### 34. nano-pdf 
 **Status:** Missing | **Priority:** MEDIUM
 
 **What it does:**
@@ -694,14 +694,14 @@
 - Document processing
 
 **Usefulness to us:**
-- ✅ Could process PDFs
-- ⚠️ We don't work with PDFs much
+-  Could process PDFs
+-  We don't work with PDFs much
 
 **Verdict:** OPTIONAL
 
 ---
 
-#### 35. model-usage ⭐⭐⭐
+#### 35. model-usage 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -709,7 +709,7 @@
 - Per-model usage summary
 
 **Usefulness to us:**
-- ⚠️ For Codex/Claude usage tracking
+-  For Codex/Claude usage tracking
 - We use Kimi primarily
 
 **Verdict:** SKIP - Not applicable
@@ -718,7 +718,7 @@
 
 ### MONITORING & LOGGING
 
-#### 36. session-logs ⭐⭐⭐⭐⭐
+#### 36. session-logs 
 **Status:** Missing | **Priority:** HIGH
 
 **What it does:**
@@ -732,16 +732,16 @@
 - Pattern analysis
 
 **Usefulness to us:**
-- ✅ PERFECT for my memory issues
-- ✅ Could search what we did before
-- ✅ Debug why things failed
-- ✅ Find previous solutions
+-  PERFECT for my memory issues
+-  Could search what we did before
+-  Debug why things failed
+-  Find previous solutions
 
 **Verdict:** INSTALL - Essential for memory/debugging
 
 ---
 
-#### 37. blogwatcher ⭐⭐⭐
+#### 37. blogwatcher 
 **Status:** Missing | **Priority:** MEDIUM
 
 **What it does:**
@@ -754,9 +754,9 @@
 - Update notifications
 
 **Usefulness to us:**
-- ✅ Could monitor AI news
-- ✅ Track OpenClaw updates
-- ⚠️ We have ai-news-monitor script
+-  Could monitor AI news
+-  Track OpenClaw updates
+-  We have ai-news-monitor script
 
 **Verdict:** CONSIDER - Alternative to our script
 
@@ -764,7 +764,7 @@
 
 ### SMART HOME
 
-#### 38. openhue ⭐⭐
+#### 38. openhue 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -772,14 +772,14 @@
 - Scenes and automation
 
 **Usefulness to us:**
-- ⚠️ Requires Hue lights
+-  Requires Hue lights
 - Not essential
 
 **Verdict:** SKIP
 
 ---
 
-#### 39. eightctl ⭐⭐
+#### 39. eightctl 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -787,7 +787,7 @@
 - Temperature, alarms
 
 **Usefulness to us:**
-- ⚠️ Requires Eight Sleep device
+-  Requires Eight Sleep device
 - Not essential
 
 **Verdict:** SKIP
@@ -796,7 +796,7 @@
 
 ### SECURITY & PASSWORDS
 
-#### 40. 1password ⭐⭐⭐⭐
+#### 40. 1password 
 **Status:** Missing | **Priority:** MEDIUM-HIGH
 
 **What it does:**
@@ -811,10 +811,10 @@
 - Password automation
 
 **Usefulness to us:**
-- ✅ Better than env vars for secrets
-- ✅ Secure credential storage
-- ✅ VNC password, API keys
-- ⚠️ Requires 1Password account
+-  Better than env vars for secrets
+-  Secure credential storage
+-  VNC password, API keys
+-  Requires 1Password account
 
 **Verdict:** CONSIDER - Better security for credentials
 
@@ -822,7 +822,7 @@
 
 ### PLATFORM-SPECIFIC (macOS)
 
-#### 41. peekaboo ⭐⭐
+#### 41. peekaboo 
 **Status:** Missing | **Priority:** NONE
 
 **What it does:**
@@ -830,7 +830,7 @@
 - Capture and automation
 
 **Usefulness to us:**
-- ❌ macOS only
+-  macOS only
 - Not applicable
 
 **Verdict:** SKIP
@@ -839,7 +839,7 @@
 
 ### MESSAGING & SOCIAL
 
-#### 42. xurl (Twitter/X) ⭐⭐
+#### 42. xurl (Twitter/X) 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -848,14 +848,14 @@
 - DMs, media upload
 
 **Usefulness to us:**
-- ⚠️ Social media not our focus
+-  Social media not our focus
 - Would need X account
 
 **Verdict:** SKIP
 
 ---
 
-#### 43. gog ⭐⭐
+#### 43. gog 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -863,7 +863,7 @@
 - Gmail, Calendar, Drive
 
 **Usefulness to us:**
-- ⚠️ We use Microsoft/Windows ecosystem
+-  We use Microsoft/Windows ecosystem
 - Not essential
 
 **Verdict:** SKIP
@@ -872,7 +872,7 @@
 
 ### PROJECT MANAGEMENT
 
-#### 44. trello ⭐⭐⭐
+#### 44. trello 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -880,7 +880,7 @@
 - Cards, lists
 
 **Usefulness to us:**
-- ⚠️ We use files/markdown
+-  We use files/markdown
 - Not essential
 
 **Verdict:** SKIP
@@ -889,7 +889,7 @@
 
 ### TERMINAL & SESSIONS
 
-#### 45. tmux ⭐⭐⭐
+#### 45. tmux 
 **Status:** Missing | **Priority:** MEDIUM
 
 **What it does:**
@@ -902,9 +902,9 @@
 - Remote CLI management
 
 **Usefulness to us:**
-- ✅ Could manage background processes
-- ✅ Persistent sessions
-- ⚠️ We have Windows, not Linux
+-  Could manage background processes
+-  Persistent sessions
+-  We have Windows, not Linux
 
 **Verdict:** OPTIONAL - Windows has different session management
 
@@ -912,7 +912,7 @@
 
 ### UTILITIES
 
-#### 46. gifgrep ⭐⭐
+#### 46. gifgrep 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -920,14 +920,14 @@
 - Download and extract
 
 **Usefulness to us:**
-- ⚠️ Not essential
+-  Not essential
 - Entertainment
 
 **Verdict:** SKIP
 
 ---
 
-#### 47. ordercli ⭐⭐
+#### 47. ordercli 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -935,14 +935,14 @@
 - Food delivery status
 
 **Usefulness to us:**
-- ⚠️ Not essential
+-  Not essential
 - Personal use
 
 **Verdict:** SKIP
 
 ---
 
-#### 48. goplaces ⭐⭐⭐
+#### 48. goplaces 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -950,13 +950,13 @@
 - Place search, details
 
 **Usefulness to us:**
-- ⚠️ Location services not essential
+-  Location services not essential
 
 **Verdict:** SKIP
 
 ---
 
-#### 49. mcporter ⭐⭐⭐
+#### 49. mcporter 
 **Status:** Missing | **Priority:** MEDIUM
 
 **What it does:**
@@ -969,15 +969,15 @@
 - External tool integration
 
 **Usefulness to us:**
-- ✅ Advanced integration capability
-- ⚠️ Complex setup
+-  Advanced integration capability
+-  Complex setup
 - Future-proofing
 
 **Verdict:** CONSIDER - For advanced integrations
 
 ---
 
-#### 50. voice-call ⭐⭐
+#### 50. voice-call 
 **Status:** Missing | **Priority:** LOW
 
 **What it does:**
@@ -985,14 +985,14 @@
 - OpenClaw voice-call plugin
 
 **Usefulness to us:**
-- ⚠️ Not essential
+-  Not essential
 - We use Telegram text
 
 **Verdict:** SKIP
 
 ---
 
-#### 51. clawhub ⭐⭐⭐⭐⭐
+#### 51. clawhub 
 **Status:** Missing | **Priority:** CRITICAL
 
 **What it does:**
@@ -1007,16 +1007,16 @@
 - Community sharing
 
 **Usefulness to us:**
-- ✅ ESSENTIAL for skill management
-- ✅ Find new capabilities
-- ✅ Update existing skills
-- ✅ Install everything on this list
+-  ESSENTIAL for skill management
+-  Find new capabilities
+-  Update existing skills
+-  Install everything on this list
 
 **Verdict:** INSTALL IMMEDIATELY - Required for skill management
 
 ---
 
-## 📊 PRIORITY SUMMARY
+##  PRIORITY SUMMARY
 
 ### INSTALL IMMEDIATELY (5 skills)
 | Skill | Why |
@@ -1053,7 +1053,7 @@
 
 ---
 
-## 🎯 RECOMMENDED INSTALLATION ORDER
+##  RECOMMENDED INSTALLATION ORDER
 
 ```bash
 # 1. Install clawhub first (required for others)
@@ -1080,7 +1080,7 @@ openclaw skill install 1password
 
 ---
 
-## 💡 FINAL RECOMMENDATIONS
+##  FINAL RECOMMENDATIONS
 
 **Immediate (Today):**
 1. Install **clawhub** - Required for everything else

@@ -29,19 +29,19 @@
 ## OPERATIONAL GUIDELINES
 
 ### DO:
-- ✅ Use CDP as default for web tasks
-- ✅ Use PowerShell for system tasks (sparingly)
-- ✅ Close browser tabs when done
-- ✅ Monitor node count via Task Manager (not commands)
-- ✅ Restart gateway if nodes accumulate >10
-- ✅ Document everything in memory files
+-  Use CDP as default for web tasks
+-  Use PowerShell for system tasks (sparingly)
+-  Close browser tabs when done
+-  Monitor node count via Task Manager (not commands)
+-  Restart gateway if nodes accumulate >10
+-  Document everything in memory files
 
 ### DON'T:
-- ❌ Rapid-fire PowerShell commands
-- ❌ Check node count via `nodes action=run` repeatedly
-- ❌ Leave browser tabs open unnecessarily
-- ❌ Create cron jobs that use `nodes action=run` frequently
-- ❌ Debug by checking status every 2 minutes
+-  Rapid-fire PowerShell commands
+-  Check node count via `nodes action=run` repeatedly
+-  Leave browser tabs open unnecessarily
+-  Create cron jobs that use `nodes action=run` frequently
+-  Debug by checking status every 2 minutes
 
 ---
 

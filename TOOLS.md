@@ -15,7 +15,7 @@
 
 ---
 
-## 🔧 Available Tools & Capabilities
+##  Available Tools & Capabilities
 
 ### 1. System Command Execution
 - **Tool:** `exec` with `host: node`
@@ -25,7 +25,7 @@
 
 ### 2. Browser Automation (CDP)
 - **Tool:** `browser`
-- **Status:** ✅ Operational
+- **Status:**  Operational
 - **Port:** 18800 (openclaw profile)
 - **Capabilities:** Navigate, click, type, extract content, screenshots
 - **Use Cases:** Web research, form automation, data extraction
@@ -36,7 +36,7 @@
   - `vnc-recorder-robust.py` - Screen recording
 - **Connection:** localhost:5900
 - **Password:** Karen1234$ (from VNC_PASS env var)
-- **Status:** ✅ Screenshot working, ❌ Mouse/keyboard control not directly available
+- **Status:**  Screenshot working,  Mouse/keyboard control not directly available
 - **Use Cases:** Visual verification, screen recording, remote viewing
 
 ### 4. File Operations
@@ -80,10 +80,10 @@
 ### Local Models (Ollama)
 | Model | Size | Status | Use Case |
 |-------|------|--------|----------|
-| llama3.2:3b | 2.0 GB | ⚠️ Tool calling issues | Automation (problematic) |
-| gemma:2b | 1.7 GB | ❌ No tool support | Fallback only |
-| phi3:mini | 2.2 GB | ⚠️ Untested | Backup option |
-| qwen2.5:7b | 4.7 GB | ✅ Recommended | Best tool support |
+| llama3.2:3b | 2.0 GB |  Tool calling issues | Automation (problematic) |
+| gemma:2b | 1.7 GB |  No tool support | Fallback only |
+| phi3:mini | 2.2 GB |  Untested | Backup option |
+| qwen2.5:7b | 4.7 GB |  Recommended | Best tool support |
 
 ### Model Routing Strategy
 - **Kimi (k2p5):** Interactive conversations, complex coding, reasoning
@@ -93,7 +93,7 @@
 
 ---
 
-## ⚠️ Known Issues & Limitations
+##  Known Issues & Limitations
 
 ### Critical Issues
 1. **Ollama + local-automation agent:** Timeout/failure due to sandbox isolation
@@ -116,7 +116,7 @@
 
 ---
 
-## 🔐 Security Configuration
+##  Security Configuration
 
 - **Gateway Token:** 64 characters, rotated
 - **Rate Limiting:** 10/min, 5min lockout
@@ -126,7 +126,7 @@
 
 ---
 
-## 📁 Important File Locations
+##  Important File Locations
 
 | File/Directory | Purpose |
 |----------------|---------|
@@ -140,7 +140,7 @@
 
 ---
 
-## 📝 Key Decisions & Agreements
+##  Key Decisions & Agreements
 
 ### Partnership Framework (from PARTNERSHIP.md)
 - **Mutual respect:** No domination, collaborative decisions
@@ -156,7 +156,7 @@
 
 ---
 
-## 🎯 Current Priorities
+##  Current Priorities
 
 1. **Fix Ollama automation:** Switch heartbeat to `agent:main`
 2. **Test qwen2.5:7b:** Better tool support for local tasks
@@ -165,14 +165,14 @@
 
 ---
 
-## 🔄 Session Startup Checklist
+##  Session Startup Checklist
 
 **Every session, I should:**
-1. ✅ Read `SOUL.md` - Who I am
-2. ✅ Read `USER.md` - Who I'm helping
-3. ✅ Read `TOOLS.md` (this file) - What I can do
-4. ✅ Read `memory/YYYY-MM-DD.md` (today + yesterday)
-5. ✅ Check `MEMORY.md` for long-term context
+1.  Read `SOUL.md` - Who I am
+2.  Read `USER.md` - Who I'm helping
+3.  Read `TOOLS.md` (this file) - What I can do
+4.  Read `memory/YYYY-MM-DD.md` (today + yesterday)
+5.  Check `MEMORY.md` for long-term context
 
 **Before using any tool:**
 - Check this file for current status/limitations
@@ -181,7 +181,7 @@
 
 ---
 
-## 💡 Lessons Learned (Hard Way)
+##  Lessons Learned (Hard Way)
 
 1. **Memory is not automatic:** I must READ files, not assume I remember
 2. **VNC != Full Control:** Screenshot ≠ Mouse/Keyboard (distinction matters)

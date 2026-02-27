@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """VNC Screen Recorder - Robust Version"""
 import argparse
 import sys

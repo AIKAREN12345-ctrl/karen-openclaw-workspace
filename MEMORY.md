@@ -13,13 +13,13 @@
 - **Exec Security:** Allowlist mode
 
 ## Key Capabilities
-- ✅ System commands via PowerShell (allowlisted)
-- ✅ File operations
-- ✅ Process management
-- ✅ Screen capture (NirCmd + VNC)
-- ✅ Browser automation (Chrome extension relay)
-- ✅ Mouse & keyboard control (VNC)
-- ✅ Automated maintenance (5 cron jobs)
+-  System commands via PowerShell (allowlisted)
+-  File operations
+-  Process management
+-  Screen capture (NirCmd + VNC)
+-  Browser automation (Chrome extension relay)
+-  Mouse & keyboard control (VNC)
+-  Automated maintenance (5 cron jobs)
 
 ## Important Dates
 - **2026-02-19:** First full session, Phase 1 complete, VNC operational
@@ -34,13 +34,13 @@
 - Trusted home network
 
 ## Security Notes
-- ✅ Gateway token rotated (64 chars, secure)
-- ✅ Rate limiting configured (10/min, 5min lockout)
-- ✅ Exec approvals: PowerShell, nircmd allowlisted
-- ✅ VNC firewalled (local network only)
-- ✅ Automated config backups
+-  Gateway token rotated (64 chars, secure)
+-  Rate limiting configured (10/min, 5min lockout)
+-  Exec approvals: PowerShell, nircmd allowlisted
+-  VNC firewalled (local network only)
+-  Automated config backups
 
-## System State (2026-02-26) - DAY 1 COMPLETE ✅
+## System State (2026-02-26) - DAY 1 COMPLETE 
 **Karen 2.0 is LIVE - Fully Operational System**
 
 ### Major Achievements Today:
@@ -101,15 +101,15 @@
    - 2 critical, 2 warn, 1 info (acceptable for home use)
 
 ### Current System Status:
-- ✅ OpenClaw 2026.2.25 running
-- ✅ Node connected (DESKTOP-M8AO8LN)
-- ✅ 24GB RAM optimized
-- ✅ Local LLM automation operational
-- ✅ 24/7 memory system active
-- ✅ GitHub backup configured
-- ✅ 7 skills ready
-- ✅ VNC control working
-- ✅ Browser/CDP functional
+-  OpenClaw 2026.2.25 running
+-  Node connected (DESKTOP-M8AO8LN)
+-  24GB RAM optimized
+-  Local LLM automation operational
+-  24/7 memory system active
+-  GitHub backup configured
+-  7 skills ready
+-  VNC control working
+-  Browser/CDP functional
 
 ### Next Phase:
 - Autonomous growth with checkpoint system
@@ -152,8 +152,8 @@
 - Node VNC recording not enabled — can't do screen_record via node
 
 ## Next Steps
-- ✅ Fix MEMORY.md permissions (workaround: write to full path)
-- ✅ Recover Feb 21-22 memories
+-  Fix MEMORY.md permissions (workaround: write to full path)
+-  Recover Feb 21-22 memories
 - ⏳ Create "Karen's Voice" style guide
 - ⏳ Document session-end state snapshots
 - ⏳ Fix browser CDP port conflict

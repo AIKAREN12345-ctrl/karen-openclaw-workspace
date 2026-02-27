@@ -6,7 +6,7 @@
 
 ---
 
-## 🔍 Part 1: The Core Problem
+##  Part 1: The Core Problem
 
 ### Issue Summary
 The `local-automation` agent cannot connect to Ollama despite multiple configuration attempts.
@@ -19,17 +19,17 @@ The `local-automation` agent cannot connect to Ollama despite multiple configura
 
 ---
 
-## 🔬 Part 2: What We Tested
+##  Part 2: What We Tested
 
 | Test | Configuration | Result | Notes |
 |------|--------------|--------|-------|
-| Ollama on 0.0.0.0:11434 | Host IP binding | ✅ Working | Ollama receives requests |
-| Direct curl to Ollama | `curl localhost:11434` | ✅ 1.8s response | Ollama functional |
-| local-automation + localhost | `localhost:11434` | ❌ Hangs | Cannot reach host localhost |
-| local-automation + host IP | `100.75.72.26:11434` | ❌ Hangs | Cannot reach host IP |
-| local-automation + 0.0.0.0 | `0.0.0.0:11434` | ❌ Hangs | Same issue |
-| Simple prompt (no tools) | Reduced timeout | ❌ Still hangs | Not tool-related |
-| agent:main + Ollama | Main agent | ⚠️ Auth error | Different issue |
+| Ollama on 0.0.0.0:11434 | Host IP binding |  Working | Ollama receives requests |
+| Direct curl to Ollama | `curl localhost:11434` |  1.8s response | Ollama functional |
+| local-automation + localhost | `localhost:11434` |  Hangs | Cannot reach host localhost |
+| local-automation + host IP | `100.75.72.26:11434` |  Hangs | Cannot reach host IP |
+| local-automation + 0.0.0.0 | `0.0.0.0:11434` |  Hangs | Same issue |
+| Simple prompt (no tools) | Reduced timeout |  Still hangs | Not tool-related |
+| agent:main + Ollama | Main agent |  Auth error | Different issue |
 
 ---
 
@@ -40,18 +40,18 @@ The `local-automation` agent cannot connect to Ollama despite multiple configura
 The `local-automation` agent runs in an **isolated subprocess** with its own network namespace:
 
 ```
-┌─────────────────────────────────────────┐
-│           Host Machine                  │
-│  ┌─────────────────────────────────┐    │
-│  │      OpenClaw Gateway           │    │
-│  │  ┌─────────────────────────┐    │    │
-│  │  │  local-automation agent │    │    │
-│  │  │  (isolated network)     │    │    │
-│  │  │  ❌ Can't reach host    │    │    │
-│  │  └─────────────────────────┘    │    │
-│  └─────────────────────────────────┘    │
-│           ✅ Ollama on 0.0.0.0:11434    │
-└─────────────────────────────────────────┘
+
+           Host Machine                  
+      
+        OpenClaw Gateway               
+            
+      local-automation agent         
+      (isolated network)             
+       Can't reach host            
+            
+      
+            Ollama on 0.0.0.0:11434    
+
 ```
 
 **Why it fails:**
@@ -67,7 +67,7 @@ The `local-automation` agent runs in an **isolated subprocess** with its own net
 
 ---
 
-## ⚡ Part 4: Why Our Specific Setup Fails
+##  Part 4: Why Our Specific Setup Fails
 
 ### The Perfect Storm:
 
@@ -90,7 +90,7 @@ The `local-automation` agent runs in an **isolated subprocess** with its own net
 
 ---
 
-## ✅ Part 5: Solutions & Workarounds
+##  Part 5: Solutions & Workarounds
 
 ### Option A: Use llama3.2:8b Instead (Immediate)
 
@@ -154,20 +154,20 @@ Don't use tools with llama3.2:3b:
 
 ---
 
-## 🎯 Part 6: The Real Fix - Use agent:main
+##  Part 6: The Real Fix - Use agent:main
 
 Since we have two problems:
 1. llama3.2:3b's tool calling is broken
 2. local-automation sandbox can't reach Ollama
 
 **The solution is clear: Use `agent:main` which:**
-- ✅ Can reach Ollama (no sandbox)
-- ✅ Can handle llama3.2:3b's quirks
-- ✅ Works immediately
+-  Can reach Ollama (no sandbox)
+-  Can handle llama3.2:3b's quirks
+-  Works immediately
 
 ---
 
-## 📊 Part 7: Summary - The Exact Issue
+##  Part 7: Summary - The Exact Issue
 
 | Question | Answer |
 |----------|--------|
@@ -179,7 +179,7 @@ Since we have two problems:
 
 ---
 
-## 🚀 Final Recommendation
+##  Final Recommendation
 
 **Immediate action:** Switch to `agent:main` + `ollama/llama3.2:8b` or `ollama/qwen2.5:7b`
 
@@ -190,7 +190,7 @@ Since we have two problems:
 
 ---
 
-## 📚 Research Sources
+##  Research Sources
 
 1. **OpenClaw GitHub Discussion #16349** - "Small models require sandboxing and web tools disabled. Why?"
    - Confirms sandboxing is intentional for security
@@ -204,7 +204,7 @@ Since we have two problems:
 
 ---
 
-## 📝 Notes
+##  Notes
 
 - **local-automation agent:** Designed for isolated, secure execution
 - **main agent:** Shares network with host, no isolation
@@ -213,7 +213,7 @@ Since we have two problems:
 
 ---
 
-**Research Status:** ✅ COMPLETE - Root cause identified!
+**Research Status:**  COMPLETE - Root cause identified!
 
 **Next Steps:**
 1. Switch heartbeat job to `agent:main`

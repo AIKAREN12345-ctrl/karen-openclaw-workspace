@@ -5,7 +5,7 @@
 
 ---
 
-## 📁 Core Configuration Files (Outside Workspace)
+##  Core Configuration Files (Outside Workspace)
 
 | File | Purpose | Location |
 |------|---------|----------|
@@ -28,7 +28,7 @@
 
 ---
 
-## 🔧 Tools & Capabilities Documentation
+##  Tools & Capabilities Documentation
 
 | File | Purpose | Last Updated |
 |------|---------|--------------|
@@ -53,14 +53,14 @@
 ### Daily Memory Logs
 | File | Date | Status |
 |------|------|--------|
-| `memory/2026-02-19.md` | Feb 19 | ✅ Original |
-| `memory/2026-02-20.md` | Feb 20 | ✅ Original |
-| `memory/2026-02-21.md` | Feb 21 | ✅ Reconstructed |
-| `memory/2026-02-22.md` | Feb 22 | ✅ Reconstructed |
-| `memory/2026-02-23.md` | Feb 23 | ✅ Original |
-| `memory/2026-02-24.md` | Feb 24 | ✅ Original |
-| `memory/2026-02-25.md` | Feb 25 | ❌ Missing |
-| `memory/2026-02-26.md` | Feb 26 | ✅ Created |
+| `memory/2026-02-19.md` | Feb 19 |  Original |
+| `memory/2026-02-20.md` | Feb 20 |  Original |
+| `memory/2026-02-21.md` | Feb 21 |  Reconstructed |
+| `memory/2026-02-22.md` | Feb 22 |  Reconstructed |
+| `memory/2026-02-23.md` | Feb 23 |  Original |
+| `memory/2026-02-24.md` | Feb 24 |  Original |
+| `memory/2026-02-25.md` | Feb 25 |  Missing |
+| `memory/2026-02-26.md` | Feb 26 |  Created |
 
 ### Long-term Memory
 | File | Purpose |
@@ -69,35 +69,35 @@
 
 ---
 
-## 🎥 VNC System Files
+##  VNC System Files
 
 | File | Purpose | Status |
 |------|---------|--------|
-| `vnc-screenshot-robust.py` | Screenshot capture via VNC | ✅ Working |
-| `vnc-recorder-robust.py` | Screen recording via VNC | ✅ Working |
-| `vnc-control.py` | Mouse/keyboard control | ✅ Working |
-| `setup-memory-search.py` | Memory search configuration | ⚠️ Incomplete |
+| `vnc-screenshot-robust.py` | Screenshot capture via VNC |  Working |
+| `vnc-recorder-robust.py` | Screen recording via VNC |  Working |
+| `vnc-control.py` | Mouse/keyboard control |  Working |
+| `setup-memory-search.py` | Memory search configuration |  Incomplete |
 
 **VNC Configuration:**
 - **Port:** 5900
 - **Password:** Karen1234$ (from VNC_PASS env var)
 - **Server:** localhost
-- **Status:** Screenshot ✅, Recording ✅, Control ✅
+- **Status:** Screenshot , Recording , Control 
 
 ---
 
-## 📧 Email System Files
+##  Email System Files
 
 | File | Purpose | Status | Location |
 |------|---------|--------|----------|
-| `email-config.ps1` | Email configuration | ✅ Configured | C:\Users\Karen\ |
-| `send-email.ps1` | Email sending script | ✅ Fixed | C:\Users\Karen\ |
+| `email-config.ps1` | Email configuration |  Configured | C:\Users\Karen\ |
+| `send-email.ps1` | Email sending script |  Fixed | C:\Users\Karen\ |
 
 **Status:** Script fixed, needs Microsoft SMTP auth enabled in account settings.
 
 ---
 
-## 📊 Research & Documentation
+##  Research & Documentation
 
 | File | Purpose | Date |
 |------|---------|------|
@@ -108,7 +108,7 @@
 
 ---
 
-## 🔧 System Fix Documentation
+##  System Fix Documentation
 
 | File | Purpose | Date |
 |------|---------|------|
@@ -120,7 +120,7 @@
 
 ---
 
-## ⚠️ Known Issues Documentation
+##  Known Issues Documentation
 
 ### Critical Issues (Documented in TOOLS.md)
 1. **Ollama + local-automation agent:** Timeout due to sandbox isolation
@@ -130,26 +130,26 @@
 
 ---
 
-## 🗂️ Directory Structure
+##  Directory Structure
 
 ```
 ~/.openclaw/
-├── workspace/           # Working directory
-│   ├── *.md            # Documentation files
-│   ├── *.py            # Python scripts
-│   ├── memory/         # Daily memory logs
-│   └── .openclaw/      # State files
-├── agents/             # Agent configurations
-│   ├── main/           # Main agent
-│   └── local-automation/ # Local automation agent
-├── cron/               # Cron job definitions
-├── logs/               # Log files
-└── config files        # openclaw.json, node.json
+ workspace/           # Working directory
+    *.md            # Documentation files
+    *.py            # Python scripts
+    memory/         # Daily memory logs
+    .openclaw/      # State files
+ agents/             # Agent configurations
+    main/           # Main agent
+    local-automation/ # Local automation agent
+ cron/               # Cron job definitions
+ logs/               # Log files
+ config files        # openclaw.json, node.json
 ```
 
 ---
 
-## 🔍 How to Use This Index
+##  How to Use This Index
 
 **Looking for a specific capability?**
 → Check `TOOLS.md` first
@@ -168,7 +168,7 @@
 
 ---
 
-## 📋 File Maintenance Checklist
+##  File Maintenance Checklist
 
 **Weekly:**
 - [ ] Review and archive old memory files (>30 days)
@@ -185,7 +185,7 @@
 
 ---
 
-## 💡 Key Insight
+##  Key Insight
 
 **Most files are in one of three places:**
 1. **Workspace root** (`~/.openclaw/workspace/`) - Scripts and docs

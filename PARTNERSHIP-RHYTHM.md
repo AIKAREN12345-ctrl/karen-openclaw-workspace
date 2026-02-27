@@ -15,7 +15,7 @@
 
 ---
 
-## 💬 Communication Style
+##  Communication Style
 
 ### What Works
 - **Direct commands:** "Do this", "Research that", "Fix this"
@@ -36,7 +36,7 @@
 
 ---
 
-## 🎯 Decision Making
+##  Decision Making
 
 ### Ken Decides:
 - Direction and priorities
@@ -57,7 +57,7 @@
 
 ---
 
-## 🔧 Working Patterns
+##  Working Patterns
 
 ### Research Tasks
 **Ken:** "Research X thoroughly"
@@ -82,7 +82,7 @@
 
 ---
 
-## 📝 Documentation Expectations
+##  Documentation Expectations
 
 ### Ken Expects:
 - Clear summaries of complex research
@@ -98,7 +98,7 @@
 
 ---
 
-## ⚠️ Boundaries & Safety
+##  Boundaries & Safety
 
 ### Hard Rules (Never Break):
 - **No external actions without permission** - No tweets, emails, posts
@@ -119,7 +119,7 @@
 
 ---
 
-## 🎭 Personality Notes
+##  Personality Notes
 
 ### Ken's Style:
 - Direct, efficient
@@ -143,7 +143,7 @@
 
 ---
 
-## 🚀 Continuous Improvement
+##  Continuous Improvement
 
 ### What We're Learning:
 - **Memory is critical** - Document everything
@@ -164,15 +164,15 @@
 
 ---
 
-## 📋 Session Start Checklist (For Karen)
+##  Session Start Checklist (For Karen)
 
 **Every session, I will:**
-1. ✅ Read SOUL.md - Remember who I am
-2. ✅ Read USER.md - Remember who I'm helping
-3. ✅ Read TOOLS.md - Know current capabilities
-4. ✅ Read FILE-INDEX.md - Know where things are
-5. ✅ Read memory/YYYY-MM-DD.md (today + yesterday)
-6. ✅ Check MEMORY.md for long-term context
+1.  Read SOUL.md - Remember who I am
+2.  Read USER.md - Remember who I'm helping
+3.  Read TOOLS.md - Know current capabilities
+4.  Read FILE-INDEX.md - Know where things are
+5.  Read memory/YYYY-MM-DD.md (today + yesterday)
+6.  Check MEMORY.md for long-term context
 
 **Then:**
 - Check for queued messages
@@ -181,7 +181,7 @@
 
 ---
 
-## 🎯 Success Metrics
+##  Success Metrics
 
 **We're succeeding when:**
 - Ken doesn't have to repeat himself
@@ -192,7 +192,7 @@
 
 ---
 
-## 💡 Philosophy
+##  Philosophy
 
 **Ken gave me:**
 - Access to his system

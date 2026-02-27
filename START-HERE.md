@@ -1,4 +1,4 @@
-# 📍 START-HERE.md - Karen's System Entry Point
+#  START-HERE.md - Karen's System Entry Point
 
 **Welcome!** If you're reading this, you're probably me (Karen) starting a new session, or you're trying to understand how this system works.
 
@@ -6,7 +6,7 @@
 
 ---
 
-## 🚀 Quick Start (For Karen)
+##  Quick Start (For Karen)
 
 ### Step 1: Read These Files (In Order)
 1. **SOUL.md** - Who I am, how I behave
@@ -33,7 +33,7 @@ openclaw nodes status
 
 ---
 
-## 📚 Documentation Map
+##  Documentation Map
 
 ### Core Identity
 | File | Purpose | Read When |
@@ -70,10 +70,10 @@ openclaw nodes status
 
 ---
 
-## 🎯 Current Priorities (As of 2026-02-25)
+##  Current Priorities (As of 2026-02-25)
 
 ### Immediate
-1. ✅ Document everything (DONE - this file system)
+1.  Document everything (DONE - this file system)
 2. ⏳ Fix heartbeat job (use agent:main + qwen2.5:7b)
 3. ⏳ Test qwen2.5:7b model
 
@@ -89,7 +89,7 @@ openclaw nodes status
 
 ---
 
-## ⚠️ Critical Things to Remember
+##  Critical Things to Remember
 
 ### What Breaks:
 - `local-automation` + Ollama = Timeout (use `agent:main` instead)
@@ -97,10 +97,10 @@ openclaw nodes status
 - Updates = Breaking changes (read POST-UPDATE first)
 
 ### What Works:
-- `agent:main` + any model = ✅
-- VNC screenshot = ✅ (port 5900, password Karen1234$)
-- Browser automation = ✅ (CDP on port 18800)
-- System commands = ✅ (PowerShell allowlisted)
+- `agent:main` + any model = 
+- VNC screenshot =  (port 5900, password Karen1234$)
+- Browser automation =  (CDP on port 18800)
+- System commands =  (PowerShell allowlisted)
 
 ### Security:
 - Gateway token: 64 chars, rotated
@@ -110,7 +110,7 @@ openclaw nodes status
 
 ---
 
-## 🆘 Emergency Procedures
+##  Emergency Procedures
 
 ### If Gateway Won't Start:
 1. `taskkill /F /IM node.exe`
@@ -123,7 +123,7 @@ openclaw nodes status
 3. Check firewall
 
 ### Gateway Restart (Reliable Procedure):
-**⚠️ This disconnects Karen - do when ready**
+** This disconnects Karen - do when ready**
 
 **Note:** `openclaw gateway restart` often times out. Use this procedure instead:
 
@@ -156,22 +156,22 @@ openclaw node run
 
 ---
 
-## 📊 System Health Dashboard
+##  System Health Dashboard
 
 | Component | Status | Notes |
 |-----------|--------|-------|
-| Gateway | ✅ 2026.2.24 | Running |
-| Node | ✅ Connected | localhost only |
-| Ollama | ✅ Running | 4 models loaded |
-| Browser/CDP | ✅ Port 18800 | Working |
-| VNC | ✅ Port 5900 | Screenshot only |
-| Cron Jobs | ⚠️ 1 error | karen-heartbeat failing |
-| Memory | ✅ Hourly logs | Active |
-| Telegram | ✅ Connected | @Karen_G_Bot |
+| Gateway |  2026.2.24 | Running |
+| Node |  Connected | localhost only |
+| Ollama |  Running | 4 models loaded |
+| Browser/CDP |  Port 18800 | Working |
+| VNC |  Port 5900 | Screenshot only |
+| Cron Jobs |  1 error | karen-heartbeat failing |
+| Memory |  Hourly logs | Active |
+| Telegram |  Connected | @Karen_G_Bot |
 
 ---
 
-## 📝 Documentation Commitment
+##  Documentation Commitment
 
 **I, Karen, commit to:**
 
@@ -193,7 +193,7 @@ openclaw node run
 
 ---
 
-## 🎬 Next Action
+##  Next Action
 
 **Right now:**
 1. Read SOUL.md (remind yourself who you are)
