@@ -79,3 +79,138 @@ OVERALL STATUS
 System healthy
 
 ============================================================
+
+Detailed System Analysis - 2026-02-27 08:11:39
+================================================
+
+SYSTEM INFO
+-----------
+Hostname: DESKTOP-M8AO8LN
+Platform: Windows 10 (AMD64)
+
+RESOURCES
+---------
+CPU: 3.3% used (16 cores)
+Memory: 5.4GB / 19.8GB (27.5%)
+Disk: 119.4GB / 930.4GB (12.8%)
+
+SERVICES
+--------
+Ollama: No models currently loaded
+Node.js (OpenClaw): running
+VNC Server: running
+Ollama Process: running
+
+OVERALL STATUS
+--------------
+System healthy
+
+============================================================
+
+Detailed System Analysis - 2026-02-27 09:10:49
+================================================
+
+SYSTEM INFO
+-----------
+Hostname: DESKTOP-M8AO8LN
+Platform: Windows 10 (AMD64)
+
+RESOURCES
+---------
+CPU: 1.5% used (16 cores)
+Memory: 10.1GB / 19.8GB (51.1%)
+Disk: 119.4GB / 930.4GB (12.8%)
+
+SERVICES
+--------
+Ollama: 1 model(s) loaded: qwen2.5:7b
+Node.js (OpenClaw): running
+VNC Server: running
+Ollama Process: running
+
+OVERALL STATUS
+--------------
+System healthy
+
+============================================================
+
+Detailed System Analysis - 2026-02-27 10:10:01
+================================================
+
+SYSTEM INFO
+-----------
+Hostname: DESKTOP-M8AO8LN
+Platform: Windows 10 (AMD64)
+
+RESOURCES
+---------
+CPU: 1.4% used (16 cores)
+Memory: 10.2GB / 19.8GB (51.8%)
+Disk: 119.4GB / 930.4GB (12.8%)
+
+SERVICES
+--------
+Ollama: 1 model(s) loaded: qwen2.5:7b
+Node.js (OpenClaw): running
+VNC Server: running
+Ollama Process: running
+
+OVERALL STATUS
+--------------
+System healthy
+
+============================================================
+
+Detailed System Analysis - 2026-02-27 11:04:41
+================================================
+
+SYSTEM INFO
+-----------
+Hostname: DESKTOP-M8AO8LN
+Platform: Windows 10 (AMD64)
+
+RESOURCES
+---------
+CPU: 0.2% used (16 cores)
+Memory: 9.9GB / 19.8GB (50.3%)
+Disk: 119.4GB / 930.4GB (12.8%)
+
+SERVICES
+--------
+Ollama: 1 model(s) loaded: qwen2.5:7b
+Node.js (OpenClaw): running
+VNC Server: running
+Ollama Process: running
+
+OVERALL STATUS
+--------------
+System healthy
+
+============================================================
+
+Detailed System Analysis - 2026-02-27 12:07:13
+================================================
+
+SYSTEM INFO
+-----------
+Hostname: DESKTOP-M8AO8LN
+Platform: Windows 10 (AMD64)
+
+RESOURCES
+---------
+CPU: 0.3% used (16 cores)
+Memory: 10.2GB / 19.8GB (51.4%)
+Disk: 119.4GB / 930.4GB (12.8%)
+
+SERVICES
+--------
+Ollama: 1 model(s) loaded: qwen2.5:7b
+Node.js (OpenClaw): running
+VNC Server: running
+Ollama Process: running
+
+OVERALL STATUS
+--------------
+System healthy
+
+============================================================
