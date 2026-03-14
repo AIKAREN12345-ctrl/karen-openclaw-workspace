@@ -1,0 +1,221 @@
+# OpenClaw Agent Swarm - Docker Compose
+# Multi-model fleet: 14B (complex) + 7B (general) + 3B (fast)
+
+version: '3.8'
+
+services:
+  # ============================================
+  # SHARED OLLAMA SERVICE
+  # ============================================
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama-server
+    volumes:
+      - ollama_data:/root/.ollama
+    ports:
+      - "11434:11434"
+    environment:
+      - OLLAMA_KEEP_ALIVE=24h
+      - OLLAMA_MAX_LOADED_MODELS=3
+      - OLLAMA_NUM_PARALLEL=4
+    networks:
+      - agent-mesh
+    deploy:
+      resources:
+        limits:
+          cpus: '8'
+          memory: 18G
+        reservations:
+          cpus: '4'
+          memory: 12G
+    healthcheck:
+      test: ["CMD-SHELL", "ollama list || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  # ============================================
+  # AGENT FLEET
+  # ============================================
+  
+  # 14B Agent - Complex reasoning tasks
+  agent-complex:
+    build:
+      context: ./agent
+      dockerfile: Dockerfile
+    image: openclaw/agent-complex:latest
+    container_name: agent-complex
+    environment:
+      - AGENT_TYPE=complex
+      - MODEL=qwen2.5:14b
+      - OLLAMA_HOST=http://ollama:11434
+      - REDIS_HOST=redis
+      - WORKSPACE_DIR=/app/workspace
+      - MAX_CONCURRENT=2
+      - LOG_LEVEL=INFO
+    volumes:
+      - agent_complex_data:/app/data
+      - ./workspace:/app/workspace:rw
+    networks:
+      - agent-mesh
+    depends_on:
+      - ollama
+      - redis
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '3'
+          memory: 3G
+        reservations:
+          cpus: '2'
+          memory: 2G
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+
+  # 7B Agent - General tasks
+  agent-general:
+    build:
+      context: ./agent
+      dockerfile: Dockerfile
+    image: openclaw/agent-general:latest
+    container_name: agent-general
+    environment:
+      - AGENT_TYPE=general
+      - MODEL=qwen2.5:7b
+      - OLLAMA_HOST=http://ollama:11434
+      - REDIS_HOST=redis
+      - MAX_CONCURRENT=4
+      - LOG_LEVEL=INFO
+    volumes:
+      - agent_general_data:/app/data
+      - ./workspace:/app/workspace:rw
+    networks:
+      - agent-mesh
+    depends_on:
+      - ollama
+      - redis
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 1.5G
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+
+  # 3B Agents - Fast parallel tasks (3 replicas)
+  agent-fast:
+    build:
+      context: ./agent
+      dockerfile: Dockerfile
+    image: openclaw/agent-fast:latest
+    environment:
+      - AGENT_TYPE=fast
+      - MODEL=qwen2.5:3b
+      - OLLAMA_HOST=http://ollama:11434
+      - REDIS_HOST=redis
+      - MAX_CONCURRENT=8
+      - LOG_LEVEL=INFO
+    volumes:
+      - agent_fast_data:/app/data
+      - ./workspace:/app/workspace:rw
+    networks:
+      - agent-mesh
+    depends_on:
+      - ollama
+      - redis
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 1.5G
+        reservations:
+          cpus: '1'
+          memory: 1G
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+
+  # ============================================
+  # ORCHESTRATOR
+  # ============================================
+  orchestrator:
+    build:
+      context: ./orchestrator
+      dockerfile: Dockerfile
+    image: openclaw/orchestrator:latest
+    container_name: orchestrator
+    environment:
+      - REDIS_HOST=redis
+      - AGENT_COMPLEX_URL=http://agent-complex:8080
+      - AGENT_GENERAL_URL=http://agent-general:8080
+      - AGENT_FAST_URL=http://agent-fast:8080
+      - MAX_AGENTS=10
+      - LOG_LEVEL=INFO
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./workspace:/app/workspace:rw
+    networks:
+      - agent-mesh
+    depends_on:
+      - redis
+      - agent-complex
+      - agent-general
+      - agent-fast
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+
+  # ============================================
+  # INFRASTRUCTURE
+  # ============================================
+  
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    command: redis-server --appendonly yes --maxmemory 1gb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - agent-mesh
+    deploy:
+      resources:
+        limits:
+          memory: 1.2G
+        reservations:
+          memory: 1G
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+networks:
+  agent-mesh:
+    driver: bridge
+
+volumes:
+  ollama_data:
+  agent_complex_data:
+  agent_general_data:
+  agent_fast_data:
+  redis_data:

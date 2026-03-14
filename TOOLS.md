@@ -80,10 +80,12 @@
 ### Local Models (Ollama)
 | Model | Size | Status | Use Case |
 |-------|------|--------|----------|
-| llama3.2:3b | 2.0 GB |  Tool calling issues | Automation (problematic) |
-| gemma:2b | 1.7 GB |  No tool support | Fallback only |
-| phi3:mini | 2.2 GB |  Untested | Backup option |
-| qwen2.5:7b | 4.7 GB |  Recommended | Best tool support |
+| qwen2.5:14b | 9.0 GB |  Active | Primary local model for subagents |
+| nomic-embed-text | 274 MB |  Active | Embeddings for memory search |
+| llama3.2:3b | 2.0 GB |  Removed | Problematic, deleted |
+| gemma:2b | 1.7 GB |  Removed | No tool support |
+| phi3:mini | 2.2 GB |  Removed | Untested |
+| qwen2.5:7b | 4.7 GB |  Not installed | Using 14B instead |
 
 ### Model Routing Strategy
 - **Kimi (k2p5):** Interactive conversations, complex coding, reasoning

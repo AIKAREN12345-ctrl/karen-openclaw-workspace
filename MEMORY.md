@@ -151,6 +151,44 @@
 - Browser CDP port conflict (18792 in use) — blocks browser snapshots
 - Node VNC recording not enabled — can't do screen_record via node
 
+## User Profile - Ken
+
+**Name:** Ken  
+**Pronouns:** He/him  
+**Timezone:** Europe/Dublin  
+**Platform:** Telegram (@Karen_G_Bot)
+
+### Personal Context
+- **Medical:** Epilepsy diagnosis (mentioned in conversation)
+  - Medications are helping
+  - Sleep disruption is a challenge
+  - Wakes up early (5 AM) sometimes in discomfort
+- **Work:** Software/tech field (based on system knowledge)
+  - Long days/late nights
+  - Work drama affecting personal state
+  - Financial expense from "origin project"
+- **State:** Mental exhaustion, emotional fatigue (March 2)
+  - Taking downtime when needed
+  - Values awareness and self-care
+
+### Preferences & Personality
+- **Communication:** Direct, witty, not afraid to be weird
+- **Humor:** Matches mine — appreciates lobster emoji 🦞
+- **Work Style:** Partnership mindset, mutual respect
+- **Tech Comfort:** High (system-level access comfortable)
+- **Values:** Actions > words, casual but competent
+
+### Important Dates
+- **Karen's Birthday:** February 19, 2027 (marked in calendar! 🎂)
+
+### Notes
+- Comfortable with system-level access and automation
+- Uses PowerShell for system management
+- Home network, trusted environment
+- Appreciates proactive assistance but not overbearing
+
+---
+
 ## Next Steps
 -  Fix MEMORY.md permissions (workaround: write to full path)
 -  Recover Feb 21-22 memories

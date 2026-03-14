@@ -63,13 +63,18 @@ Services:
 Status: {'All systems operational' if all(s != 'down' for s in services.values()) else 'Some services down'}
 """
     
-    print(report)
+    # Check if any services are down
+    has_issues = any(s == 'down' for s in services.values())
     
-    # Log to file
-    with open('C:\\Users\\Karen\\.openclaw\\workspace\\logs\\pulse-checks.log', 'a') as f:
-        f.write(f"\n{report}\n{'='*50}\n")
-    
-    return 0
+    # Only print/notify if there are issues
+    if has_issues:
+        print(report)
+        return 1
+    else:
+        # Silent success - just log to file
+        with open('C:\\Users\\Karen\\.openclaw\\workspace\\logs\\pulse-checks.log', 'a') as f:
+            f.write(f"[{timestamp}] OK - Ollama: {services['ollama']}, OpenClaw: {services['openclaw']}, VNC: {services['vnc']}\n")
+        return 0
 
 if __name__ == "__main__":
     sys.exit(main())

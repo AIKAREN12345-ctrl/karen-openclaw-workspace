@@ -1,0 +1,4 @@
+Fix memory search indexing - embedding provider configuration
+---
+Last researched: OpenClaw system upgrades - 2026-03-03
+Next research: OpenClaw system upgrades - 2026-03-06

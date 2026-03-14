@@ -15,7 +15,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MEMORY_DIR = os.path.join(os.path.dirname(os.path.dirname(SCRIPT_DIR)), "memory")
 RESEARCH_DIR = os.path.join(MEMORY_DIR, "research")
 
-def query_ollama(prompt, model="qwen2.5:7b", timeout=60):
+def query_ollama(prompt, model="qwen2.5:14b", timeout=90):
     """Query Ollama for research"""
     try:
         data = json.dumps({
@@ -88,7 +88,7 @@ def save_research(topic, content):
     content = f"""# Research: {topic}
 
 **Date:** {datetime.datetime.now().strftime("%Y-%m-%d %H:%M")}
-**Researcher:** Ollama (qwen2.5:7b)
+**Researcher:** Ollama (qwen2.5:14b)
 
 ## Findings
 
