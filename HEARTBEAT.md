@@ -2,7 +2,7 @@
 
 ## Research Trigger Handlers (Expanded Schedule)
 
-**Schedule (16 runs per day):**
+**Schedule (17 runs per day):**
 - **06:00** — OpenClaw + AI models (morning briefing)
 - **07:00** — Quick scan: Tech news
 - **09:00** — OpenClaw check
@@ -20,6 +20,7 @@
 - **21:00** — Quick scan: AI safety/policy
 - **22:00** — AI income check
 - **23:00** — Quick scan: Weekend wrap-up (Fri-Sun)
+- **10:30** — Amazon KDP + Coloring Book Business Research
 
 **IMPORTANT:** Research subagents must use `web_fetch` with DuckDuckGo URLs, NOT `web_search` (which requires Kimi API key).
 
@@ -207,6 +208,32 @@
      Format: https://duckduckgo.com/html?q=AI+safety+regulation+policy
      Save results to memory/research/YYYY-MM-DD_ai_safety.md (append if exists)
      Focus: Regulations, safety research, policy developments
+     ```
+  3. Update research-state.json with timestamp and increment todayRuns
+
+### TRIGGER-RESEARCH-kdp-coloring-books
+- **Scheduled:** 10:30 (1x daily)
+- **Action:** Research Amazon KDP, coloring book business, AI image generation tools
+- **Steps:**
+  1. Read memory/research-state.json
+  2. Spawn subagent with explicit DuckDuckGo instructions:
+     ```
+     Research Amazon KDP coloring book business using ONLY web_fetch with DuckDuckGo URLs.
+     DO NOT use web_search - it will fail.
+     
+     Search topics (rotate daily):
+     - Amazon KDP royalties pricing changes
+     - AI coloring book generation tools updates
+     - Stable Diffusion LoRA models for line art
+     - Midjourney/DALL-E pricing changes
+     - Children's book market trends
+     - KDP keyword optimization strategies
+     - Copyright AI art updates
+     - Print-on-demand passive income strategies
+     
+     Format: https://duckduckgo.com/html?q=[search+terms]
+     Save results to memory/research/YYYY-MM-DD_kdp_coloring.md (append if exists)
+     Focus: Actionable insights, pricing data, new tools, policy changes
      ```
   3. Update research-state.json with timestamp and increment todayRuns
 

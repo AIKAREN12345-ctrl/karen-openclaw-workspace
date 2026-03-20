@@ -1,19 +1,19 @@
 {
   "openclaw_updates": {
-    "lastResearched": "2026-03-18T06:00:00Z",
-    "todayRuns": 5
+    "lastResearched": "2026-03-19T16:00:00Z",
+    "todayRuns": 0
   },
   "ai_models": {
-    "lastResearched": "2026-03-15T18:03:00Z",
+    "lastResearched": "2026-03-19T18:00:00Z",
     "todayRuns": 0
   },
   "ai_income": {
-    "lastResearched": "2026-03-17T14:00:00Z",
-    "todayRuns": 2
+    "lastResearched": "2026-03-19T22:00:00Z",
+    "todayRuns": 0
   },
   "philosophy": {
-    "lastResearched": "2026-03-16T20:00:00Z",
-    "todayRuns": 1
+    "lastResearched": "2026-03-19T20:00:00Z",
+    "todayRuns": 0
   },
   "tech_news": {
     "lastResearched": null,
@@ -33,7 +33,7 @@
   },
   "hardware": {
     "lastResearched": "2026-03-17T17:15:00Z",
-    "todayRuns": 1
+    "todayRuns": 0
   },
   "deep_dive": {
     "lastResearched": null,
@@ -47,5 +47,9 @@
     "lastResearched": null,
     "todayRuns": 0
   },
-  "lastReset": "2026-03-16T00:00:00Z"
+  "kdp_coloring_books": {
+    "lastResearched": null,
+    "todayRuns": 0
+  },
+  "lastReset": "2026-03-20T00:00:00Z"
 }
