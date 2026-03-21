@@ -1,6 +1,6 @@
 # Enabling Node VNC Screen Recording
 
-**Status:** Pending node restart with screen capability enabled  
+**Status:** Partially implemented — requires full node re-registration  
 **Date:** 2026-03-21  
 **Permission:** Granted by Ken
 
@@ -11,85 +11,57 @@
 ✅ **VNC Server:** Running on localhost:5900  
 ✅ **VNC Password:** Set in VNC_PASS environment variable  
 ✅ **Screenshot Script:** `vnc-screenshot-robust.py` working  
-❌ **Node Screen Capability:** Not exposed (can't use `nodes screen_record`)
+✅ **Scheduled Task:** Modified with screen environment variables  
+⏳ **Node Screen Capability:** Pending full re-registration
 
 ---
 
-## The Problem
+## What Was Done
 
-OpenClaw nodes expose capabilities like `browser`, `system`, `screen`, etc. Currently our node only shows:
-- `browser`
-- `system`
-
-The `screen` capability (which enables `nodes screen_record`, `nodes camera_snap`, etc.) is not enabled.
-
----
-
-## Solution
-
-The node needs to be started with screen recording enabled. This typically requires:
-
-### Option 1: Environment Variables (Recommended)
-
-Set these before starting the OpenClaw node:
-
-```powershell
-$env:OPENCLAW_NODE_SCREEN_ENABLED = "true"
-$env:OPENCLAW_NODE_VNC_HOST = "localhost"
-$env:OPENCLAW_NODE_VNC_PORT = "5900"
-$env:OPENCLAW_NODE_VNC_PASSWORD = $env:VNC_PASS
-```
-
-Then restart the OpenClaw node/gateway.
-
-### Option 2: Node Config File
-
-Add to `node.json`:
-
-```json
-{
-  "capabilities": {
-    "screen": {
-      "enabled": true,
-      "vnc": {
-        "host": "localhost",
-        "port": 5900,
-        "password": "${VNC_PASS}"
-      }
-    }
-  }
-}
-```
-
-### Option 3: Command Line Flags
-
-If starting OpenClaw manually:
-
-```powershell
-openclaw node --screen --vnc-host=localhost --vnc-port=5900
-```
+1. Created `enable-vnc-screen.ps1` script
+2. Modified the "OpenClaw Node" scheduled task to include:
+   - `OPENCLAW_NODE_SCREEN_ENABLED=true`
+   - `OPENCLAW_NODE_VNC_HOST=localhost`
+   - `OPENCLAW_NODE_VNC_PORT=5900`
+   - `OPENCLAW_NODE_VNC_PASSWORD` (from VNC_PASS)
+3. Restarted the scheduled task
 
 ---
 
-## Verification Steps
+## Why It's Not Working Yet
 
-After restart, verify with:
+The node capability list (`browser`, `system`, `screen`) is determined at **node registration time** when the node first connects to the gateway. The node needs to:
+1. Fully disconnect from the gateway
+2. Re-register with the new environment variables
+3. Reconnect with the `screen` capability exposed
 
+---
+
+## To Complete
+
+**Option 1: Full Restart (Recommended)**
 ```powershell
-# Check node capabilities
-openclaw nodes describe DESKTOP-M8AO8LN
+# Stop everything
+openclaw gateway stop
 
-# Should show: caps: ["browser", "system", "screen"]
+# Wait 10 seconds
 
-# Test screen recording
-openclaw nodes screen_record --duration=5s
+# Start with environment variables set
+$env:OPENCLAW_NODE_SCREEN_ENABLED="true"
+$env:OPENCLAW_NODE_VNC_HOST="localhost"
+$env:OPENCLAW_NODE_VNC_PORT="5900"
+$env:OPENCLAW_NODE_VNC_PASSWORD="Karen1234$"
+openclaw gateway start
 ```
+
+**Option 2: Wait for Next Reboot**
+The scheduled task is now configured correctly. On next Windows login, the node should start with screen capability.
 
 ---
 
 ## Current Workaround
 
-Until node screen is enabled, use:
+Until node screen is fully enabled, use:
 - `vnc-screenshot-robust.py` for screenshots
 - `vnc-recorder-robust.py` for screen recording
 
@@ -97,19 +69,12 @@ These work directly with the VNC server without needing the node capability.
 
 ---
 
-## Next Steps
+## Verification
 
-1. **Choose method** (environment variables recommended)
-2. **Restart OpenClaw node/gateway**
-3. **Verify screen capability appears**
-4. **Test screen_record command**
-5. **Update MEMORY.md** to mark complete
+Once working, verify with:
+```powershell
+openclaw nodes describe DESKTOP-M8AO8LN
+# Should show: caps: ["browser", "system", "screen"]
 
----
-
-## Notes
-
-- VNC server must be running before node starts
-- Password should match VNC_PASS environment variable
-- Screen recording requires sufficient disk space
-- Recordings are temporary unless saved to workspace
+openclaw nodes screen_record --duration=5s
+```
