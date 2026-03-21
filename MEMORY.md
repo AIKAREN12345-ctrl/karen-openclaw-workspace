@@ -190,9 +190,10 @@
 ---
 
 ## Next Steps
--  Fix MEMORY.md permissions (workaround: write to full path)
+- ⏳ Test Qwen 3.5 (sandboxed) - revisit after initial release issues
+- ✅ **MEMORY.md permissions** — Tested and working (no workaround needed)
 -  Recover Feb 21-22 memories
 - ⏳ Create "Karen's Voice" style guide
-- ⏳ Document session-end state snapshots
-- ⏳ Fix browser CDP port conflict
-- ⏳ Enable node VNC recording capability
+- ✅ **Session-end state snapshots** — Documented in docs/SESSION-END-SNAPSHOT.md
+- ✅ **Browser CDP port** — Port 18800 active and working (conflict resolved)
+- ⏳ **Node VNC recording** — Setup documented in docs/VNC-SCREEN-SETUP.md (needs node restart)
