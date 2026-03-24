@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ken + Karen Dashboard v2</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #0d1117;
+            --border: #30363d;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --success: #3fb950;
+            --warning: #d29922;
+            --danger: #f85149;
+        }
+        .light-mode {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f6f8fa;
+            --bg-tertiary: #ffffff;
+            --border: #d0d7de;
+            --text-primary: #24292f;
+            --text-secondary: #57606a;
+            --accent: #0969da;
+            --success: #1a7f37;
+            --warning: #9a6700;
+            --danger: #cf222e;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .header-title h1 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        .header-title .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        .btn:hover {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: white;
+        }
+        .btn.active {
+            background: var(--accent);
+            color: white;
+        }
+        .theme-toggle {
+            font-size: 1.2rem;
+            padding: 8px 12px;
+        }
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .filter-group {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+        .filter-label {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+        .state-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .state-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .state-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+        .state-item .label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .state-item .score {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 3px 0;
+        }
+        .state-item .trend {
+            font-size: 0.75rem;
+        }
+        .score-high { color: var(--success); }
+        .score-medium { color: var(--warning); }
+        .score-low { color: var(--danger); }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .column {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px;
+            min-height: 200px;
+            transition: all 0.3s;
+        }
+        .column.collapsed {
+            min-height: auto;
+        }
+        .column.collapsed .column-content {
+            display: none;
+        }
+        .column-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+        }
+        .column-header .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .dot-active { background: var(--success); }
+        .dot-paused { background: var(--warning); }
+        .dot-blocked { background: var(--danger); }
+        .dot-complete { background: var(--text-secondary); }
+        .column-header h2 {
+            font-size: 0.95rem;
+            flex: 1;
+        }
+        .column-header .count {
+            background: var(--bg-primary);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+        .collapse-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        .card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 8px;
+            cursor: grab;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .card.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+        .card.expanded {
+            grid-row: span 2;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+        .card-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            flex: 1;
+            cursor: text;
+            padding: 2px;
+            border-radius: 3px;
+        }
+        .card-title:hover {
+            background: rgba(88, 166, 255, 0.1);
+        }
+        .card-title.editing {
+            background: var(--bg-primary);
+            border: 1px solid var(--accent);
+            outline: none;
+        }
+        .card-actions {
+            display: flex;
+            gap: 5px;
+        }
+        .card-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.8rem;
+            padding: 2px 4px;
+        }
+        .card-btn:hover {
+            color: var(--accent);
+        }
+        .card-meta {
+            display: flex;
+            gap: 8px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+        .energy-cost {
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .energy-high { background: rgba(248, 81, 73, 0.2); color: var(--danger); }
+        .energy-medium { background: rgba(210, 153, 34, 0.2); color: var(--warning); }
+        .energy-low { background: rgba(63, 185, 80, 0.2); color: var(--success); }
+        .card-next {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        .card-next strong {
+            color: var(--text-primary);
+        }
+        .card-details {
+            display: none;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border);
+        }
+        .card.expanded .card-details {
+            display: block;
+        }
+        .detail-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+        }
+        .detail-label {
+            color: var(--text-secondary);
+            min-width: 80px;
+        }
+        .detail-value {
+            color: var(--text-primary);
+            flex: 1;
+            cursor: text;
+            padding: 2px;
+            border-radius: 3px;
+        }
+        .detail-value:hover {
+            background: rgba(88, 166, 255, 0.1);
+        }
+        .detail-value.editing {
+            background: var(--bg-primary);
+            border: 1px solid var(--accent);
+            outline: none;
+        }
+        .add-card-btn {
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            border: 2px dashed var(--border);
+            color: var(--text-secondary);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            transition: all 0.2s;
+        }
+        .add-card-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .column.drag-over {
+            background: rgba(88, 166, 255, 0.1);
+            border-color: var(--accent);
+        }
+        .hidden { display: none !important; }
+        @media (max-width: 768px) {
+            .state-bar { grid-template-columns: repeat(2, 1fr); }
+            .board { grid-template-columns: 1fr; }
+            .header { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-title">
+            <h1>🦞 Ken + Karen</h1>
+            <div class="subtitle">Interactive Dashboard v2 • March 23, 2026</div>
+        </div>
+        <div class="controls">
+            <button class="btn" onclick="sortCards('date')">Sort by Date</button>
+            <button class="btn" onclick="sortCards('energy')">Sort by Energy</button>
+            <button class="btn theme-toggle" onclick="toggleTheme()">🌓</button>
+        </div>
+    </div>
+
+    <div class="filters">
+        <div class="filter-group">
+            <span class="filter-label">Filter:</span>
+            <button class="btn active" onclick="filterEnergy('all')">All</button>
+            <button class="btn" onclick="filterEnergy('low')">Low Energy</button>
+            <button class="btn" onclick="filterEnergy('medium')">Medium</button>
+            <button class="btn" onclick="filterEnergy('high')">High</button>
+        </div>
+    </div>
+
+    <div class="state-bar">
+        <div class="state-item" onclick="showStateDetail('energy')">
+            <div class="label">Energy</div>
+            <div class="score score-medium">3</div>
+            <div class="trend">↑ Improving</div>
+        </div>
+        <div class="state-item" onclick="showStateDetail('stress')">
+            <div class="label">Stress</div>
+            <div class="score score-low">2</div>
+            <div class="trend">↓ Decreasing</div>
+        </div>
+        <div class="state-item" onclick="showStateDetail('mood')">
+            <div class="label">Mood</div>
+            <div class="score score-high">4</div>
+            <div class="trend">↑ Good</div>
+        </div>
+        <div class="state-item" onclick="showStateDetail('social')">
+            <div class="label">Social</div>
+            <div class="score score-medium">3</div>
+            <div class="trend">→ Selective</div>
+        </div>
+    </div>
+
+    <div class="board">
+        <div class="column" data-status="active">
+            <div class="column-header" onclick="toggleColumn(this)">
+                <div class="dot dot-active"></div>
+                <h2>Active</h2>
+                <span class="count">2</span>
+                <button class="collapse-btn">−</button>
+            </div>
+            <div class="column-content">
+                <div class="card" draggable="true" data-id="1" data-energy="medium" data-date="2026-03-23">
+                    <div class="card-header">
+                        <div class="card-title" onclick="startEdit(this)">Work + College</div>
+                        <div class="card-actions">
+                            <button class="card-btn" onclick="toggleCard(this)">▼</button>
+                            <button class="card-btn" onclick="deleteCard(this)">×</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="energy-cost energy-medium">Medium</span>
+                        <span>Ongoing</span>
+                    </div>
+                    <div class="card-next"><strong>Next:</strong> <span onclick="startEdit(this)">Tuesday work, evening college</span></div>
+                    <div class="card-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Deadline:</span>
+                            <span class="detail-value" onclick="startEdit(this)">Ongoing</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Notes:</span>
+                            <span class="detail-value" onclick="startEdit(this)">Regular schedule</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" draggable="true" data-id="2" data-energy="low" data-date="2026-03-23">
+                    <div class="card-header">
+                        <div class="card-title" onclick="startEdit(this)">Proactive System Build</div>
+                        <div class="card-actions">
+                            <button class="card-btn" onclick="toggleCard(this)">▼</button>
+                            <button class="card-btn" onclick="deleteCard(this)">×</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="energy-cost energy-low">Low</span>
+                        <span>Today</span>
+                    </div>
+                    <div class="card-next"><strong>Next:</strong> <span onclick="startEdit(this)">Dashboard v2 complete</span></div>
+                    <div class="card-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Deadline:</span>
+                            <span class="detail-value" onclick="startEdit(this)">2026-03-23</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Notes:</span>
+                            <span class="detail-value" onclick="startEdit(this)">All interactive features working</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="add-card-btn" onclick="addCard('active')">+ Add Project</button>
+            </div>
+        </div>
+
+        <div class="column" data-status="paused">
+            <div class="column-header" onclick="toggleColumn(this)">
+                <div class="dot dot-paused"></div>
+                <h2>Paused</h2>
+                <span class="count">2</span>
+                <button class="collapse-btn">−</button>
+            </div>
+            <div class="column-content">
+                <div class="card" draggable="true" data-id="3" data-energy="low" data-date="2026-03-17">
+                    <div class="card-header">
+                        <div class="card-title" onclick="startEdit(this)">Summer Butchery Planning</div>
+                        <div class="card-actions">
+                            <button class="card-btn" onclick="toggleCard(this)">▼</button>
+                            <button class="card-btn" onclick="deleteCard(this)">×</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="energy-cost energy-low">Low</span>
+                        <span>Awaiting timeline</span>
+                    </div>
+                    <div class="card-next"><strong>Next:</strong> <span onclick="startEdit(this)">Ken to decide when ready</span></div>
+                    <div class="card-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Deadline:</span>
+                            <span class="detail-value" onclick="startEdit(this)">Summer 2026</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Notes:</span>
+                            <span class="detail-value" onclick="startEdit(this)">Waiting for confirmation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" draggable="true" data-id="4" data-energy="high" data-date="2026-03-02">
+                    <div class="card-header">
+                        <div class="card-title" onclick="startEdit(this)">Origin Project</div>
+                        <div class="card-actions">
+                            <button class="card-btn" onclick="toggleCard(this)">▼</button>
+                            <button class="card-btn" onclick="deleteCard(this)">×</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span class="energy-cost energy-high">High</span>
+                        <span>Monitor expenses</span>
+                    </div>
+                    <div class="card-next"><strong>Next:</strong> <span onclick="startEdit(this)">Watch financial impact</span></div>
+                    <div class="card-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Deadline:</span>
+                            <span class="detail-value" onclick="startEdit(this)">Ongoing</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Notes:</span>
+                            <span class="detail-value" onclick="startEdit(this)">Track spending carefully</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="add-card-btn" onclick="addCard('paused')">+ Add Project</button>
+            </div>
+        </div>
+
+        <div class="column" data-status="blocked">
+            <div class="column-header" onclick="toggleColumn(this)">
+                <div class="dot dot-blocked"></div>
+                <h2>Blocked</h2>
+                <span class="count">0</span>
+                <button class="collapse-btn">−</button>
+            </div>
+            <div class="column-content">
+                <div style="text-align: center; color: var(--text-secondary); padding: 40px 20px;">
+                    No blocked projects 🎉
+                </div>
+                <button class="add-card-btn" onclick="addCard('blocked')">+ Add Project</button>
+            </div>
+        </div>
+
+        <div class="column" data-status="complete">
+            <div class="column-header" onclick="toggleColumn(this)">
+                <div class="dot dot-complete"></div>
+                <h2>Complete</h2>
+                <span class="count">2</span>
+                <button class="collapse-btn">−</button>
+            </div>
+            <div class="column-content">
+                <div class="card" draggable="true" data-id="5" data-energy="medium" data-date="2026-03-17">
+                    <div class="card-header">
+                        <div class="card-title" onclick="startEdit(this)">CMC Presentation</div>
+                        <div class="card-actions">
+                            <button class="card-btn" onclick="toggleCard(this)">▼</button>
+                            <button class="card-btn" onclick="deleteCard(this)">×</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span>Week 20, 2026</span>
+                    </div>
+                    <div class="card-next">✅ Essay, script, slides delivered</div>
+                </div>
+
+                <div class="card" draggable="true" data-id="6" data-energy="low" data-date="2026-03-17">
+                    <div class="card-header">
+                        <div class="card-title" onclick="startEdit(this)">Digital Skills Project</div>
+                        <div class="card-actions">
+                            <button class="card-btn" onclick="toggleCard(this)">▼</button>
+                            <button class="card-btn" onclick="deleteCard(this)">×</button>
+                        </div>
+                    </div>
+                    <div class="card-meta">
+                        <span>March 17, 2026</span>
+                    </div>
+                    <div class="card-next">✅ PowerPoint complete (8 slides)</div>
+                </div>
+
+                <button class="add-card-btn" onclick="addCard('complete')">+ Add Project</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Drag and Drop
+        let draggedCard = null;
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('dragstart', function(e) {
+                draggedCard = this;
+                this.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+            });
+
+            card.addEventListener('dragend', function() {
+                this.classList.remove('dragging');
+                draggedCard = null;
+                document.querySelectorAll('.column').forEach(col => {
+                    col.classList.remove('drag-over');
+                });
+                updateCounts();
+            });
+        });
+
+        document.querySelectorAll('.column').forEach(column => {
+            column.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.classList.add('drag-over');
+            });
+
+            column.addEventListener('dragleave', function() {
+                this.classList.remove('drag-over');
+            });
+
+            column.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.classList.remove('drag-over');
+                if (draggedCard) {
+                    const content = this.querySelector('.column-content');
+                    const addBtn = content.querySelector('.add-card-btn');
+                    content.insertBefore(draggedCard, addBtn);
+                    updateCounts();
+                }
+            });
+        });
+
+        // Toggle card expansion
+        function toggleCard(btn) {
+            const card = btn.closest('.card');
+            card.classList.toggle('expanded');
+            btn.textContent = card.classList.contains('expanded') ? '▲' : '▼';
+        }
+
+        // Toggle column collapse
+        function toggleColumn(header) {
+            const column = header.closest('.column');
+            column.classList.toggle('collapsed');
+            const btn = header.querySelector('.collapse-btn');
+            btn.textContent = column.classList.contains('collapsed') ? '+' : '−';
+        }
+
+        // Inline editing
+        function startEdit(element) {
+            if (element.classList.contains('editing')) return;
+            
+            const originalText = element.textContent;
+            element.classList.add('editing');
+            element.contentEditable = true;
+            element.focus();
+            
+            // Select all text
+            const range = document.createRange();
+            range.selectNodeContents(element);
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+
+            function saveEdit() {
+                element.classList.remove('editing');
+                element.contentEditable = false;
+                if (element.textContent.trim() === '') {
+                    element.textContent = originalText;
+                }
+            }
+
+            element.addEventListener('blur', saveEdit, { once: true });
+            element.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    element.blur();
+                }
+                if (e.key === 'Escape') {
+                    element.textContent = originalText;
+                    element.blur();
+                }
+            });
+        }
+
+        // Add new card
+        function addCard(status) {
+            const column = document.querySelector(`.column[data-status="${status}"] .column-content`);
+            const addBtn = column.querySelector('.add-card-btn');
+            
+            const newId = Date.now();
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.draggable = true;
+            card.dataset.id = newId;
+            card.dataset.energy = 'medium';
+            card.dataset.date = new Date().toISOString().split('T')[0];
+            
+            card.innerHTML = `
+                <div class="card-header">
+                    <div class="card-title" onclick="startEdit(this)">New Project</div>
+                    <div class="card-actions">
+                        <button class="card-btn" onclick="toggleCard(this)">▼</button>
+                        <button class="card-btn" onclick="deleteCard(this)">×</button>
+                    </div>
+                </div>
+                <div class="card-meta">
+                    <span class="energy-cost energy-medium">Medium</span>
+                    <span>New</span>
+                </div>
+                <div class="card-next"><strong>Next:</strong> <span onclick="startEdit(this)">Define next steps</span></div>
+                <div class="card-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Deadline:</span>
+                        <span class="detail-value" onclick="startEdit(this)">TBD</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Notes:</span>
+                        <span class="detail-value" onclick="startEdit(this)">Click to edit</span>
+                    </div>
+                </div>
+            `;
+            
+            // Add drag events
+            card.addEventListener('dragstart', function(e) {
+                draggedCard = this;
+                this.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+            });
+
+            card.addEventListener('dragend', function() {
+                this.classList.remove('dragging');
+                draggedCard = null;
+                document.querySelectorAll('.column').forEach(col => {
+                    col.classList.remove('drag-over');
+                });
+                updateCounts();
+            });
+            
+            column.insertBefore(card, addBtn);
+            updateCounts();
+            
+            // Auto-edit the title
+            card.querySelector('.card-title').click();
+        }
+
+        // Delete card
+        function deleteCard(btn) {
+            if (confirm('Delete this project?')) {
+                btn.closest('.card').remove();
+                updateCounts();
+            }
+        }
+
+        // Filter by energy
+        function filterEnergy(energy) {
+            document.querySelectorAll('.filters .btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            document.querySelectorAll('.card').forEach(card => {
+                if (energy === 'all' || card.dataset.energy === energy) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // Sort cards
+        function sortCards(by) {
+            document.querySelectorAll('.column-content').forEach(content => {
+                const cards = Array.from(content.querySelectorAll('.card'));
+                const addBtn = content.querySelector('.add-card-btn');
+                
+                cards.sort((a, b) => {
+                    if (by === 'date') {
+                        return new Date(b.dataset.date) - new Date(a.dataset.date);
+                    } else if (by === 'energy') {
+                        const energyOrder = { high: 3, medium: 2, low: 1 };
+                        return energyOrder[b.dataset.energy] - energyOrder[a.dataset.energy];
+                    }
+                    return 0;
+                });
+                
+                cards.forEach(card => content.insertBefore(card, addBtn));
+            });
+        }
+
+        // Update column counts
+        function updateCounts() {
+            document.querySelectorAll('.column').forEach(column => {
+                const count = column.querySelectorAll('.card:not(.hidden)').length;
+                column.querySelector('.count').textContent = count;
+            });
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+        }
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+        }
+
+        // State detail popup
+        function showStateDetail(type) {
+            alert(`${type.charAt(0).toUpperCase() + type.slice(1)} Details:\n\nClick to view trends and history for ${type}.\n\n(Feature coming in v3!)`);
+        }
+
+        // Initialize
+        updateCounts();
+    </script>
+</body>
+</html>

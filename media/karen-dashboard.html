@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ken + Karen Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #30363d;
+        }
+        .header h1 {
+            font-size: 1.8rem;
+            color: #58a6ff;
+            margin-bottom: 5px;
+        }
+        .header .subtitle {
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+        .state-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .state-item {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        .state-item .label {
+            font-size: 0.75rem;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .state-item .score {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .state-item .trend {
+            font-size: 0.8rem;
+        }
+        .score-high { color: #3fb950; }
+        .score-medium { color: #d29922; }
+        .score-low { color: #f85149; }
+        .trend-up { color: #3fb950; }
+        .trend-down { color: #f85149; }
+        .trend-stable { color: #8b949e; }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .column {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .column-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #30363d;
+        }
+        .column-header .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dot-active { background: #3fb950; }
+        .dot-paused { background: #d29922; }
+        .dot-blocked { background: #f85149; }
+        .dot-complete { background: #8b949e; }
+        .column-header h2 {
+            font-size: 1rem;
+            color: #c9d1d9;
+        }
+        .column-header .count {
+            margin-left: auto;
+            background: #30363d;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+        .card {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: #58a6ff;
+        }
+        .card-title {
+            font-weight: 600;
+            color: #c9d1d9;
+            margin-bottom: 5px;
+        }
+        .card-meta {
+            display: flex;
+            gap: 10px;
+            font-size: 0.8rem;
+            color: #8b949e;
+            margin-bottom: 8px;
+        }
+        .energy-cost {
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+        .energy-high { background: #f8514933; color: #f85149; }
+        .energy-medium { background: #d2992233; color: #d29922; }
+        .energy-low { background: #3fb95033; color: #3fb950; }
+        .card-next {
+            font-size: 0.85rem;
+            color: #8b949e;
+        }
+        .card-next strong {
+            color: #c9d1d9;
+        }
+        .last-updated {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #30363d;
+            color: #8b949e;
+            font-size: 0.8rem;
+        }
+        @media (max-width: 768px) {
+            .state-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .board {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🦞 Ken + Karen</h1>
+        <div class="subtitle">Project Dashboard • March 23, 2026</div>
+    </div>
+    
+    <div class="state-bar">
+        <div class="state-item">
+            <div class="label">Energy</div>
+            <div class="score score-medium">3</div>
+            <div class="trend trend-up">↑ Improving</div>
+        </div>
+        <div class="state-item">
+            <div class="label">Stress</div>
+            <div class="score score-low">2</div>
+            <div class="trend trend-down">↓ Decreasing</div>
+        </div>
+        <div class="state-item">
+            <div class="label">Mood</div>
+            <div class="score score-high">4</div>
+            <div class="trend trend-up">↑ Good</div>
+        </div>
+        <div class="state-item">
+            <div class="label">Social</div>
+            <div class="score score-medium">3</div>
+            <div class="trend trend-stable">→ Selective</div>
+        </div>
+    </div>
+    
+    <div class="board">
+        <div class="column">
+            <div class="column-header">
+                <div class="dot dot-active"></div>
+                <h2>Active</h2>
+                <span class="count">2</span>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">Work + College</div>
+                <div class="card-meta">
+                    <span class="energy-cost energy-medium">Medium Energy</span>
+                    <span>Ongoing</span>
+                </div>
+                <div class="card-next"><strong>Next:</strong> Tuesday work, evening college</div>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">Proactive System Build</div>
+                <div class="card-meta">
+                    <span class="energy-cost energy-low">Low Energy</span>
+                    <span>Today</span>
+                </div>
+                <div class="card-next"><strong>Next:</strong> Dashboard v1 complete, testing</div>
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="column-header">
+                <div class="dot dot-paused"></div>
+                <h2>Paused</h2>
+                <span class="count">2</span>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">Summer Butchery Planning</div>
+                <div class="card-meta">
+                    <span class="energy-cost energy-low">Low Energy</span>
+                    <span>Awaiting timeline</span>
+                </div>
+                <div class="card-next"><strong>Next:</strong> Ken to decide when ready</div>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">Origin Project</div>
+                <div class="card-meta">
+                    <span class="energy-cost energy-high">High Energy</span>
+                    <span>Monitor expenses</span>
+                </div>
+                <div class="card-next"><strong>Next:</strong> Watch financial impact</div>
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="column-header">
+                <div class="dot dot-blocked"></div>
+                <h2>Blocked</h2>
+                <span class="count">0</span>
+            </div>
+            
+            <div style="text-align: center; color: #8b949e; padding: 40px 20px;">
+                No blocked projects 🎉
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="column-header">
+                <div class="dot dot-complete"></div>
+                <h2>Complete</h2>
+                <span class="count">2</span>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">CMC Presentation</div>
+                <div class="card-meta">
+                    <span>Week 20, 2026</span>
+                </div>
+                <div class="card-next">✅ Essay, script, slides delivered</div>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">Digital Skills Project</div>
+                <div class="card-meta">
+                    <span>March 17, 2026</span>
+                </div>
+                <div class="card-next">✅ PowerPoint complete (8 slides)</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="last-updated">
+        Last updated: March 23, 2026 at 19:00 • Auto-generated by Karen
+    </div>
+</body>
+</html>
