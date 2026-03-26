@@ -23,6 +23,79 @@
             --border: #333333;
         }
         
+        /* Light Mode */
+        body.light-mode {
+            --bg-dark: #f5f5f5;
+            --bg-card: #ffffff;
+            --bg-hover: #e8e8e8;
+            --bg-sidebar: #eeeeee;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --accent: #0088cc;
+            --accent-hover: #006699;
+            --success: #00aa66;
+            --warning: #cc8800;
+            --error: #cc4444;
+            --border: #dddddd;
+        }
+        
+        body.light-mode .login-screen {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8f0 100%);
+        }
+        
+        /* Compact View Mode */
+        body.compact-mode .card {
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        body.compact-mode .card-title {
+            font-size: 1rem;
+        }
+        
+        body.compact-mode .metric {
+            padding: 0.5rem 0;
+        }
+        
+        body.compact-mode .btn-action {
+            padding: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        body.compact-mode .kanban-card {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        body.compact-mode .kanban-header {
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
+        }
+        
+        body.compact-mode .header {
+            margin-bottom: 1rem;
+        }
+        
+        body.compact-mode .header h2 {
+            font-size: 1.25rem;
+        }
+        
+        body.compact-mode .main-content {
+            padding: 1rem;
+        }
+        
+        body.compact-mode .sidebar-header {
+            padding: 1rem;
+        }
+        
+        body.compact-mode .nav-item {
+            padding: 0.5rem 1rem;
+        }
+        
+        body.compact-mode .grid {
+            gap: 0.75rem;
+        }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-dark);
@@ -534,6 +607,12 @@
             </nav>
             
             <div class="sidebar-footer">
+                <button class="nav-item" onclick="toggleCompact()">
+                    <span id="compactIcon">🔲</span> <span id="compactText">Compact View</span>
+                </button>
+                <button class="nav-item" onclick="toggleTheme()">
+                    <span id="themeIcon">🌙</span> <span id="themeText">Dark Mode</span>
+                </button>
                 <button class="nav-item" onclick="window.open('http://127.0.0.1:18788', '_blank')">
                     <span>🌐</span> OpenClaw Dashboard
                 </button>
@@ -579,6 +658,52 @@
                         <div class="metric">
                             <span class="metric-label">Research Today</span>
                             <span class="metric-value" id="briefingResearchToday">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weather Widget -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">🌤️ Weather</h3>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <input type="text" id="weatherLocation" placeholder="City..." 
+                                   style="width: 100px; padding: 0.25rem 0.5rem; background: var(--bg-dark); 
+                                          border: 1px solid var(--border); border-radius: 4px; color: var(--text-primary); 
+                                          font-size: 0.875rem;"
+                                   onkeypress="if(event.key==='Enter')loadWeather()">
+                            <button class="btn-small" onclick="loadWeather()">🔄</button>
+                        </div>
+                    </div>
+                    <div id="weatherWidget">
+                        <p style="color: var(--text-secondary); text-align: center; padding: 1rem;">Enter a city to see weather</p>
+                    </div>
+                </div>
+
+                <!-- Pomodoro Timer -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">⏱️ Pomodoro Timer</h3>
+                        <select id="pomodoroProject" class="btn-small" style="background: var(--bg-dark); border: 1px solid var(--border); color: var(--text-primary);">
+                            <option value="">No Project</option>
+                        </select>
+                    </div>
+                    <div style="text-align: center; padding: 1rem;">
+                        <div id="pomodoroDisplay" style="font-size: 3rem; font-weight: 600; font-family: monospace; margin-bottom: 1rem;">25:00</div>
+                        <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1rem;">
+                            <button class="btn-small btn-primary" id="pomodoroStart" onclick="startPomodoro()">▶️ Start</button>
+                            <button class="btn-small" id="pomodoroPause" onclick="pausePomodoro()" style="display: none;">⏸️ Pause</button>
+                            <button class="btn-small" onclick="resetPomodoro()">🔄 Reset</button>
+                        </div>
+                        
+                        <div style="display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1rem;">
+                            <button class="btn-small" onclick="setPomodoroTime(25)">25m</button>
+                            <button class="btn-small" onclick="setPomodoroTime(15)">15m</button>
+                            <button class="btn-small" onclick="setPomodoroTime(5)">5m</button>
+                        </div>
+                        
+                        <div id="pomodoroStats" style="font-size: 0.875rem; color: var(--text-secondary);">
+                            Today's pomodoros: 0
                         </div>
                     </div>
                 </div>
@@ -2023,6 +2148,31 @@
             loadRecentActivity();
             loadSystemUptime();
             
+            // Load saved theme
+            const savedTheme = localStorage.getItem('dashboard-theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+                document.getElementById('themeIcon').textContent = '☀️';
+                document.getElementById('themeText').textContent = 'Light Mode';
+            }
+            
+            // Load saved compact mode
+            const savedCompact = localStorage.getItem('dashboard-compact');
+            if (savedCompact === 'true') {
+                document.body.classList.add('compact-mode');
+                document.getElementById('compactIcon').textContent = '▪️';
+                document.getElementById('compactText').textContent = 'Compact On';
+            }
+            
+            // Load weather
+            const savedWeatherLocation = localStorage.getItem('weather-location');
+            if (savedWeatherLocation) {
+                document.getElementById('weatherLocation').value = savedWeatherLocation;
+                loadWeather();
+            } else {
+                loadWeather(); // Load default (Dublin)
+            }
+            
             // Add activity log on login
             fetch('/api/activity', {
                 method: 'POST',
@@ -2030,6 +2180,73 @@
                 body: JSON.stringify({ action: 'login', details: 'User logged in' })
             });
         };
+        
+        // THEME TOGGLE
+        function toggleTheme() {
+            const body = document.body;
+            const isLight = body.classList.toggle('light-mode');
+            
+            // Update button
+            document.getElementById('themeIcon').textContent = isLight ? '☀️' : '🌙';
+            document.getElementById('themeText').textContent = isLight ? 'Light Mode' : 'Dark Mode';
+            
+            // Save preference
+            localStorage.setItem('dashboard-theme', isLight ? 'light' : 'dark');
+            
+            addLog(`Switched to ${isLight ? 'light' : 'dark'} mode`, 'success');
+        }
+        
+        // COMPACT VIEW TOGGLE
+        function toggleCompact() {
+            const body = document.body;
+            const isCompact = body.classList.toggle('compact-mode');
+            
+            // Update button
+            document.getElementById('compactIcon').textContent = isCompact ? '▪️' : '🔲';
+            document.getElementById('compactText').textContent = isCompact ? 'Compact On' : 'Compact View';
+            
+            // Save preference
+            localStorage.setItem('dashboard-compact', isCompact ? 'true' : 'false');
+            
+            addLog(`Compact view ${isCompact ? 'enabled' : 'disabled'}`, 'success');
+        }
+        
+        // WEATHER WIDGET
+        async function loadWeather() {
+            const locationInput = document.getElementById('weatherLocation');
+            const location = locationInput.value.trim() || 'Dublin';
+            const container = document.getElementById('weatherWidget');
+            
+            container.innerHTML = '<p style="color: var(--text-secondary); text-align: center;">Loading weather...</p>';
+            
+            try {
+                const response = await fetch(`/api/weather?location=${encodeURIComponent(location)}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    container.innerHTML = `
+                        <div style="text-align: center; padding: 1rem;">
+                            <div style="font-size: 3rem; margin-bottom: 0.5rem;">${data.icon}</div>
+                            <div style="font-size: 2rem; font-weight: 600;">${data.temp_c}°C / ${data.temp_f}°F</div>
+                            <div style="color: var(--text-secondary); margin-top: 0.5rem;">${data.description}</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.5rem;">
+                                Feels like ${data.feels_like_c}°C • Humidity ${data.humidity}% • Wind ${data.wind_speed} km/h
+                            </div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;">
+                                📍 ${data.location}
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Save location
+                    localStorage.setItem('weather-location', location);
+                } else {
+                    container.innerHTML = `<p style="color: var(--error); text-align: center;">${data.error || 'Failed to load weather'}</p>`;
+                }
+            } catch (error) {
+                container.innerHTML = '<p style="color: var(--error); text-align: center;">Weather service unavailable</p>';
+            }
+        }
     </script>
 </body>
 </html>

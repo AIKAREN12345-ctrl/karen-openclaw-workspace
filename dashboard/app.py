@@ -87,6 +87,17 @@ def init_db():
     except:
         pass  # Column already exists
     
+    # Pomodoro sessions table
+    c.execute('''CREATE TABLE IF NOT EXISTS pomodoro_sessions (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        project_id INTEGER,
+        duration INTEGER DEFAULT 25,
+        completed BOOLEAN DEFAULT 0,
+        started_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        completed_at TIMESTAMP,
+        FOREIGN KEY (project_id) REFERENCES projects(id)
+    )''')
+    
     conn.commit()
     conn.close()
 
@@ -798,6 +809,129 @@ def api_cron():
         return jsonify({'jobs': jobs})
     except Exception as e:
         return jsonify({'error': str(e), 'jobs': []})
+
+# Weather API
+@app.route('/api/weather', methods=['GET'])
+@login_required
+def get_weather():
+    """Get current weather using wttr.in"""
+    try:
+        import requests
+        
+        # Get location from query param or default to Dublin
+        location = request.args.get('location', 'Dublin')
+        
+        # Use wttr.in for weather data
+        url = f'https://wttr.in/{location}?format=j1'
+        response = requests.get(url, timeout=10)
+        
+        if response.status_code == 200:
+            data = response.json()
+            current = data['current_condition'][0]
+            
+            return jsonify({
+                'success': True,
+                'location': location,
+                'temp_c': current['temp_C'],
+                'temp_f': current['temp_F'],
+                'description': current['weatherDesc'][0]['value'],
+                'humidity': current['humidity'],
+                'wind_speed': current['windspeedKmph'],
+                'feels_like_c': current['FeelsLikeC'],
+                'feels_like_f': current['FeelsLikeF'],
+                'visibility': current['visibility'],
+                'pressure': current['pressure'],
+                'icon': get_weather_icon(current['weatherDesc'][0]['value'])
+            })
+        else:
+            return jsonify({'success': False, 'error': 'Weather service unavailable'}), 503
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+def get_weather_icon(description):
+    """Map weather description to emoji icon"""
+    description = description.lower()
+    icons = {
+        'sunny': '☀️',
+        'clear': '🌙',
+        'partly cloudy': '⛅',
+        'cloudy': '☁️',
+        'overcast': '☁️',
+        'rain': '🌧️',
+        'light rain': '🌦️',
+        'heavy rain': '⛈️',
+        'snow': '❄️',
+        'sleet': '🌨️',
+        'thunder': '⚡',
+        'fog': '🌫️',
+        'mist': '🌫️'
+    }
+    
+    for key, icon in icons.items():
+        if key in description:
+            return icon
+    return '🌡️'
+
+# Pomodoro API
+@app.route('/api/pomodoro', methods=['GET'])
+@login_required
+def get_pomodoro_stats():
+    """Get pomodoro statistics"""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    c = conn.cursor()
+    
+    # Get today's completed pomodoros
+    c.execute('''SELECT COUNT(*) as count FROM pomodoro_sessions 
+                 WHERE completed = 1 AND date(started_at) = date('now')''')
+    today_count = c.fetchone()['count']
+    
+    # Get total completed pomodoros
+    c.execute('SELECT COUNT(*) as count FROM pomodoro_sessions WHERE completed = 1')
+    total_count = c.fetchone()['count']
+    
+    # Get pomodoros by project (last 7 days)
+    c.execute('''SELECT p.title, COUNT(*) as count 
+                 FROM pomodoro_sessions ps
+                 JOIN projects p ON ps.project_id = p.id
+                 WHERE ps.completed = 1 
+                 AND ps.started_at >= datetime('now', '-7 days')
+                 GROUP BY p.id
+                 ORDER BY count DESC''')
+    project_stats = [dict(row) for row in c.fetchall()]
+    
+    conn.close()
+    return jsonify({
+        'today': today_count,
+        'total': total_count,
+        'project_stats': project_stats
+    })
+
+@app.route('/api/pomodoro', methods=['POST'])
+@login_required
+def create_pomodoro():
+    """Create a new pomodoro session"""
+    data = request.json
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute('INSERT INTO pomodoro_sessions (project_id, duration) VALUES (?, ?)',
+              (data.get('project_id'), data.get('duration', 25)))
+    session_id = c.lastrowid
+    conn.commit()
+    conn.close()
+    return jsonify({'success': True, 'id': session_id})
+
+@app.route('/api/pomodoro/<int:session_id>/complete', methods=['POST'])
+@login_required
+def complete_pomodoro(session_id):
+    """Mark a pomodoro session as completed"""
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute('UPDATE pomodoro_sessions SET completed = 1, completed_at = CURRENT_TIMESTAMP WHERE id = ?',
+              (session_id,))
+    conn.commit()
+    conn.close()
+    return jsonify({'success': True})
 
 # Activity Log API
 @app.route('/api/activity', methods=['GET'])
