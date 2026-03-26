@@ -1,26 +1,15 @@
 # HEARTBEAT.md
 
-## Research Trigger Handlers (Expanded Schedule)
+## Research Trigger Handlers (Reduced Schedule - 5 runs per day)
 
-**Schedule (17 runs per day):**
-- **06:00** — OpenClaw + AI models (morning briefing)
-- **07:00** — Quick scan: Tech news
-- **09:00** — OpenClaw check
-- **10:00** — AI models check
-- **11:00** — Quick scan: Open source releases
-- **12:00** — AI models check  
-- **13:00** — Quick scan: Industry moves
-- **14:00** — AI income check
-- **15:00** — Quick scan: Developer tools
-- **16:00** — OpenClaw check
-- **17:00** — Quick scan: Hardware/GPU news
-- **18:00** — AI models check
-- **19:00** — Deep dive: Rotating topic (detailed analysis)
-- **20:00** — Philosophy check
-- **21:00** — Quick scan: AI safety/policy
-- **22:00** — AI income check
-- **23:00** — Quick scan: Weekend wrap-up (Fri-Sun)
-- **10:30** — Amazon KDP + Coloring Book Business Research
+**Schedule (5 runs per day):**
+- **06:00** — OpenClaw updates (morning briefing)
+- **12:00** — AI models check (midday)
+- **14:00** — AI income opportunities
+- **18:00** — AI models check (evening)
+- **20:00** — Philosophy/personal growth
+
+**Note:** Reduced from 17 to 5 runs per day to optimize API costs while maintaining essential research coverage.
 
 **IMPORTANT:** Research subagents use `kimi-coding/k2p5` model with `web_fetch` for DuckDuckGo URLs. Ollama subagents are disabled due to auth bug (GitHub #43945).
 
@@ -38,7 +27,7 @@
 ---
 
 ### TRIGGER-RESEARCH-OpenClaw-AI
-- **Scheduled:** 06:00, 09:00, 16:00 (3x daily)
+- **Scheduled:** 06:00 (1x daily)
 - **Action:** Research OpenClaw updates
 - **Steps:**
   1. Read memory/research-state.json
@@ -59,7 +48,7 @@
   3. Update research-state.json with timestamp and increment todayRuns
 
 ### TRIGGER-RESEARCH-AI-models  
-- **Scheduled:** 06:00, 12:00, 18:00 (3x daily)
+- **Scheduled:** 12:00, 18:00 (2x daily)
 - **Action:** Research AI model releases
 - **Steps:**
   1. Read memory/research-state.json
@@ -80,7 +69,7 @@
   3. Update research-state.json with timestamp and increment todayRuns
 
 ### TRIGGER-RESEARCH-AI-income
-- **Scheduled:** 14:00, 22:00 (2x daily)
+- **Scheduled:** 14:00 (1x daily)
 - **Action:** Research AI income opportunities
 - **Steps:**
   1. Read memory/research-state.json
