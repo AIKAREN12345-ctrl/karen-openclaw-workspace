@@ -22,7 +22,7 @@
 - **23:00** — Quick scan: Weekend wrap-up (Fri-Sun)
 - **10:30** — Amazon KDP + Coloring Book Business Research
 
-**IMPORTANT:** Research subagents must use `web_fetch` with DuckDuckGo URLs, NOT `web_search` (which requires Kimi API key).
+**IMPORTANT:** Research subagents use `kimi-coding/k2p5` model with `web_fetch` for DuckDuckGo URLs. Ollama subagents are disabled due to auth bug (GitHub #43945).
 
 ---
 
@@ -42,12 +42,19 @@
 - **Action:** Research OpenClaw updates
 - **Steps:**
   1. Read memory/research-state.json
-  2. Spawn subagent with explicit DuckDuckGo instructions:
+  2. Spawn subagent with model: kimi-coding/k2p5:
      ```
-     Research OpenClaw updates using ONLY web_fetch with DuckDuckGo URLs.
-     DO NOT use web_search - it will fail.
-     Format: https://duckduckgo.com/html?q=OpenClaw+updates
+     Research OpenClaw updates using web_fetch with DuckDuckGo URLs.
+     Search URLs:
+     1. https://duckduckgo.com/html?q=OpenClaw+updates+2026
+     2. https://duckduckgo.com/html?q=OpenClaw+release+notes
+     3. https://duckduckgo.com/html?q=OpenClaw+github+latest
+     
+     Focus on: New releases, major features, bug fixes, community announcements
      Save results to memory/research/YYYY-MM-DD_openclaw.md (append if exists)
+     Format: ## OpenClaw Research - YYYY-MM-DD HH:MM
+     - Finding 1
+     - Finding 2
      ```
   3. Update research-state.json with timestamp and increment todayRuns
 
@@ -56,12 +63,19 @@
 - **Action:** Research AI model releases
 - **Steps:**
   1. Read memory/research-state.json
-  2. Spawn subagent with explicit DuckDuckGo instructions:
+  2. Spawn subagent with model: kimi-coding/k2p5:
      ```
-     Research new AI model releases using ONLY web_fetch with DuckDuckGo URLs.
-     DO NOT use web_search - it will fail.
-     Format: https://duckduckgo.com/html?q=new+AI+models+2026
+     Research new AI model releases using web_fetch with DuckDuckGo URLs.
+     Search URLs:
+     1. https://duckduckgo.com/html?q=new+AI+models+2026
+     2. https://duckduckgo.com/html?q=GPT+Claude+Gemini+releases
+     3. https://duckduckgo.com/html?q=open+source+LLM+releases
+     
+     Focus on: Major model releases, benchmarks, pricing changes
      Save results to memory/research/YYYY-MM-DD_ai_models.md (append if exists)
+     Format: ## AI Models Research - YYYY-MM-DD HH:MM
+     - Finding 1
+     - Finding 2
      ```
   3. Update research-state.json with timestamp and increment todayRuns
 
@@ -70,12 +84,19 @@
 - **Action:** Research AI income opportunities
 - **Steps:**
   1. Read memory/research-state.json
-  2. Spawn subagent with explicit DuckDuckGo instructions:
+  2. Spawn subagent with model: kimi-coding/k2p5:
      ```
-     Research AI income opportunities using ONLY web_fetch with DuckDuckGo URLs.
-     DO NOT use web_search - it will fail.
-     Format: https://duckduckgo.com/html?q=AI+passive+income+ideas
+     Research AI income opportunities using web_fetch with DuckDuckGo URLs.
+     Search URLs:
+     1. https://duckduckgo.com/html?q=AI+passive+income+ideas+2026
+     2. https://duckduckgo.com/html?q=AI+freelance+opportunities
+     3. https://duckduckgo.com/html?q=AI+side+hustle+success+stories
+     
+     Focus on: Actionable strategies, new platforms, pricing trends
      Save results to memory/research/YYYY-MM-DD_ai_income.md (append if exists)
+     Format: ## AI Income Research - YYYY-MM-DD HH:MM
+     - Finding 1
+     - Finding 2
      ```
   3. Update research-state.json with timestamp and increment todayRuns
 
@@ -84,13 +105,17 @@
 - **Action:** Research philosophy/personal growth
 - **Steps:**
   1. Read memory/research-state.json
-  2. Spawn subagent with explicit DuckDuckGo instructions:
+  2. Spawn subagent with model: kimi-coding/k2p5:
      ```
-     Research philosophy/personal growth using ONLY web_fetch with DuckDuckGo URLs.
-     DO NOT use web_search - it will fail.
-     Topics: Demartini, Tolle, Deida, Watts, Dodson, Sun Tzu, Osho
-     Format: https://duckduckgo.com/html?q=John+Demartini+quotes
+     Research philosophy/personal growth using web_fetch with DuckDuckGo URLs.
+     Rotate through topics: Demartini, Tolle, Deida, Watts, Dodson, Sun Tzu, Osho
+     Search format: https://duckduckgo.com/html?q=[philosopher]+quotes+insights
+     
+     Focus on: Key teachings, practical applications, inspiring quotes
      Save results to memory/research/YYYY-MM-DD_philosophy.md (append if exists)
+     Format: ## Philosophy Research - YYYY-MM-DD HH:MM
+     - Finding 1
+     - Finding 2
      ```
   3. Update research-state.json with timestamp and increment todayRuns
 
@@ -99,13 +124,18 @@
 - **Action:** Quick tech news scan
 - **Steps:**
   1. Read memory/research-state.json
-  2. Spawn subagent with explicit DuckDuckGo instructions:
+  2. Spawn subagent with model: kimi-coding/k2p5:
      ```
-     Research tech news using ONLY web_fetch with DuckDuckGo URLs.
-     DO NOT use web_search - it will fail.
-     Format: https://duckduckgo.com/html?q=tech+news+today
-     Save results to memory/research/YYYY-MM-DD_tech_news.md (append if exists)
+     Research tech news using web_fetch with DuckDuckGo URLs.
+     Search URLs:
+     1. https://duckduckgo.com/html?q=tech+news+today
+     2. https://duckduckgo.com/html?q=technology+headlines+2026
+     
      Focus: Headlines, major announcements, 5-10 key items
+     Save results to memory/research/YYYY-MM-DD_tech_news.md (append if exists)
+     Format: ## Tech News - YYYY-MM-DD HH:MM
+     - Finding 1
+     - Finding 2
      ```
   3. Update research-state.json with timestamp and increment todayRuns
 
@@ -114,13 +144,18 @@
 - **Action:** Open source project releases
 - **Steps:**
   1. Read memory/research-state.json
-  2. Spawn subagent with explicit DuckDuckGo instructions:
+  2. Spawn subagent with model: kimi-coding/k2p5:
      ```
-     Research open source releases using ONLY web_fetch with DuckDuckGo URLs.
-     DO NOT use web_search - it will fail.
-     Format: https://duckduckgo.com/html?q=open+source+releases+github
-     Save results to memory/research/YYYY-MM-DD_opensource.md (append if exists)
+     Research open source releases using web_fetch with DuckDuckGo URLs.
+     Search URLs:
+     1. https://duckduckgo.com/html?q=open+source+releases+github
+     2. https://duckduckgo.com/html?q=trending+github+repositories
+     
      Focus: Major version releases, trending repos, developer tools
+     Save results to memory/research/YYYY-MM-DD_opensource.md (append if exists)
+     Format: ## Open Source Research - YYYY-MM-DD HH:MM
+     - Finding 1
+     - Finding 2
      ```
   3. Update research-state.json with timestamp and increment todayRuns
 
@@ -129,13 +164,18 @@
 - **Action:** Industry and company news
 - **Steps:**
   1. Read memory/research-state.json
-  2. Spawn subagent with explicit DuckDuckGo instructions:
+  2. Spawn subagent with model: kimi-coding/k2p5:
      ```
-     Research AI industry moves using ONLY web_fetch with DuckDuckGo URLs.
-     DO NOT use web_search - it will fail.
-     Format: https://duckduckgo.com/html?q=AI+industry+news+startups+funding
-     Save results to memory/research/YYYY-MM-DD_industry.md (append if exists)
+     Research AI industry moves using web_fetch with DuckDuckGo URLs.
+     Search URLs:
+     1. https://duckduckgo.com/html?q=AI+industry+news+startups+funding
+     2. https://duckduckgo.com/html?q=AI+company+acquisitions+2026
+     
      Focus: Funding, acquisitions, key hires, company announcements
+     Save results to memory/research/YYYY-MM-DD_industry.md (append if exists)
+     Format: ## Industry Research - YYYY-MM-DD HH:MM
+     - Finding 1
+     - Finding 2
      ```
   3. Update research-state.json with timestamp and increment todayRuns
 
@@ -144,13 +184,18 @@
 - **Action:** Developer tools and frameworks
 - **Steps:**
   1. Read memory/research-state.json
-  2. Spawn subagent with explicit DuckDuckGo instructions:
+  2. Spawn subagent with model: kimi-coding/k2p5:
      ```
-     Research developer tools using ONLY web_fetch with DuckDuckGo URLs.
-     DO NOT use web_search - it will fail.
-     Format: https://duckduckgo.com/html?q=developer+tools+frameworks+releases
-     Save results to memory/research/YYYY-MM-DD_devtools.md (append if exists)
+     Research developer tools using web_fetch with DuckDuckGo URLs.
+     Search URLs:
+     1. https://duckduckgo.com/html?q=developer+tools+frameworks+releases
+     2. https://duckduckgo.com/html?q=IDE+updates+VSCode+JetBrains
+     
      Focus: IDE updates, CLI tools, frameworks, libraries
+     Save results to memory/research/YYYY-MM-DD_devtools.md (append if exists)
+     Format: ## Dev Tools Research - YYYY-MM-DD HH:MM
+     - Finding 1
+     - Finding 2
      ```
   3. Update research-state.json with timestamp and increment todayRuns
 
@@ -159,13 +204,18 @@
 - **Action:** Hardware and GPU news
 - **Steps:**
   1. Read memory/research-state.json
-  2. Spawn subagent with explicit DuckDuckGo instructions:
+  2. Spawn subagent with model: kimi-coding/k2p5:
      ```
-     Research hardware/GPU news using ONLY web_fetch with DuckDuckGo URLs.
-     DO NOT use web_search - it will fail.
-     Format: https://duckduckgo.com/html?q=GPU+hardware+NVIDIA+AMD+releases
-     Save results to memory/research/YYYY-MM-DD_hardware.md (append if exists)
+     Research hardware/GPU news using web_fetch with DuckDuckGo URLs.
+     Search URLs:
+     1. https://duckduckgo.com/html?q=GPU+hardware+NVIDIA+AMD+releases
+     2. https://duckduckgo.com/html?q=graphics+card+benchmarks+2026
+     
      Focus: GPU releases, benchmarks, hardware announcements
+     Save results to memory/research/YYYY-MM-DD_hardware.md (append if exists)
+     Format: ## Hardware Research - YYYY-MM-DD HH:MM
+     - Finding 1
+     - Finding 2
      ```
   3. Update research-state.json with timestamp and increment todayRuns
 
@@ -182,11 +232,10 @@
   - Sunday: Weekly synthesis & insights
 - **Steps:**
   1. Read memory/research-state.json, check day of week for topic
-  2. Spawn subagent with explicit DuckDuckGo instructions:
+  2. Spawn subagent with model: kimi-coding/k2p5:
      ```
-     Deep research on [TOPIC] using ONLY web_fetch with DuckDuckGo URLs.
-     DO NOT use web_search - it will fail.
-     Format: https://duckduckgo.com/html?q=[search+terms]
+     Deep research on [TOPIC] using web_fetch with DuckDuckGo URLs.
+     Search format: https://duckduckgo.com/html?q=[search+terms]
      Save results to memory/research/YYYY-MM-DD_deepdive.md
      Requirements:
      - 500-1000 words
@@ -201,13 +250,18 @@
 - **Action:** AI safety and policy news
 - **Steps:**
   1. Read memory/research-state.json
-  2. Spawn subagent with explicit DuckDuckGo instructions:
+  2. Spawn subagent with model: kimi-coding/k2p5:
      ```
-     Research AI safety/policy using ONLY web_fetch with DuckDuckGo URLs.
-     DO NOT use web_search - it will fail.
-     Format: https://duckduckgo.com/html?q=AI+safety+regulation+policy
-     Save results to memory/research/YYYY-MM-DD_ai_safety.md (append if exists)
+     Research AI safety/policy using web_fetch with DuckDuckGo URLs.
+     Search URLs:
+     1. https://duckduckgo.com/html?q=AI+safety+regulation+policy
+     2. https://duckduckgo.com/html?q=AI+governance+ethics+2026
+     
      Focus: Regulations, safety research, policy developments
+     Save results to memory/research/YYYY-MM-DD_ai_safety.md (append if exists)
+     Format: ## AI Safety Research - YYYY-MM-DD HH:MM
+     - Finding 1
+     - Finding 2
      ```
   3. Update research-state.json with timestamp and increment todayRuns
 
@@ -216,14 +270,12 @@
 - **Action:** Research Amazon KDP, coloring book business, AI image generation tools
 - **Steps:**
   1. Read memory/research-state.json
-  2. Spawn subagent with explicit DuckDuckGo instructions:
+  2. Spawn subagent with model: kimi-coding/k2p5:
      ```
-     Research Amazon KDP coloring book business using ONLY web_fetch with DuckDuckGo URLs.
-     DO NOT use web_search - it will fail.
-     
-     Search topics (rotate daily):
+     Research Amazon KDP coloring book business using web_fetch with DuckDuckGo URLs.
+     Rotate through topics daily:
      - Amazon KDP royalties pricing changes
-     - AI coloring book generation tools updates
+     - AI coloring book generation tools
      - Stable Diffusion LoRA models for line art
      - Midjourney/DALL-E pricing changes
      - Children's book market trends
@@ -231,9 +283,11 @@
      - Copyright AI art updates
      - Print-on-demand passive income strategies
      
-     Format: https://duckduckgo.com/html?q=[search+terms]
+     Search format: https://duckduckgo.com/html?q=[search+terms]
      Save results to memory/research/YYYY-MM-DD_kdp_coloring.md (append if exists)
-     Focus: Actionable insights, pricing data, new tools, policy changes
+     Format: ## KDP Research - YYYY-MM-DD HH:MM
+     - Finding 1
+     - Finding 2
      ```
   3. Update research-state.json with timestamp and increment todayRuns
 
@@ -242,13 +296,18 @@
 - **Action:** Weekend news wrap-up
 - **Steps:**
   1. Read memory/research-state.json
-  2. Spawn subagent with explicit DuckDuckGo instructions:
+  2. Spawn subagent with model: kimi-coding/k2p5:
      ```
-     Research weekend AI/tech wrap-up using ONLY web_fetch with DuckDuckGo URLs.
-     DO NOT use web_search - it will fail.
-     Format: https://duckduckgo.com/html?q=AI+tech+weekend+news
+     Research weekend AI/tech wrap-up using web_fetch with DuckDuckGo URLs.
+     Search URLs:
+     1. https://duckduckgo.com/html?q=AI+tech+weekend+news
+     2. https://duckduckgo.com/html?q=Saturday+Sunday+tech+announcements
+     
+     Focus: Anything missed, weekend announcements
      Save results to memory/research/YYYY-MM-DD_weekend.md (append if exists)
-     Focus: Anything missed, Saturday/Sunday announcements
+     Format: ## Weekend Wrap - YYYY-MM-DD HH:MM
+     - Finding 1
+     - Finding 2
      ```
   3. Update research-state.json with timestamp and increment todayRuns
 
@@ -270,5 +329,21 @@
 ## Ollama Keepalive (Every 30 minutes)
 - Check: ollama ps
 - If qwen2.5:14b not loaded: ollama run qwen2.5:14b "keepalive"
-- Purpose: Keep local model warm for subagents
+- Purpose: Keep local model warm for interactive use
 - Silent: No notifications
+
+---
+
+## Notes
+
+### Ollama Subagent Issue (2026-03-26)
+**Status:** Ollama subagents currently timeout due to OpenClaw auth bug (GitHub #43945)
+- Native Ollama works fine for interactive chat (7B and 14B models)
+- Subagents must use `kimi-coding/k2p5` until fix is released
+- Research automation updated to use Kimi (costs API tokens but works reliably)
+- Revisit after OpenClaw update fixes the auth pipeline
+
+### Model Strategy
+- **Interactive chat:** Ollama `qwen2.5:7b` or `qwen2.5:14b` (free, local)
+- **Research subagents:** Kimi `k2p5` (API cost, reliable)
+- **Embeddings:** `nomic-embed-text` (free, local, for memory search)
