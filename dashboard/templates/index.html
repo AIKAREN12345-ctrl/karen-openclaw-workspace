@@ -656,6 +656,37 @@
                             <p style="color: var(--text-secondary); text-align: center; padding: 1rem;">Click "Check Now" to scan for system notifications</p>
                         </div>
                     </div>
+
+                    <!-- Recent Activity Feed -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">📊 Recent Activity</h3>
+                            <button class="btn-small" onclick="loadRecentActivity()">🔄</button>
+                        </div>
+                        <div id="recentActivity" style="max-height: 250px; overflow-y: auto;">
+                            <p style="color: var(--text-secondary); text-align: center; padding: 1rem;">Loading activity...</p>
+                        </div>
+                    </div>
+
+                    <!-- System Uptime -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">⏱️ System Uptime</h3>
+                        </div>
+                        <div id="systemUptime">
+                            <p style="color: var(--text-secondary); text-align: center; padding: 1rem;">Loading uptime...</p>
+                        </div>
+                    </div>
+
+                    <!-- Favorite Projects -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">⭐ Favorite Projects</h3>
+                        </div>
+                        <div id="favoriteProjects">
+                            <p style="color: var(--text-secondary); text-align: center; padding: 1rem;">No favorite projects yet. Star projects to see them here!</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1098,13 +1129,23 @@
                     columns[status].appendChild(card);
                 }
             });
+            
+            // Update favorites
+            renderFavoriteProjects();
         }
 
         function createProjectCard(project) {
             const card = document.createElement('div');
             card.className = 'kanban-card';
             card.innerHTML = `
-                <h4 style="margin-bottom: 0.5rem;">${escapeHtml(project.title)}</h4>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+                    <h4 style="margin: 0; flex: 1;">${escapeHtml(project.title)}</h4>
+                    <button class="favorite-btn ${project.favorite ? 'active' : ''}" 
+                            onclick="event.stopPropagation(); toggleProjectFavorite(${project.id}, ${project.favorite || false})"
+                            title="${project.favorite ? 'Unfavorite' : 'Add to favorites'}">
+                        ${project.favorite ? '⭐' : '☆'}
+                    </button>
+                </div>
                 <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.5rem;">
                     ${escapeHtml(project.description || '').substring(0, 100)}...
                 </p>
@@ -1755,6 +1796,240 @@
                 event.target.classList.remove('active');
             }
         }
+
+        // ==========================================
+        // 4 QUICK WINS - Frontend Implementation
+        // ==========================================
+
+        // 1. KEYBOARD SHORTCUTS
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + number for navigation
+            if ((e.ctrlKey || e.metaKey) && !e.altKey && !e.shiftKey) {
+                switch(e.key) {
+                    case '1':
+                        e.preventDefault();
+                        showPage('overview');
+                        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+                        document.querySelector('[data-page="overview"]').classList.add('active');
+                        break;
+                    case '2':
+                        e.preventDefault();
+                        showPage('projects');
+                        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+                        document.querySelector('[data-page="projects"]').classList.add('active');
+                        break;
+                    case '3':
+                        e.preventDefault();
+                        showPage('calendar');
+                        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+                        document.querySelector('[data-page="calendar"]').classList.add('active');
+                        break;
+                    case '4':
+                        e.preventDefault();
+                        showPage('memory');
+                        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+                        document.querySelector('[data-page="memory"]').classList.add('active');
+                        break;
+                    case '5':
+                        e.preventDefault();
+                        showPage('research');
+                        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+                        document.querySelector('[data-page="research"]').classList.add('active');
+                        break;
+                    case '6':
+                        e.preventDefault();
+                        showPage('system');
+                        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+                        document.querySelector('[data-page="system"]').classList.add('active');
+                        break;
+                    case 'r':
+                    case 'R':
+                        e.preventDefault();
+                        refreshAll();
+                        break;
+                    case 'k':
+                    case 'K':
+                        e.preventDefault();
+                        document.getElementById('memorySearchBox').focus();
+                        break;
+                }
+            }
+            
+            // ? for help
+            if (e.key === '?' && !e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                showKeyboardShortcutsHelp();
+            }
+        });
+
+        function showKeyboardShortcutsHelp() {
+            const helpHTML = `
+                <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+                            background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+                            padding: 2rem; z-index: 10000; max-width: 400px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+                    <h3 style="margin-bottom: 1rem;">⌨️ Keyboard Shortcuts</h3>
+                    <div style="display: grid; gap: 0.5rem;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Ctrl + 1</span><span>Overview</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Ctrl + 2</span><span>Projects</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Ctrl + 3</span><span>Calendar</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Ctrl + 4</span><span>Memory</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Ctrl + 5</span><span>Research</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Ctrl + 6</span><span>System</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Ctrl + R</span><span>Refresh</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Ctrl + K</span><span>Search Memory</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>?</span><span>Show this help</span>
+                        </div>
+                    </div>
+                    <button onclick="this.parentElement.remove()" class="btn" style="margin-top: 1rem; width: 100%;">Close</button>
+                </div>
+            `;
+            const existing = document.getElementById('keyboard-help');
+            if (existing) existing.remove();
+            
+            const helpDiv = document.createElement('div');
+            helpDiv.id = 'keyboard-help';
+            helpDiv.innerHTML = helpHTML;
+            document.body.appendChild(helpDiv);
+        }
+
+        // 2. RECENT ACTIVITY FEED
+        async function loadRecentActivity() {
+            try {
+                const response = await fetch('/api/activity');
+                const data = await response.json();
+                
+                const container = document.getElementById('recentActivity');
+                if (!container) return;
+                
+                if (data.activities && data.activities.length > 0) {
+                    container.innerHTML = data.activities.slice(0, 5).map(activity => {
+                        const icon = getActivityIcon(activity.action);
+                        return `
+                            <div class="activity-item">
+                                <div class="activity-icon">${icon}</div>
+                                <div class="activity-content">
+                                    <div>${escapeHtml(activity.action)}</div>
+                                    <div class="activity-time">${new Date(activity.created_at).toLocaleString()}</div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                } else {
+                    container.innerHTML = '<p style="color: var(--text-secondary); text-align: center; padding: 1rem;">No recent activity</p>';
+                }
+            } catch (error) {
+                console.error('Failed to load activity');
+            }
+        }
+
+        function getActivityIcon(action) {
+            const icons = {
+                'project_created': '📁',
+                'project_updated': '✏️',
+                'project_favorite': '⭐',
+                'research_started': '🔬',
+                'research_completed': '✅',
+                'login': '🔑',
+                'logout': '🚪',
+                'backup': '💾',
+                'restart': '🔄'
+            };
+            return icons[action] || '📝';
+        }
+
+        // 3. SYSTEM UPTIME WIDGET
+        async function loadSystemUptime() {
+            try {
+                const response = await fetch('/api/system/uptime');
+                const data = await response.json();
+                
+                const container = document.getElementById('systemUptime');
+                if (container) {
+                    container.innerHTML = `
+                        <div class="uptime-display">${data.uptime_formatted}</div>
+                        <div style="color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">
+                            Boot: ${new Date(data.boot_time).toLocaleString()}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Failed to load uptime');
+            }
+        }
+
+        // 4. FAVORITE PROJECTS
+        async function toggleProjectFavorite(projectId, currentStatus) {
+            try {
+                const newStatus = !currentStatus;
+                const response = await fetch(`/api/projects/${projectId}/favorite`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ favorite: newStatus })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    loadProjects();
+                    addLog(newStatus ? '⭐ Project favorited' : 'Project unfavorited', 'success');
+                }
+            } catch (error) {
+                addLog('Failed to toggle favorite', 'error');
+            }
+        }
+
+        function renderFavoriteProjects() {
+            const favorites = projects.filter(p => p.favorite);
+            const container = document.getElementById('favoriteProjects');
+            if (!container) return;
+            
+            if (favorites.length > 0) {
+                container.innerHTML = favorites.map(project => `
+                    <div class="btn-action" onclick="editProjectById(${project.id})" style="margin-bottom: 0.5rem;">
+                        <span>${escapeHtml(project.title)}</span>
+                        <span style="color: var(--warning);">⭐</span>
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = '<p style="color: var(--text-secondary); text-align: center;">No favorite projects</p>';
+            }
+        }
+
+        function editProjectById(projectId) {
+            const project = projects.find(p => p.id === projectId);
+            if (project) editProject(project);
+        }
+
+        // Update initDashboard to include new features
+        const originalInitDashboard = initDashboard;
+        initDashboard = function() {
+            originalInitDashboard();
+            loadRecentActivity();
+            loadSystemUptime();
+            
+            // Add activity log on login
+            fetch('/api/activity', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: 'login', details: 'User logged in' })
+            });
+        };
     </script>
 </body>
 </html>
