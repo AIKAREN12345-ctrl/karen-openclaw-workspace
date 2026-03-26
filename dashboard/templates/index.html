@@ -619,6 +619,43 @@
                             <button class="btn-action" onclick="triggerResearch('open-source')">📦 Open Source</button>
                         </div>
                     </div>
+
+                    <!-- Quick Actions -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">⚡ Quick Actions</h3>
+                        </div>
+                        <button class="btn-action" onclick="runQuickAction('check-status')">
+                            <span>🔍 Check System Status</span>
+                            <span id="statusCheckSpinner" class="hidden">⏳</span>
+                        </button>
+                        
+                        <button class="btn-action" onclick="runQuickAction('restart-ollama')">
+                            <span>🦙 Restart Ollama</span>
+                            <span>→</span>
+                        </button>
+                        
+                        <button class="btn-action" onclick="runQuickAction('github-backup')">
+                            <span>📦 Backup to GitHub</span>
+                            <span>→</span>
+                        </button>
+                        
+                        <button class="btn-action" onclick="runQuickAction('clear-logs')">
+                            <span>🧹 Clear Old Logs</span>
+                            <span>→</span>
+                        </button>
+                    </div>
+
+                    <!-- Smart Notifications -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">🔔 Notifications</h3>
+                            <button class="btn-small" onclick="checkNotifications()">Check Now</button>
+                        </div>
+                        <div id="notificationsList" style="max-height: 250px; overflow-y: auto;">
+                            <p style="color: var(--text-secondary); text-align: center; padding: 1rem;">Click "Check Now" to scan for system notifications</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -668,13 +705,46 @@
             <!-- Memory Page -->
             <div class="page" id="page-memory">
                 <div class="header">
-                    <h2>Memory Search</h2>
+                    <h2>Memory Browser</h2>
+                    <div class="header-actions">
+                        <button class="btn-small" onclick="refreshMemoryFolders()">🔄 Refresh</button>
+                    </div>
                 </div>
                 
-                <input type="text" class="search-box" id="memorySearchBox" placeholder="Search memory files..." onkeyup="searchMemory(event)">
+                <div class="grid grid-2">
+                    <!-- Folder Tree -->
+                    <div class="card" style="max-height: 600px; overflow-y: auto;">
+                        <div class="card-header">
+                            <h3 class="card-title">📁 Memory Folders</h3>
+                            <span id="memoryFileCount" style="color: var(--text-secondary); font-size: 0.875rem;"></span>
+                        </div>
+                        <div id="memoryFolderTree">
+                            <p style="color: var(--text-secondary);">Loading memory folders...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- File List or Content -->
+                    <div class="card" style="max-height: 600px; overflow-y: auto;">
+                        <div class="card-header">
+                            <h3 class="card-title" id="memoryViewTitle">Select a file</h3>
+                            <button class="btn-small hidden" id="backToFolderBtn" onclick="showFolderFiles()">← Back</button>
+                        </div>
+                        <div id="memoryFileList">
+                            <p style="color: var(--text-secondary); text-align: center; padding: 2rem;">Click a folder to view memory files</p>
+                        </div>
+                        <div id="memoryFileContent" class="hidden" style="white-space: pre-wrap; font-family: inherit; line-height: 1.6; max-height: 500px; overflow-y: auto;"></div>
+                    </div>
+                </div>
                 
-                <div id="memoryResults">
-                    <p style="color: var(--text-secondary); text-align: center; padding: 2rem;">Type to search memory files...</p>
+                <!-- Search Section -->
+                <div class="card" style="margin-top: 1.5rem;">
+                    <div class="card-header">
+                        <h3 class="card-title">🔍 Search Memory</h3>
+                    </div>
+                    <input type="text" class="search-box" id="memorySearchBox" placeholder="Search across all memory files..." onkeyup="searchMemory(event)">
+                    <div id="memorySearchResults">
+                        <p style="color: var(--text-secondary); text-align: center;">Type to search memory files...</p>
+                    </div>
                 </div>
             </div>
 
@@ -933,6 +1003,7 @@
             loadProjects();
             loadResearchHistory();
             loadResearchFolders();
+            loadMemoryFolders();
             loadCalendarEvents();
             
             // Auto-refresh every 30 seconds
@@ -1288,6 +1359,65 @@
             }
         }
 
+        // Quick Actions
+        async function runQuickAction(action) {
+            const spinner = document.getElementById('statusCheckSpinner');
+            if (spinner) spinner.classList.remove('hidden');
+            
+            addLog(`Running action: ${action}...`);
+            
+            try {
+                const response = await fetch(`/api/actions/${action}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    addLog(`✅ ${data.message || action + ' completed'}`, 'success');
+                    
+                    // If check-status, show detailed results
+                    if (action === 'check-status' && data.openclaw) {
+                        addLog(`   OpenClaw: ${data.openclaw}`, data.openclaw === 'running' ? 'success' : 'error');
+                        addLog(`   Ollama: ${data.ollama}`, data.ollama === 'running' ? 'success' : 'error');
+                        addLog(`   Disk: ${data.disk}`);
+                    }
+                } else {
+                    addLog(`❌ ${data.error}`, 'error');
+                }
+            } catch (error) {
+                addLog(`❌ Action failed: ${error.message}`, 'error');
+            } finally {
+                if (spinner) spinner.classList.add('hidden');
+            }
+        }
+        
+        // Smart Notifications
+        async function checkNotifications() {
+            const container = document.getElementById('notificationsList');
+            container.innerHTML = '<p style="color: var(--text-secondary); text-align: center;">Checking...</p>';
+            
+            try {
+                const response = await fetch('/api/notifications/check');
+                const data = await response.json();
+                
+                if (data.notifications && data.notifications.length > 0) {
+                    container.innerHTML = data.notifications.map(note => `
+                        <div style="padding: 0.75rem; margin-bottom: 0.5rem; background: var(--bg-dark); border-radius: 6px; border-left: 3px solid ${note.type === 'error' ? 'var(--error)' : note.type === 'warning' ? 'var(--warning)' : 'var(--success)'};">
+                            <div style="font-weight: 600;">${escapeHtml(note.title)}</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.25rem;">${escapeHtml(note.message)}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">${new Date(note.timestamp).toLocaleString()}</div>
+                        </div>
+                    `).join('');
+                } else {
+                    container.innerHTML = '<p style="color: var(--success); text-align: center; padding: 1rem;">✅ All systems healthy! No notifications.</p>';
+                }
+            } catch (error) {
+                container.innerHTML = '<p style="color: var(--error); text-align: center;">Failed to check notifications</p>';
+            }
+        }
+
         // Calendar
         let calendarEvents = [];
         
@@ -1400,6 +1530,132 @@
             } catch (error) {
                 container.innerHTML = '<p style="color: var(--error); text-align: center;">Search failed</p>';
             }
+        }
+
+        // Memory Browser
+        let memoryFolders = {};
+        let currentMemoryYear = null;
+        let currentMemoryMonth = null;
+        
+        async function loadMemoryFolders() {
+            try {
+                const response = await fetch('/api/memory/folders');
+                const data = await response.json();
+                memoryFolders = data.folders || {};
+                renderMemoryFolderTree();
+            } catch (error) {
+                console.error('Failed to load memory folders');
+            }
+        }
+        
+        function renderMemoryFolderTree() {
+            const container = document.getElementById('memoryFolderTree');
+            let totalFiles = 0;
+            
+            Object.values(memoryFolders).forEach(yearData => {
+                Object.values(yearData).forEach(monthData => {
+                    totalFiles += monthData.files.length;
+                });
+            });
+            
+            document.getElementById('memoryFileCount').textContent = `${totalFiles} files`;
+            
+            if (Object.keys(memoryFolders).length === 0) {
+                container.innerHTML = '<p style="color: var(--text-secondary);">No memory files found</p>';
+                return;
+            }
+            
+            const sortedYears = Object.keys(memoryFolders).sort((a, b) => b - a);
+            
+            container.innerHTML = sortedYears.map(year => {
+                const yearData = memoryFolders[year];
+                const yearFileCount = Object.values(yearData).reduce((sum, m) => sum + m.files.length, 0);
+                const sortedMonths = Object.keys(yearData).sort((a, b) => b.localeCompare(a));
+                
+                return `
+                    <div style="margin-bottom: 1rem;">
+                        <div style="font-weight: 600; padding: 0.5rem; background: var(--bg-dark); border-radius: 6px; margin-bottom: 0.5rem;">
+                            📅 ${year} (${yearFileCount} files)
+                        </div>
+                        <div style="padding-left: 1rem;">
+                            ${sortedMonths.map(monthKey => {
+                                const monthData = yearData[monthKey];
+                                return `
+                                    <div class="btn-action" onclick="showMemoryMonthFiles('${year}', '${monthKey}')"
+                                         style="${currentMemoryYear === year && currentMemoryMonth === monthKey ? 'border-color: var(--accent);' : ''}">
+                                        <span>📁 ${escapeHtml(monthData.label)}</span>
+                                        <span style="background: var(--bg-hover); padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">${monthData.files.length}</span>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function showMemoryMonthFiles(year, monthKey) {
+            currentMemoryYear = year;
+            currentMemoryMonth = monthKey;
+            
+            const monthData = memoryFolders[year][monthKey];
+            
+            document.getElementById('memoryViewTitle').textContent = monthData.label;
+            document.getElementById('backToFolderBtn').classList.add('hidden');
+            document.getElementById('memoryFileList').classList.remove('hidden');
+            document.getElementById('memoryFileContent').classList.add('hidden');
+            
+            const container = document.getElementById('memoryFileList');
+            
+            if (monthData.files.length > 0) {
+                container.innerHTML = monthData.files.map(file => `
+                    <div class="btn-action" onclick="viewMemoryFile('${escapeHtml(file.filename)}')">
+                        <div>
+                            <div style="font-weight: 500;">${escapeHtml(file.title)}</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                                📅 ${file.date} • ${(file.size / 1024).toFixed(1)} KB
+                            </div>
+                        </div>
+                        <span>→</span>
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = '<p style="color: var(--text-secondary); text-align: center;">No files in this month</p>';
+            }
+            
+            renderMemoryFolderTree();
+        }
+        
+        async function viewMemoryFile(filename) {
+            try {
+                const response = await fetch(`/api/memory/file?file=${encodeURIComponent(filename)}`);
+                const data = await response.json();
+                
+                document.getElementById('memoryViewTitle').textContent = data.filename;
+                document.getElementById('backToFolderBtn').classList.remove('hidden');
+                document.getElementById('memoryFileList').classList.add('hidden');
+                document.getElementById('memoryFileContent').classList.remove('hidden');
+                
+                document.getElementById('memoryFileContent').textContent = data.content;
+            } catch (error) {
+                addLog('Failed to load memory file', 'error');
+            }
+        }
+        
+        function showFolderFiles() {
+            document.getElementById('memoryFileList').classList.remove('hidden');
+            document.getElementById('memoryFileContent').classList.add('hidden');
+            document.getElementById('backToFolderBtn').classList.add('hidden');
+            document.getElementById('memoryViewTitle').textContent = 'Select a file';
+            
+            if (currentMemoryYear && currentMemoryMonth) {
+                showMemoryMonthFiles(currentMemoryYear, currentMemoryMonth);
+            }
+        }
+        
+        function refreshMemoryFolders() {
+            loadMemoryFolders();
+            addLog('Memory folders refreshed', 'success');
         }
 
         // Data Export/Import

@@ -73,6 +73,20 @@ def init_db():
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )''')
     
+    # Activity log table
+    c.execute('''CREATE TABLE IF NOT EXISTS activity_log (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        action TEXT NOT NULL,
+        details TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )''')
+    
+    # Add favorite column to projects if not exists
+    try:
+        c.execute('ALTER TABLE projects ADD COLUMN favorite BOOLEAN DEFAULT 0')
+    except:
+        pass  # Column already exists
+    
     conn.commit()
     conn.close()
 
@@ -404,6 +418,83 @@ def get_memory_file():
     except Exception as e:
         return jsonify({'error': str(e)}), 404
 
+# Enhanced Memory Browser API
+@app.route('/api/memory/folders', methods=['GET'])
+@login_required
+def get_memory_folders():
+    """Get memory files organized by year/month"""
+    memory_dir = os.path.expanduser('~/.openclaw/workspace/memory')
+    folders = {}
+    
+    try:
+        for filename in os.listdir(memory_dir):
+            if filename.endswith('.md'):
+                filepath = os.path.join(memory_dir, filename)
+                stat = os.stat(filepath)
+                modified = datetime.fromtimestamp(stat.st_mtime)
+                
+                # Organize by year-month
+                year_month = modified.strftime('%Y-%m')
+                year = modified.strftime('%Y')
+                month = modified.strftime('%B')
+                
+                if year not in folders:
+                    folders[year] = {}
+                
+                if year_month not in folders[year]:
+                    folders[year][year_month] = {
+                        'label': f"{month} {year}",
+                        'files': []
+                    }
+                
+                folders[year][year_month]['files'].append({
+                    'filename': filename,
+                    'title': filename.replace('.md', '').replace('_', ' ').title(),
+                    'date': modified.strftime('%Y-%m-%d'),
+                    'size': stat.st_size
+                })
+        
+        # Sort files within each month by date (newest first)
+        for year in folders:
+            for month_key in folders[year]:
+                folders[year][month_key]['files'].sort(
+                    key=lambda x: x['date'], 
+                    reverse=True
+                )
+        
+        return jsonify({'folders': folders})
+    except Exception as e:
+        return jsonify({'error': str(e), 'folders': {}})
+
+@app.route('/api/memory/files', methods=['GET'])
+@login_required
+def get_memory_files_list():
+    """Get all memory files with metadata"""
+    memory_dir = os.path.expanduser('~/.openclaw/workspace/memory')
+    files = []
+    
+    try:
+        for filename in os.listdir(memory_dir):
+            if filename.endswith('.md'):
+                filepath = os.path.join(memory_dir, filename)
+                stat = os.stat(filepath)
+                modified = datetime.fromtimestamp(stat.st_mtime)
+                
+                files.append({
+                    'filename': filename,
+                    'title': filename.replace('.md', '').replace('_', ' ').title(),
+                    'date': modified.strftime('%Y-%m-%d'),
+                    'datetime': modified.isoformat(),
+                    'size': stat.st_size
+                })
+        
+        # Sort by date (newest first)
+        files.sort(key=lambda x: x['datetime'], reverse=True)
+        
+        return jsonify({'files': files})
+    except Exception as e:
+        return jsonify({'error': str(e), 'files': []})
+
 # Research Folders API
 @app.route('/api/research/folders', methods=['GET'])
 @login_required
@@ -519,6 +610,166 @@ def mark_notification_read(note_id):
     conn.close()
     return jsonify({'success': True})
 
+# Quick Actions API
+@app.route('/api/actions/check-status', methods=['POST'])
+@login_required
+def action_check_status():
+    """Run comprehensive system check"""
+    try:
+        # Check OpenClaw
+        oc_result = subprocess.run([OPENCLAW_CMD, 'status'], capture_output=True, text=True, timeout=10, shell=True)
+        oc_ok = oc_result.returncode == 0
+        
+        # Check Ollama
+        ol_result = subprocess.run(['ollama', 'list'], capture_output=True, text=True, timeout=5, shell=True)
+        ol_ok = ol_result.returncode == 0
+        
+        # Check disk space
+        disk = psutil.disk_usage('/')
+        disk_ok = disk.percent < 90
+        
+        return jsonify({
+            'success': True,
+            'openclaw': 'running' if oc_ok else 'error',
+            'ollama': 'running' if ol_ok else 'error',
+            'disk': f"{disk.percent}% used" if disk_ok else f"WARNING: {disk.percent}% used",
+            'status': 'healthy' if all([oc_ok, ol_ok, disk_ok]) else 'warning'
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+@app.route('/api/actions/restart-ollama', methods=['POST'])
+@login_required
+def action_restart_ollama():
+    """Restart Ollama service"""
+    try:
+        # Kill existing ollama processes
+        subprocess.run(['taskkill', '/F', '/IM', 'ollama.exe'], capture_output=True, shell=True)
+        time.sleep(2)
+        
+        # Start Ollama
+        subprocess.Popen(['ollama', 'serve'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        
+        # Add notification
+        conn = sqlite3.connect(DB_PATH)
+        c = conn.cursor()
+        c.execute('INSERT INTO notifications (title, message, type) VALUES (?, ?, ?)',
+                  ('Ollama Restarted', 'Ollama service has been restarted successfully', 'success'))
+        conn.commit()
+        conn.close()
+        
+        return jsonify({'success': True, 'message': 'Ollama restarted'})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+@app.route('/api/actions/github-backup', methods=['POST'])
+@login_required
+def action_github_backup():
+    """Backup to GitHub"""
+    try:
+        workspace = os.path.expanduser('~/.openclaw/workspace')
+        
+        # Git add, commit, push
+        subprocess.run(['git', 'add', '-A'], cwd=workspace, check=True, shell=True)
+        subprocess.run(['git', 'commit', '-m', f'Auto backup - {datetime.now().isoformat()}'], 
+                      cwd=workspace, shell=True)
+        result = subprocess.run(['git', 'push'], cwd=workspace, capture_output=True, text=True, shell=True)
+        
+        if result.returncode == 0:
+            # Add notification
+            conn = sqlite3.connect(DB_PATH)
+            c = conn.cursor()
+            c.execute('INSERT INTO notifications (title, message, type) VALUES (?, ?, ?)',
+                      ('GitHub Backup', 'Successfully backed up to GitHub', 'success'))
+            conn.commit()
+            conn.close()
+            return jsonify({'success': True, 'message': 'Backed up to GitHub'})
+        else:
+            return jsonify({'success': False, 'error': result.stderr}), 500
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+@app.route('/api/actions/clear-logs', methods=['POST'])
+@login_required
+def action_clear_logs():
+    """Clear old log files"""
+    try:
+        log_dir = os.path.expanduser('~/.openclaw')
+        cleared = 0
+        
+        for filename in os.listdir(log_dir):
+            if filename.endswith('.log') and filename != 'openclaw.log':
+                filepath = os.path.join(log_dir, filename)
+                os.remove(filepath)
+                cleared += 1
+        
+        return jsonify({'success': True, 'message': f'Cleared {cleared} log files'})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+# Notifications API - Enhanced
+@app.route('/api/notifications/check', methods=['GET'])
+@login_required
+def check_notifications():
+    """Check for system issues and generate notifications"""
+    notifications = []
+    
+    # Check disk space
+    disk = psutil.disk_usage('/')
+    if disk.percent > 85:
+        notifications.append({
+            'title': 'Low Disk Space',
+            'message': f'Disk is {disk.percent}% full. Consider cleaning up files.',
+            'type': 'warning',
+            'timestamp': datetime.now().isoformat()
+        })
+    
+    # Check memory
+    memory = psutil.virtual_memory()
+    if memory.percent > 90:
+        notifications.append({
+            'title': 'High Memory Usage',
+            'message': f'Memory is {memory.percent}% used. Consider closing applications.',
+            'type': 'warning',
+            'timestamp': datetime.now().isoformat()
+        })
+    
+    # Check Ollama
+    try:
+        result = subprocess.run(['ollama', 'list'], capture_output=True, timeout=5, shell=True)
+        if result.returncode != 0:
+            notifications.append({
+                'title': 'Ollama Not Responding',
+                'message': 'Ollama service may be down. Try restarting it.',
+                'type': 'error',
+                'timestamp': datetime.now().isoformat()
+            })
+    except:
+        notifications.append({
+            'title': 'Ollama Check Failed',
+            'message': 'Could not check Ollama status.',
+            'type': 'warning',
+            'timestamp': datetime.now().isoformat()
+        })
+    
+    # Check for recent research completion (within last hour)
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute('''SELECT topic, completed_at FROM research_history 
+                 WHERE completed_at > datetime('now', '-1 hour')
+                 AND status = 'completed'
+                 ORDER BY completed_at DESC LIMIT 3''')
+    for row in c.fetchall():
+        notifications.append({
+            'title': 'Research Complete',
+            'message': f'Research on "{row[0]}" has completed.',
+            'type': 'success',
+            'timestamp': row[1]
+        })
+    conn.close()
+    
+    return jsonify({'notifications': notifications})
+
 # Cron Jobs API
 @app.route('/api/cron')
 @login_required
@@ -547,6 +798,94 @@ def api_cron():
         return jsonify({'jobs': jobs})
     except Exception as e:
         return jsonify({'error': str(e), 'jobs': []})
+
+# Activity Log API
+@app.route('/api/activity', methods=['GET'])
+@login_required
+def get_activity_log():
+    """Get recent activity (last 20 items)"""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    c = conn.cursor()
+    c.execute('SELECT * FROM activity_log ORDER BY created_at DESC LIMIT 20')
+    activities = [dict(row) for row in c.fetchall()]
+    conn.close()
+    return jsonify({'activities': activities})
+
+@app.route('/api/activity', methods=['POST'])
+@login_required
+def add_activity():
+    """Add an activity entry"""
+    data = request.json
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute('INSERT INTO activity_log (action, details) VALUES (?, ?)',
+              (data.get('action'), data.get('details')))
+    conn.commit()
+    conn.close()
+    return jsonify({'success': True})
+
+# System Uptime API
+@app.route('/api/system/uptime', methods=['GET'])
+@login_required
+def get_system_uptime():
+    """Get system uptime and boot time"""
+    try:
+        import psutil
+        boot_time = datetime.fromtimestamp(psutil.boot_time())
+        uptime = datetime.now() - boot_time
+        
+        days = uptime.days
+        hours, remainder = divmod(uptime.seconds, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        
+        return jsonify({
+            'boot_time': boot_time.isoformat(),
+            'uptime_seconds': uptime.total_seconds(),
+            'uptime_formatted': f"{days}d {hours}h {minutes}m",
+            'days': days,
+            'hours': hours,
+            'minutes': minutes
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+# Project Favorites API
+@app.route('/api/projects/<int:project_id>/favorite', methods=['POST'])
+@login_required
+def toggle_project_favorite(project_id):
+    """Toggle favorite status of a project"""
+    data = request.json
+    favorite = data.get('favorite', False)
+    
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute('UPDATE projects SET favorite = ? WHERE id = ?', (favorite, project_id))
+    conn.commit()
+    conn.close()
+    
+    # Log activity
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute('INSERT INTO activity_log (action, details) VALUES (?, ?)',
+              ('project_favorite', f'Project {project_id} favorite set to {favorite}'))
+    conn.commit()
+    conn.close()
+    
+    socketio.emit('project_updated', {'id': project_id})
+    return jsonify({'success': True, 'favorite': favorite})
+
+@app.route('/api/projects/favorites', methods=['GET'])
+@login_required
+def get_favorite_projects():
+    """Get all favorite projects"""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    c = conn.cursor()
+    c.execute('SELECT * FROM projects WHERE favorite = 1 ORDER BY updated_at DESC')
+    projects = [dict(row) for row in c.fetchall()]
+    conn.close()
+    return jsonify({'projects': projects})
 
 # Data Export/Import
 @app.route('/api/export', methods=['GET'])
