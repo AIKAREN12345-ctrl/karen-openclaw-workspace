@@ -1,0 +1,54 @@
+[
+  {
+    "id": "1774479101950",
+    "title": "test",
+    "description": "to see if this wotks",
+    "priority": "high",
+    "createdAt": "2026-03-25T22:51:41.950Z",
+    "status": "done",
+    "updatedAt": "2026-03-25T22:56:26.859Z"
+  },
+  {
+    "id": "1774479500001",
+    "title": "Build Interactive Dashboard",
+    "description": "Create live dashboard with projects, research, and system status",
+    "priority": "high",
+    "createdAt": "2026-03-25T22:58:00.000Z",
+    "status": "done",
+    "updatedAt": "2026-03-25T23:40:16.109Z"
+  },
+  {
+    "id": "1774479500002",
+    "title": "Optimize API Usage",
+    "description": "Reduce research frequency and explore local model options",
+    "priority": "medium",
+    "createdAt": "2026-03-25T22:58:00.000Z",
+    "status": "done"
+  },
+  {
+    "id": "1774479500003",
+    "title": "Setup Parsec Remote Access",
+    "description": "Configure Z Fold 6 for full PC control from anywhere",
+    "priority": "high",
+    "createdAt": "2026-03-25T22:58:00.000Z",
+    "status": "done"
+  },
+  {
+    "id": "1774479500004",
+    "title": "Research Automation System",
+    "description": "Daily automated research on OpenClaw, AI models, income opportunities",
+    "priority": "medium",
+    "createdAt": "2026-03-25T22:58:00.000Z",
+    "status": "in-progress"
+  },
+  {
+    "id": "1774479500005",
+    "title": "Memory System Enhancement",
+    "description": "Improve memory search and daily briefing generation",
+    "priority": "low",
+    "createdAt": "2026-03-25T22:58:00.000Z",
+    "status": "in-progress",
+    "updatedAt": "2026-03-26T00:07:56.420Z",
+    "notes": ""
+  }
+]
