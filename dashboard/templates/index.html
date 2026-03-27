@@ -2247,6 +2247,180 @@
                 container.innerHTML = '<p style="color: var(--error); text-align: center;">Weather service unavailable</p>';
             }
         }
+        // POMODORO TIMER
+        let pomodoroTime = 25 * 60; // 25 minutes in seconds
+        let pomodoroInterval = null;
+        let pomodoroSessionId = null;
+        let pomodoroIsRunning = false;
+        
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        function updatePomodoroDisplay() {
+            document.getElementById('pomodoroDisplay').textContent = formatTime(pomodoroTime);
+        }
+        
+        function setPomodoroTime(minutes) {
+            if (pomodoroIsRunning) {
+                pausePomodoro();
+            }
+            pomodoroTime = minutes * 60;
+            updatePomodoroDisplay();
+            addLog(`Pomodoro set to ${minutes} minutes`, 'info');
+        }
+        
+        async function startPomodoro() {
+            if (pomodoroIsRunning) return;
+            
+            // Create session in backend
+            const projectId = document.getElementById('pomodoroProject').value || null;
+            const duration = Math.floor(pomodoroTime / 60);
+            
+            try {
+                const response = await fetch('/api/pomodoro', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ project_id: projectId, duration: duration })
+                });
+                const data = await response.json();
+                
+                if (data.success) {
+                    pomodoroSessionId = data.id;
+                    pomodoroIsRunning = true;
+                    
+                    // Update UI
+                    document.getElementById('pomodoroStart').style.display = 'none';
+                    document.getElementById('pomodoroPause').style.display = 'inline-block';
+                    
+                    // Start timer
+                    pomodoroInterval = setInterval(() => {
+                        pomodoroTime--;
+                        updatePomodoroDisplay();
+                        
+                        if (pomodoroTime <= 0) {
+                            completePomodoro();
+                        }
+                    }, 1000);
+                    
+                    addLog('🍅 Pomodoro started!', 'success');
+                }
+            } catch (error) {
+                addLog('Failed to start pomodoro', 'error');
+            }
+        }
+        
+        function pausePomodoro() {
+            if (!pomodoroIsRunning) return;
+            
+            clearInterval(pomodoroInterval);
+            pomodoroIsRunning = false;
+            
+            document.getElementById('pomodoroStart').style.display = 'inline-block';
+            document.getElementById('pomodoroStart').textContent = '▶️ Resume';
+            document.getElementById('pomodoroPause').style.display = 'none';
+            
+            addLog('Pomodoro paused', 'info');
+        }
+        
+        function resetPomodoro() {
+            clearInterval(pomodoroInterval);
+            pomodoroIsRunning = false;
+            pomodoroTime = 25 * 60;
+            pomodoroSessionId = null;
+            
+            updatePomodoroDisplay();
+            
+            document.getElementById('pomodoroStart').style.display = 'inline-block';
+            document.getElementById('pomodoroStart').textContent = '▶️ Start';
+            document.getElementById('pomodoroPause').style.display = 'none';
+            
+            addLog('Pomodoro reset', 'info');
+        }
+        
+        async function completePomodoro() {
+            clearInterval(pomodoroInterval);
+            pomodoroIsRunning = false;
+            
+            // Play notification sound
+            playNotificationSound();
+            
+            // Mark as complete in backend
+            if (pomodoroSessionId) {
+                try {
+                    await fetch(`/api/pomodoro/${pomodoroSessionId}/complete`, {
+                        method: 'POST'
+                    });
+                } catch (error) {
+                    console.error('Failed to complete pomodoro session');
+                }
+            }
+            
+            // Reset UI
+            document.getElementById('pomodoroStart').style.display = 'inline-block';
+            document.getElementById('pomodoroStart').textContent = '▶️ Start';
+            document.getElementById('pomodoroPause').style.display = 'none';
+            
+            // Update stats
+            loadPomodoroStats();
+            
+            addLog('🎉 Pomodoro completed! Great work!', 'success');
+            
+            // Show browser notification
+            if ('Notification' in window && Notification.permission === 'granted') {
+                new Notification('Pomodoro Complete!', {
+                    body: 'Great work! Take a break.',
+                    icon: '🍅'
+                });
+            }
+        }
+        
+        async function loadPomodoroStats() {
+            try {
+                const response = await fetch('/api/pomodoro');
+                const data = await response.json();
+                
+                document.getElementById('pomodoroStats').innerHTML = `
+                    Today's pomodoros: <strong>${data.today}</strong> | 
+                    Total: <strong>${data.total}</strong>
+                `;
+            } catch (error) {
+                console.error('Failed to load pomodoro stats');
+            }
+        }
+        
+        function playNotificationSound() {
+            // Create a simple beep using Web Audio API
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 800;
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.5);
+            } catch (e) {
+                // Audio not supported, that's fine
+            }
+        }
+        
+        // Request notification permission on load
+        if ('Notification' in window && Notification.permission === 'default') {
+            Notification.requestPermission();
+        }
+        
+        // Load pomodoro stats on init
+        document.addEventListener('DOMContentLoaded', loadPomodoroStats);
     </script>
 </body>
 </html>
