@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karen Dashboard v3</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+            background: #0a0a0a; 
+            color: #fff; 
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 { color: #00d4ff; margin-bottom: 20px; }
+        h2 { color: #888; font-size: 1.1rem; margin: 20px 0 10px; border-bottom: 1px solid #333; padding-bottom: 5px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .card { background: #1a1a1a; padding: 15px; border-radius: 8px; border: 1px solid #333; }
+        .card h3 { color: #888; font-size: 0.9rem; margin-bottom: 5px; }
+        .card .value { font-size: 1.8rem; color: #00d4ff; font-weight: bold; }
+        
+        input, textarea, select { 
+            width: 100%; padding: 10px; margin: 5px 0; 
+            background: #252525; border: 1px solid #444; color: #fff; border-radius: 4px;
+        }
+        button { 
+            background: #00d4ff; color: #000; border: none; padding: 10px 20px; 
+            border-radius: 4px; cursor: pointer; font-weight: bold;
+        }
+        button:hover { background: #00a8cc; }
+        
+        .project-item, .note-item { 
+            background: #1a1a1a; padding: 10px; margin: 5px 0; 
+            border-radius: 4px; border-left: 3px solid #00d4ff;
+        }
+        .note-item { font-size: 0.9rem; color: #ccc; }
+        .time { font-size: 0.75rem; color: #666; }
+    </style>
+</head>
+<body>
+    <h1>🦞 Karen Dashboard v3</h1>
+    
+    <h2>System</h2>
+    <div class="grid" id="systemStats">
+        <div class="card"><h3>CPU</h3><div class="value" id="cpu">--%</div></div>
+        <div class="card"><h3>Memory</h3><div class="value" id="mem">--%</div></div>
+        <div class="card"><h3>Disk</h3><div class="value" id="disk">--%</div></div>
+    </div>
+    
+    <h2>Quick Note</h2>
+    <div class="card">
+        <textarea id="noteText" rows="3" placeholder="Type a quick note..."></textarea>
+        <button onclick="addNote()">Add Note</button>
+    </div>
+    <div id="notesList"></div>
+    
+    <h2>Projects</h2>
+    <div class="card">
+        <input type="text" id="projectTitle" placeholder="Project name">
+        <select id="projectStatus">
+            <option value="todo">To Do</option>
+            <option value="doing">Doing</option>
+            <option value="done">Done</option>
+        </select>
+        <button onclick="addProject()">Add Project</button>
+    </div>
+    <div id="projectsList"></div>
+
+    <h2>Local LLM Chat</h2>
+    <div class="card">
+        <select id="llmModel">
+            <option value="qwen2.5:7b">qwen2.5:7b (fast)</option>
+            <option value="qwen2.5:14b">qwen2.5:14b (smart)</option>
+            <option value="qwen3:8b">qwen3:8b (new)</option>
+        </select>
+        <div id="chatHistory" style="height: 200px; overflow-y: auto; background: #0f0f0f; padding: 10px; margin: 10px 0; border-radius: 4px; font-size: 0.9rem;">
+            <div style="color: #666;">Chat with local Ollama models...</div>
+        </div>
+        
+        <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="if(event.key==='Enter') sendChat()">
+        <button onclick="sendChat()">Send</button>
+    </div>
+
+    <script>
+        // Load system stats
+        async function loadSystem() {
+            try {
+                const r = await fetch('/api/system');
+                const d = await r.json();
+                document.getElementById('cpu').textContent = d.cpu + '%';
+                document.getElementById('mem').textContent = d.memory.percent + '%';
+                document.getElementById('disk').textContent = d.disk.percent + '%';
+            } catch(e) {}
+        }
+        
+        // Load notes
+        async function loadNotes() {
+            try {
+                const r = await fetch('/api/notes');
+                const d = await r.json();
+                document.getElementById('notesList').innerHTML = d.notes.map(n => 
+                    `<div class="note-item">${n.text}<div class="time">${new Date(n.time).toLocaleString()}</div></div>`
+                ).reverse().join('');
+            } catch(e) {}
+        }
+        
+        // Add note
+        async function addNote() {
+            const text = document.getElementById('noteText').value;
+            if(!text) return;
+            await fetch('/api/notes', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({text})
+            });
+            document.getElementById('noteText').value = '';
+            loadNotes();
+        }
+        
+        // Load projects
+        async function loadProjects() {
+            try {
+                const r = await fetch('/api/projects');
+                const d = await r.json();
+                document.getElementById('projectsList').innerHTML = d.projects.map(p => 
+                    `<div class="project-item">
+                        <strong>${p.title}</strong> 
+                        <span style="color: #888; font-size: 0.8rem;">[${p.status}]</span>
+                    </div>`
+                ).join('');
+            } catch(e) {}
+        }
+        
+        // Add project
+        async function addProject() {
+            const title = document.getElementById('projectTitle').value;
+            const status = document.getElementById('projectStatus').value;
+            if(!title) return;
+            await fetch('/api/projects', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({title, status})
+            });
+            document.getElementById('projectTitle').value = '';
+            loadProjects();
+        }
+        
+        // Chat with Ollama
+        async function sendChat() {
+            const input = document.getElementById('chatInput');
+            const model = document.getElementById('llmModel').value;
+            const history = document.getElementById('chatHistory');
+            const message = input.value.trim();
+            
+            if(!message) return;
+            
+            // Add user message
+            history.innerHTML += `<div style="margin: 5px 0;"><span style="color: #00d4ff;">You:</span> ${escapeHtml(message)}</div>`;
+            input.value = '';
+            history.scrollTop = history.scrollHeight;
+            
+            try {
+                const r = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({message, model})
+                });
+                const d = await r.json();
+                
+                history.innerHTML += `<div style="margin: 5px 0;"><span style="color: #888;">${model}:</span> ${escapeHtml(d.response || 'Error')}</div>`;
+                history.scrollTop = history.scrollHeight;
+            } catch(e) {
+                history.innerHTML += `<div style="margin: 5px 0; color: #ff4444;">Error: Could not connect to Ollama</div>`;
+            }
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // Initial load and refresh
+        loadSystem(); loadNotes(); loadProjects();
+        setInterval(loadSystem, 5000);
+    </script>
+</body>
+</html>

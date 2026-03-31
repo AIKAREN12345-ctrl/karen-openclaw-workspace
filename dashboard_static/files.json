@@ -1,0 +1,36 @@
+{
+  "memory": [
+    "research-20260303-2004.md",
+    "reading_notes_kens_books.md",
+    "ob_assignment_organisational_culture.md",
+    "gpt-conversations-archive.md",
+    "2026-03-30.md",
+    "2026-03-29.md",
+    "2026-03-28.md",
+    "2026-03-27.md",
+    "2026-03-26.md",
+    "2026-03-25.md",
+    "2026-03-24.md",
+    "2026-03-23.md",
+    "2026-03-17.md",
+    "2026-03-12.md",
+    "2026-03-07.md"
+  ],
+  "research": [
+    "personal-ai-architectures-2026-03-05.md",
+    "openclaw-research-2026-03-08-2148.md",
+    "openclaw-research-2026-03-08-2048.md",
+    "OPENCLAW-MEMORY-ALTERNATIVES-REPORT.md",
+    "openclaw-brief-2026-03-06.md",
+    "multi-project-docker-architecture-2026-03-05.md",
+    "model-optimization-2026-03-05.md",
+    "memory_fixes_20260303.md",
+    "local-system-optimization-2026-03-05.md",
+    "docker-openclaw-integration-2026-03-05.md",
+    "docker-for-openclaw-2026-03-05.md",
+    "docker-compose-personal-ai-2026-03-05.md",
+    "cron-localhost-access-2026-03-05.md",
+    "cron-local-llm-deep-research-2026-03-05.md",
+    "continuous-learning-systems-2026-03-05.md"
+  ]
+}
