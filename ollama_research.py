@@ -18,12 +18,12 @@ def spawn_research_subagent(topic, query):
     # Create the subagent spawn command
     task = f"""Research: {query}
 
-Use web_search to find current information. Format your findings as:
+Use web_search with DuckDuckGo to find current information. Format your findings as:
 - Bullet points with key information
 - Include sources where available
 - Be concise but informative
 
-Save results to memory/research/YYYY-MM-DD_{topic}.md"""
+Focus on finding recent developments from the last few days."""
     
     # Use PowerShell to spawn subagent via OpenClaw
     escaped_task = task.replace('"', '\\"').replace("\n", " ")
