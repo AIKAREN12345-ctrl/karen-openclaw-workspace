@@ -317,7 +317,7 @@
 
 ## Ollama Keepalive (Every 30 minutes)
 - Check: ollama ps
-- If qwen2.5:14b not loaded: ollama run qwen2.5:14b "keepalive"
+- If qwen3.5:9b not loaded: ollama run qwen3.5:9b "keepalive"
 - Purpose: Keep local model warm for interactive use
 - Silent: No notifications
 

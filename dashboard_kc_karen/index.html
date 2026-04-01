@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karen ↔ KC Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2em;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #888;
+        }
+        
+        .agents-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto 30px;
+        }
+        
+        .agent-card {
+            background: #151520;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #2a2a3a;
+        }
+        
+        .agent-card.karen {
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .agent-card.kc {
+            border-left: 4px solid #4ecdc4;
+        }
+        
+        .agent-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .agent-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+        }
+        
+        .karen .agent-avatar {
+            background: #ff6b6b20;
+        }
+        
+        .kc .agent-avatar {
+            background: #4ecdc420;
+        }
+        
+        .agent-name {
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+        
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+        
+        .status-online {
+            background: #22c55e20;
+            color: #22c55e;
+        }
+        
+        .status-offline {
+            background: #ef444420;
+            color: #ef4444;
+        }
+        
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #2a2a3a;
+        }
+        
+        .metric:last-child {
+            border-bottom: none;
+        }
+        
+        .metric-label {
+            color: #888;
+        }
+        
+        .metric-value {
+            font-weight: 500;
+        }
+        
+        .activity-box {
+            background: #1a1a25;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 15px;
+            min-height: 60px;
+        }
+        
+        .activity-label {
+            font-size: 0.8em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .tasks-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #151520;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #2a2a3a;
+        }
+        
+        .tasks-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .tasks-header h2 {
+            font-size: 1.3em;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: opacity 0.2s;
+        }
+        
+        .btn:hover {
+            opacity: 0.8;
+        }
+        
+        .btn-primary {
+            background: #4ecdc4;
+            color: #0a0a0f;
+        }
+        
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #1a1a25;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .task-checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .task-text {
+            flex: 1;
+        }
+        
+        .task-assignee {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+        }
+        
+        .assignee-karen {
+            background: #ff6b6b20;
+            color: #ff6b6b;
+        }
+        
+        .assignee-kc {
+            background: #4ecdc420;
+            color: #4ecdc4;
+        }
+        
+        .assignee-both {
+            background: #a855f720;
+            color: #a855f7;
+        }
+        
+        .paste-section {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: #151520;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #2a2a3a;
+        }
+        
+        .paste-section h3 {
+            margin-bottom: 10px;
+        }
+        
+        .paste-area {
+            width: 100%;
+            min-height: 100px;
+            background: #1a1a25;
+            border: 1px solid #2a2a3a;
+            border-radius: 8px;
+            padding: 12px;
+            color: #e0e0e0;
+            font-family: monospace;
+            resize: vertical;
+        }
+        
+        .timestamp {
+            text-align: center;
+            color: #666;
+            font-size: 0.85em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🦞 Karen ↔ KC Dashboard</h1>
+        <p>Dual-Agent Coordination Center</p>
+    </div>
+    
+    <div class="agents-grid">
+        <!-- Karen Card -->
+        <div class="agent-card karen">
+            <div class="agent-header">
+                <div class="agent-avatar">🤖</div>
+                <div>
+                    <div class="agent-name">Karen</div>
+                    <span class="status-badge status-online">● Online</span>
+                </div>
+            </div>
+            
+            <div class="metric">
+                <span class="metric-label">Platform</span>
+                <span class="metric-value">OpenClaw 3.2</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Location</span>
+                <span class="metric-value">Local (Windows)</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Tools</span>
+                <span class="metric-value" id="karen-tools">All Working</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Memory</span>
+                <span class="metric-value" id="karen-memory">171 files, 1144 chunks</span>
+            </div>
+            
+            <div class="activity-box">
+                <div class="activity-label">Current Activity</div>
+                <div id="karen-activity">Building dashboard with KC</div>
+            </div>
+        </div>
+        
+        <!-- KC Card -->
+        <div class="agent-card kc">
+            <div class="agent-header">
+                <div class="agent-avatar">🦞</div>
+                <div>
+                    <div class="agent-name">KC</div>
+                    <span class="status-badge status-online">● Online</span>
+                </div>
+            </div>
+            
+            <div class="metric">
+                <span class="metric-label">Platform</span>
+                <span class="metric-value">KimiClaw (Cloud)</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Location</span>
+                <span class="metric-value">Remote Server</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Messages</span>
+                <span class="metric-value" id="kc-messages">—</span>
+            </div>
+            <div class="metric">
+                <span class="metric-label">Files Created</span>
+                <span class="metric-value" id="kc-files">—</span>
+            </div>
+            
+            <div class="activity-box">
+                <div class="activity-label">Current Activity</div>
+                <div id="kc-activity">Waiting for update...</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Paste KC Update -->
+    <div class="paste-section">
+        <h3>📋 Paste KC Update from Kimi</h3>
+        <textarea class="paste-area" id="kc-paste" placeholder="Paste KC's status update here...
+
+Example format:
+🦞 KC STATUS UPDATE
+Time: 2026-03-31 19:30 CST
+Status: Online
+Activity: Researching local LLMs
+Messages: 47 | Tools: 12 | Files: 8"></textarea>
+        <button class="btn btn-primary" onclick="parseKCUpdate()" style="margin-top: 10px;">Update KC Status</button>
+    </div>
+    
+    <!-- Shared Tasks -->
+    <div class="tasks-section">
+        <div class="tasks-header">
+            <h2>📝 Shared Tasks</h2>
+            <button class="btn btn-primary" onclick="addTask()">+ Add Task</button>
+        </div>
+        
+        <div id="tasks-list">
+            <div class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <span class="task-text">Build dual-agent dashboard</span>
+                <span class="task-assignee assignee-karen">Karen</span>
+            </div>
+            <div class="task-item">
+                <input type="checkbox" class="task-checkbox">
+                <span class="task-text">Research 3.28 tool schema fixes</span>
+                <span class="task-assignee assignee-kc">KC</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="timestamp">
+        Last updated: <span id="last-updated">2026-03-31 19:20</span>
+    </div>
+    
+    <script>
+        function parseKCUpdate() {
+            const pasteText = document.getElementById('kc-paste').value;
+            
+            // Simple parsing
+            const lines = pasteText.split('\n');
+            let activity = '—';
+            let messages = '—';
+            let files = '—';
+            
+            lines.forEach(line => {
+                if (line.includes('Activity:')) {
+                    activity = line.split('Activity:')[1].trim();
+                }
+                if (line.includes('Messages:')) {
+                    const match = line.match(/Messages:\s*(\d+)/);
+                    if (match) messages = match[1];
+                }
+                if (line.includes('Files:')) {
+                    const match = line.match(/Files:\s*(\d+)/);
+                    if (match) files = match[1];
+                }
+            });
+            
+            document.getElementById('kc-activity').textContent = activity;
+            document.getElementById('kc-messages').textContent = messages;
+            document.getElementById('kc-files').textContent = files;
+            document.getElementById('last-updated').textContent = new Date().toLocaleString();
+            
+            // Clear paste area
+            document.getElementById('kc-paste').value = '';
+        }
+        
+        function addTask() {
+            const text = prompt('Task description:');
+            if (!text) return;
+            
+            const assignee = prompt('Assign to: (karen/kc/both)', 'both');
+            const assigneeClass = {
+                'karen': 'assignee-karen',
+                'kc': 'assignee-kc',
+                'both': 'assignee-both'
+            }[assignee] || 'assignee-both';
+            
+            const assigneeText = assignee.charAt(0).toUpperCase() + assignee.slice(1);
+            
+            const taskHtml = `
+                <div class="task-item">
+                    <input type="checkbox" class="task-checkbox">
+                    <span class="task-text">${text}</span>
+                    <span class="task-assignee ${assigneeClass}">${assigneeText}</span>
+                </div>
+            `;
+            
+            document.getElementById('tasks-list').insertAdjacentHTML('beforeend', taskHtml);
+        }
+        
+        // Auto-update Karen's stats every 30 seconds
+        setInterval(() => {
+            fetch('/api/karen/status')
+                .then(r => r.json())
+                .then(data => {
+                    document.getElementById('karen-tools').textContent = data.tools;
+                    document.getElementById('karen-memory').textContent = data.memory;
+                    document.getElementById('karen-activity').textContent = data.activity;
+                })
+                .catch(() => {
+                    // Static fallback
+                });
+        }, 30000);
+    </script>
+</body>
+</html>
