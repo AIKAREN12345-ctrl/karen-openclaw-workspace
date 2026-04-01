@@ -36,7 +36,7 @@ Save results to memory/research/YYYY-MM-DD_{topic}.md"""
             cmd,
             capture_output=True,
             text=True,
-            timeout=10
+            timeout=320
         )
         print(f"Subagent spawned for {topic}")
         return True

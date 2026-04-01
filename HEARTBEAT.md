@@ -38,25 +38,25 @@
 - **Scheduled:** 06:00 (1x daily)
 - **Action:** Research OpenClaw updates
 - **Subagent:** Uses web_search, web_fetch
-- **Timeout:** 180s
+- **Timeout:** 300s (5 minutes)
 
 ### TRIGGER-RESEARCH-AI-models  
 - **Scheduled:** 12:00, 18:00 (2x daily)
 - **Action:** Research AI model releases
 - **Subagent:** Uses web_search
-- **Timeout:** 180s
+- **Timeout:** 300s (5 minutes)
 
 ### TRIGGER-RESEARCH-AI-income
 - **Scheduled:** 22:00 (1x daily)
 - **Action:** Research AI income opportunities
 - **Subagent:** Uses web_search
-- **Timeout:** 180s
+- **Timeout:** 300s (5 minutes)
 
 ### TRIGGER-RESEARCH-philosophy
 - **Scheduled:** 20:00 (1x daily)
 - **Action:** Research philosophy/personal growth
 - **Subagent:** Uses web_search
-- **Timeout:** 180s
+- **Timeout:** 300s (5 minutes)
 
 ### TRIGGER-RESEARCH-RESET
 - **Scheduled:** 00:00 (midnight)
