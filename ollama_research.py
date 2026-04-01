@@ -25,14 +25,11 @@ Use web_search to find current information. Format your findings as:
 
 Save results to memory/research/YYYY-MM-DD_{topic}.md"""
     
-    # Use openclaw CLI to spawn subagent
-    cmd = [
-        "openclaw", "sessions", "spawn",
-        "--mode", "run",
-        "--model", "ollama/qwen3.5:9b",
-        "--timeout", "300",
-        "--task", task
-    ]
+    # Use PowerShell to spawn subagent via OpenClaw
+    escaped_task = task.replace('"', '\\"').replace("\n", " ")
+    ps_command = f'openclaw sessions spawn --mode run --model ollama/qwen3.5:9b --timeout 300 --task "{escaped_task}"'
+    
+    cmd = ["powershell.exe", "-Command", ps_command]
     
     try:
         result = subprocess.run(
