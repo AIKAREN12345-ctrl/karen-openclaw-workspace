@@ -36,10 +36,10 @@ Format:
             text=True,
             timeout=30
         )
-        print(f"✅ Kimi subagent spawned for {topic}")
+        print(f"[OK] Kimi subagent spawned for {topic}")
         return True
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f"[ERROR] Error: {e}")
         return False
 
 def main():
