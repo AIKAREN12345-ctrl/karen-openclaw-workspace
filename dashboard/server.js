@@ -127,15 +127,78 @@ async function getCronJobs() {
     });
 }
 
+// Fetch research files organized by week
+async function getResearchFiles() {
+    const researchDir = path.join(__dirname, '..', 'memory', 'research');
+    
+    return new Promise((resolve) => {
+        fs.readdir(researchDir, (err, files) => {
+            if (err) {
+                resolve({});
+                return;
+            }
+            
+            // Filter .md files and organize by week
+            const mdFiles = files.filter(f => f.endsWith('.md'));
+            const organized = {};
+            
+            mdFiles.forEach(file => {
+                // Extract date from filename (YYYY-MM-DD or YYYYMMDD format)
+                const dateMatch = file.match(/(\d{4})-?(\d{2})-?(\d{2})/);
+                if (dateMatch) {
+                    const year = dateMatch[1];
+                    const month = dateMatch[2];
+                    const day = dateMatch[3];
+                    
+                    // Calculate week number
+                    const date = new Date(year, month - 1, day);
+                    const startOfYear = new Date(date.getFullYear(), 0, 1);
+                    const weekNumber = Math.ceil((((date - startOfYear) / 86400000) + startOfYear.getDay() + 1) / 7);
+                    
+                    const weekKey = `${year}-W${weekNumber.toString().padStart(2, '0')}`;
+                    
+                    if (!organized[weekKey]) {
+                        organized[weekKey] = [];
+                    }
+                    
+                    // Extract topic from filename
+                    const topic = file
+                        .replace(/\d{4}-?\d{2}-?\d{2}_?/, '')
+                        .replace(/\.md$/, '')
+                        .replace(/_/g, ' ')
+                        .replace(/-/g, ' ');
+                    
+                    organized[weekKey].push({
+                        filename: file,
+                        topic: topic,
+                        date: `${year}-${month}-${day}`,
+                        path: `/memory/research/${file}`
+                    });
+                }
+            });
+            
+            // Sort weeks descending (newest first)
+            const sorted = Object.keys(organized)
+                .sort((a, b) => b.localeCompare(a))
+                .reduce((acc, key) => {
+                    acc[key] = organized[key].sort((a, b) => b.date.localeCompare(a.date));
+                    return acc;
+                }, {});
+            
+            resolve(sorted);
+        });
+    });
+}
 // Aggregate all data
 async function fetchAllData() {
     try {
-        const [openclaw, ollama, disk, commits, cronJobs] = await Promise.all([
+        const [openclaw, ollama, disk, commits, cronJobs, research] = await Promise.all([
             getOpenClawStatus().catch(() => ({ version: '2026.3.2', gateway: { reachable: true, latency: 26 } })),
             getOllamaStatus(),
             getDiskUsage(),
             getGitHubCommits(),
-            getCronJobs()
+            getCronJobs(),
+            getResearchFiles()
         ]);
 
         return {
@@ -155,7 +218,8 @@ async function fetchAllData() {
             github: {
                 commits: commits
             },
-            cron: cronJobs
+            cron: cronJobs,
+            research: research
         };
     } catch (error) {
         console.error('Error fetching data:', error);

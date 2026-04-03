@@ -549,6 +549,12 @@
                     <span class="icon">📜</span>
                     <span class="label">Logs</span>
                 </div>
+                
+                <div class="nav-item" onclick="showTab('research')">
+                    <span class="icon">🔬</span>
+                    <span class="label">Research</span>
+                    <span class="badge" id="research-count">100+</span>
+                </div>
             </div>
             
             <div class="nav-section">
@@ -965,6 +971,103 @@
             </div>
             
             
+            <!-- Tab: Research -->
+            <div class="tab-content" id="tab-research">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="icon">🔬</span>
+                        <h3>Research Archive</h3>
+                    </div>
+                    <input type="text" class="search-box" placeholder="Search research topics...">
+                    
+                    <div class="metric-row">
+                        <span class="metric-label">Total Research Files</span>
+                        <span class="metric-value" id="research-total">Loading...</span>
+                    </div>
+                    
+                    <div class="metric-row">
+                        <span class="metric-label">This Week</span>
+                        <span class="metric-value" id="research-this-week">Loading...</span>
+                    </div>
+                    
+                    <div class="metric-row">
+                        <span class="metric-label">Topics Covered</span>
+                        <span class="metric-value">OpenClaw, AI Models, Philosophy, Income</span>
+                    </div>
+                </div>
+                
+                <div class="card-grid" id="research-weeks">
+                    <!-- Weekly folders will be populated here -->
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="icon">📁</span>
+                            <h3>Week 14, 2026</h3>
+                            <span class="badge">Mar 31 - Apr 6</span>
+                        </div>
+                        <div class="list-container">
+                            <div class="list-item">
+                                <span class="list-item-icon">🧠</span>
+                                <div class="list-item-content">
+                                    <div class="list-item-title">AI Models Research</div>
+                                    <div class="list-item-subtitle">GPT-5.4, Claude 4.6, DeepSeek V4</div>
+                                </div>
+                                <span class="list-item-meta">Apr 2</span>
+                            </div>
+                            <div class="list-item">
+                                <span class="list-item-icon">🦞</span>
+                                <div class="list-item-content">
+                                    <div class="list-item-title">OpenClaw Updates</div>
+                                    <div class="list-item-subtitle">Version 2026.3.22, ClawHub marketplace</div>
+                                </div>
+                                <span class="list-item-meta">Apr 2</span>
+                            </div>
+                            <div class="list-item">
+                                <span class="list-item-icon">💰</span>
+                                <div class="list-item-content">
+                                    <div class="list-item-title">AI Income Opportunities</div>
+                                    <div class="list-item-subtitle">Freelance, content, automation</div>
+                                </div>
+                                <span class="list-item-meta">Apr 1</span>
+                            </div>
+                            <div class="list-item">
+                                <span class="list-item-icon">📜</span>
+                                <div class="list-item-content">
+                                    <div class="list-item-title">Philosophy & Growth</div>
+                                    <div class="list-item-subtitle">Stoicism, decision-making, rest</div>
+                                </div>
+                                <span class="list-item-meta">Mar 31</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="icon">📁</span>
+                            <h3>Week 13, 2026</h3>
+                            <span class="badge">Mar 24 - Mar 30</span>
+                        </div>
+                        <div class="list-container">
+                            <div class="list-item">
+                                <span class="list-item-icon">🧠</span>
+                                <div class="list-item-content">
+                                    <div class="list-item-title">AI Models Research</div>
+                                    <div class="list-item-subtitle">Weekly model comparison</div>
+                                </div>
+                                <span class="list-item-meta">Mar 28</span>
+                            </div>
+                            <div class="list-item">
+                                <span class="list-item-icon">💰</span>
+                                <div class="list-item-content">
+                                    <div class="list-item-title">AI Income Opportunities</div>
+                                    <div class="list-item-subtitle">Passive income strategies</div>
+                                </div>
+                                <span class="list-item-meta">Mar 27</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Tab: Security -->
             <div class="tab-content" id="tab-security">
                 <div class="card-grid">
@@ -1078,6 +1181,7 @@
                 'cron': 'Cron Jobs',
                 'memory': 'Memory',
                 'logs': 'Logs',
+                'research': 'Research',
                 'github': 'GitHub',
                 'weather': 'Weather',
                 'security': 'Security'
@@ -1121,6 +1225,31 @@
         setInterval(() => {
             document.getElementById('last-updated').textContent = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
         }, 30000);
+        
+        // Fetch and display research data
+        async function loadResearchData() {
+            try {
+                const response = await fetch('/api/data');
+                const data = await response.json();
+                
+                if (data.research) {
+                    const weeks = Object.keys(data.research);
+                    const totalFiles = weeks.reduce((sum, week) => sum + data.research[week].length, 0);
+                    
+                    document.getElementById('research-total').textContent = totalFiles;
+                    document.getElementById('research-this-week').textContent = 
+                        weeks.length > 0 ? data.research[weeks[0]].length : 0;
+                    
+                    // Update research count badge
+                    document.getElementById('research-count').textContent = totalFiles;
+                }
+            } catch (e) {
+                console.log('Research data not available yet');
+            }
+        }
+        
+        // Load research data on page load
+        loadResearchData();
     </script>
 </body>
 </html>
