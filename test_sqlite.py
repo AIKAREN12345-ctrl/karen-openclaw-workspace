@@ -1,0 +1,11 @@
+import sqlite3
+print(sqlite3.sqlite_version)
+conn = sqlite3.connect('test.db')
+cursor = conn.cursor()
+cursor.execute('CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY, name TEXT)')
+cursor.execute("INSERT OR IGNORE INTO test VALUES (1, 'vault_test')")
+conn.commit()
+cursor.execute('SELECT * FROM test')
+print(cursor.fetchall())
+conn.close()
+print('SQLite test passed!')
