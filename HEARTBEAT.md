@@ -17,7 +17,10 @@
 1. **Ollama** runs with Qwen 3.5 model
 2. **Pre-warm** cron jobs load model 3 minutes before research
 3. **Research cron job** spawns subagent with tools
-4. Subagent uses `web_search`, `web_fetch`, etc. to research
+4. Subagent uses `web_fetch` with DuckDuckGo to research
+   - Format: `https://duckduckgo.com/html?q={query}`
+   - Parse results, fetch interesting pages
+   - Compile findings into markdown
 5. Results saved to `memory/research/YYYY-MM-DD_[topic].md`
 
 ---
@@ -37,26 +40,30 @@
 ### TRIGGER-RESEARCH-OpenClaw-AI
 - **Scheduled:** 06:00 (1x daily)
 - **Action:** Research OpenClaw updates
-- **Subagent:** Uses web_search, web_fetch
+- **Subagent:** Kimi k2.5 with web_fetch + DuckDuckGo
 - **Timeout:** 300s (5 minutes)
+- **Search Method:** `https://duckduckgo.com/html?q={query}`
 
 ### TRIGGER-RESEARCH-AI-models  
 - **Scheduled:** 12:00, 18:00 (2x daily)
 - **Action:** Research AI model releases
-- **Subagent:** Uses web_search
+- **Subagent:** Kimi k2.5 with web_fetch + DuckDuckGo
 - **Timeout:** 300s (5 minutes)
+- **Search Method:** `https://duckduckgo.com/html?q={query}`
 
 ### TRIGGER-RESEARCH-AI-income
 - **Scheduled:** 22:00 (1x daily)
 - **Action:** Research AI income opportunities
-- **Subagent:** Uses web_search
+- **Subagent:** Kimi k2.5 with web_fetch + DuckDuckGo
 - **Timeout:** 300s (5 minutes)
+- **Search Method:** `https://duckduckgo.com/html?q={query}`
 
 ### TRIGGER-RESEARCH-philosophy
 - **Scheduled:** 20:00 (1x daily)
 - **Action:** Research philosophy/personal growth
-- **Subagent:** Uses web_search
+- **Subagent:** Kimi k2.5 with web_fetch + DuckDuckGo
 - **Timeout:** 300s (5 minutes)
+- **Search Method:** `https://duckduckgo.com/html?q={query}`
 
 ### TRIGGER-RESEARCH-RESET
 - **Scheduled:** 00:00 (midnight)
@@ -74,17 +81,24 @@
 
 ## System Architecture
 
-**Two-System Setup:**
+**Research Setup:**
 
 | System | Model | Use Case |
 |--------|-------|----------|
-| **Kimi** | K2.5 | Interactive conversations, complex tasks |
-| **Ollama** | Qwen 3.5 | Automated research subagents |
+| **Kimi** | K2.5 | Interactive + automated research subagents |
+| **Ollama** | Qwen 3.5 | Local tasks (sandboxed from subagents) |
 
-**Why Qwen 3.5:**
-- Proven working with OpenClaw subagents
-- Full tool support (web_search, browser, exec)
-- Reliable (was working yesterday!)
+**Why Kimi for Research:**
+- Subagents can use web_fetch, browser, exec tools
+- No sandbox restrictions (cloud API)
+- Reliable and fast
+- Costs ~2-5k tokens per research run
+
+**Search Method:**
+- Uses DuckDuckGo HTML interface via `web_fetch`
+- Format: `https://duckduckgo.com/html?q={query}`
+- No API keys needed, no auth errors
+- Replace spaces with `+` in queries
 
 ---
 
@@ -120,10 +134,10 @@ All research files use this format:
 
 ## History
 
-**2026-04-01:** Reverted to working setup
-- Ollama + Qwen 3.5 (was working yesterday)
-- Removed LM Studio from automation
-- Simplified to two-system architecture
+**2026-04-02:** Switched to Kimi for research subagents
+- Ollama sandboxed from subagents in 2026.4.1
+- Kimi subagents work reliably with full tool access
+- Updated all research triggers to use Kimi k2.5
 
 **Yesterday (2026-03-31):** System was working perfectly
 - Generated full philosophy research

@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "nodeId": "df1d68db-bc9d-473a-8387-58a46d02d887",
+  "displayName": "DESKTOP-M8AO8LN",
+  "gateway": {
+    "host": "127.0.0.1",
+    "port": 18789,
+    "tls": false
+  }
+}

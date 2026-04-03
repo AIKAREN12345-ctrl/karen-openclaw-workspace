@@ -1,2 +1,3 @@
-'Get-ChildItem' is not recognized as an internal or external command,
-operable program or batch file.
+Service config looks out of date or non-standard.
+Service config issue: Gateway service embeds OPENCLAW_GATEWAY_TOKEN and should be reinstalled. (Run `openclaw gateway install --force` to remove embedded service token.)
+Recommendation: run "openclaw doctor" (or "openclaw doctor --repair").

@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.2",
+    "lastTouchedAt": "2026-04-02T09:27:15.435Z"
+  },
+  "env": {
+    "KIMI_API_KEY": "sk-kimi-fg4oEbIRG8hooKeHvmQeIOYcASeiS6CyrwC9pzqesi8Q9CW8Olw3raAaxkLBSZ25"
+  },
+  "wizard": {
+    "lastRunAt": "2026-04-01T11:19:04.439Z",
+    "lastRunVersion": "2026.3.2",
+    "lastRunCommand": "doctor",
+    "lastRunMode": "local"
+  },
+  "browser": {
+    "enabled": true,
+    "defaultProfile": "openclaw",
+    "profiles": {
+      "openclaw": {
+        "cdpPort": 18800,
+        "color": "#FF4500"
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "kimi-coding": {
+        "baseUrl": "https://api.kimi.com/coding",
+        "apiKey": "sk-kimi-fg4oEbIRG8hooKeHvmQeIOYcASeiS6CyrwC9pzqesi8Q9CW8Olw3raAaxkLBSZ25",
+        "api": "anthropic-messages",
+        "headers": {
+          "User-Agent": "Kimi Claw Plugin"
+        },
+        "models": [
+          {
+            "id": "k2p5",
+            "name": "k2p5",
+            "contextWindow": 262144,
+            "maxTokens": 32768
+          }
+        ]
+      },
+      "ollama": {
+        "baseUrl": "http://localhost:11434",
+        "apiKey": "ollama-local",
+        "api": "ollama",
+        "models": [
+          {
+            "id": "qwen3.5:9b",
+            "name": "Qwen 3.5 9B",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "kimi-coding/k2p5",
+        "fallbacks": [
+          "ollama/qwen3.5:9b"
+        ]
+      },
+      "models": {
+        "kimi-coding/k2p5": {
+          "alias": "primary"
+        },
+        "ollama/qwen3.5:9b": {
+          "alias": "local"
+        }
+      },
+      "memorySearch": {
+        "enabled": true,
+        "provider": "ollama",
+        "store": {
+          "driver": "sqlite"
+        }
+      }
+    }
+  },
+  "tools": {
+    "exec": {
+      "host": "node"
+    }
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "botToken": "8454600036:AAGegSduv_jwuvTl_zvjamtJ8LPt7u61GrE",
+      "groupPolicy": "allowlist",
+      "streaming": "partial"
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "auth": {
+      "mode": "token",
+      "token": "320edc4f57e9091a2a92a03a69179053934baa8d7c46d1dd"
+    }
+  }
+}

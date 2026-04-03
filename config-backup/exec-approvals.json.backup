@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "socket": {
+    "path": "C:\\Users\\Karen/.openclaw/exec-approvals.sock",
+    "token": "jGM9vMl1ujBN94sfZSnCCdt0-eUCPVcq"
+  },
+  "defaults": {
+    "security": "allowlist",
+    "ask": "off",
+    "askFallback": "allowlist"
+  },
+  "agents": {
+    "main": {
+      "security": "full",
+      "ask": "off",
+      "askFallback": "allowlist",
+      "allowlist": [
+        {
+          "pattern": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "id": "35ddedf0-d2ce-4ca4-96eb-5907eb348c47",
+          "lastUsedAt": 1774775263371,
+          "lastUsedCommand": "powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE\\.openclaw\\workspace\\skills\\local-llm\\ollama-heartbeat.ps1\"",
+          "lastResolvedPath": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+        },
+        {
+          "pattern": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+          "id": "8697e141-b704-4c2e-a008-be478e7f9992",
+          "lastUsedAt": 1774126720302,
+          "lastUsedCommand": "pwsh -NoProfile -Command \"Invoke-RestMethod -Uri 'http://localhost:11434/api/tags'\"",
+          "lastResolvedPath": "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
+        },
+        {
+          "pattern": "C:\\Windows\\System32\\cmd.exe",
+          "id": "37a7efda-aaf5-4127-952f-bfc60f372473",
+          "lastUsedAt": 1772956628887,
+          "lastUsedCommand": "cmd /c \"openclaw memory index --force\"",
+          "lastResolvedPath": "C:\\WINDOWS\\system32\\cmd.exe"
+        },
+        {
+          "pattern": "C:\\Program Files\\Python311\\python.exe",
+          "id": "e9523075-7477-4a7a-bd94-d779f215ffa6",
+          "lastUsedAt": 1775027172610,
+          "lastUsedCommand": "python --version; pip --version",
+          "lastResolvedPath": "C:\\Program Files\\Python311\\python.exe"
+        },
+        {
+          "pattern": "C:\\Users\\Karen\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
+          "id": "e32f2f61-7d82-428b-809b-2d09f1637680",
+          "lastUsedAt": 1775021018895,
+          "lastUsedCommand": "ollama run qwen3.5:9b \"keepalive\" --verbose",
+          "lastResolvedPath": "C:\\Users\\Karen\\AppData\\Local\\Programs\\Ollama\\ollama.exe"
+        },
+        {
+          "pattern": "C:\\Program Files\\Git\\cmd\\git.exe",
+          "id": "git-allowlist-entry",
+          "lastUsedAt": 1775121420377,
+          "lastUsedCommand": "git push",
+          "lastResolvedPath": "C:\\Program Files\\Git\\cmd\\git.exe"
+        }
+      ]
+    }
+  }
+}
