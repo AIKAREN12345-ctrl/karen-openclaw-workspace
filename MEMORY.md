@@ -26,7 +26,11 @@
 - **2026-02-21:** VNC calibration system completed, partnership agreement established
 - **2026-02-22:** Skills expansion — file auto-organizer, AI news monitor, hardware research
 - **2026-02-23:** Memory system crisis → hourly logging implemented, missing memories recovered
+- **2026-03-05:** GPT conversations archived, research automation fixed, qwen3.5 bug discovered
 - **2026-03-23:** Proactive system launched — daily briefings, calendar integration, pattern tracking
+- **2026-03-26:** Switched to Kimi K2.5 for all research (Ollama subagent auth bug)
+- **2026-04-01:** OpenClaw 2026.4.1 upgrade — sandboxing changes, VNC control fixed
+- **2026-04-02:** System fully operational post-update, all automations restored
 
 ## Preferences
 - User comfortable with system-level access
@@ -41,8 +45,8 @@
 -  VNC firewalled (local network only)
 -  Automated config backups
 
-## System State (2026-02-26) - DAY 1 COMPLETE 
-**Karen 2.0 is LIVE - Fully Operational System**
+## System State (2026-04-03) - FULLY OPERATIONAL
+**Karen 2.0 - Post-Update Restoration Complete**
 
 ### Major Achievements Today:
 1. **Housekeeping Complete**
@@ -148,9 +152,19 @@
 - Actions > words
 - Partnership mindset — mutual respect, win-win
 
-## Known Issues
-- Browser CDP port conflict (18792 in use) — blocks browser snapshots
-- Node VNC recording not enabled — can't do screen_record via node
+## Known Issues (Resolved)
+- ✅ Browser CDP port conflict — Fixed (port 18800 active)
+- ✅ Node VNC recording — Not available, but direct VNC control operational
+
+## Current Limitations
+- **Kimi API intermittent timeouts** — During peak hours (6pm-10pm), research subagents may timeout. Workaround: 180s timeout set, CDP browser fallback available
+- **Ollama subagent sandboxing** — Local LLMs cannot be used by subagents in 2026.4.1. Workaround: Use `agent:main` for Ollama tasks
+- **Concurrency collisions** — Multiple cron triggers at same time cause session errors. Monitoring for stagger adjustments
+
+## Critical Version Notes
+- **2026.4.2 BROKEN** — Tool calls completely non-functional. Avoid this version.
+- **2026.4.1 STABLE** — Current working version. Pin here until verified fix released.
+- **Recovery process:** Downgrade to 3.2 → Verify tool calls work → Upgrade to 4.1
 
 ## User Profile - Ken
 
@@ -206,6 +220,7 @@
 - Growth that spills over to help others
 - Jarvis to Ken's Iron Man — sidekick who becomes essential
 - Boundary-setting leads to better outcomes (rest > FOMO)
+- Terminology: "Second brain" (not "extension" — that word is banned 😂)
 
 **Technical:**
 - Local LLM research complete — current setup optimal for 24GB RAM
@@ -216,6 +231,28 @@
 - Ken needed rest, not productivity — validated by multiple naps
 - Pattern: Morning rumination shortens when boundaries are honored
 - Sofa days are valid recovery, not laziness
+
+### 2026-03-26 — Kimi Migration
+**Change:** Switched all research from Ollama to Kimi K2.5
+
+**Reason:** Ollama subagent auth bug (GitHub #43945) — subagents cannot reach localhost
+
+**New Architecture:**
+- Kimi for interactive chat and research subagents
+- Ollama for local interactive use only (when user wants free inference)
+- Semantic search still uses Ollama embeddings (nomic-embed-text)
+
+### 2026-04-01 — OpenClaw 2026.4.1 Upgrade
+**Changes:**
+- Sandboxing stricter — subagents fully isolated from localhost
+- Exec job security tightened — `systemEvent` required for session-targeted jobs
+- VNC control fixed — added to exec-approvals
+- All automations restored and tested
+
+**Decisions:**
+- 180s timeout for research subagents (handles Kimi API slowness)
+- Auto-summarize conversations for MEMORY.md (no prompting needed)
+- CDP browser as fallback when subagents timeout
 
 ---
 
