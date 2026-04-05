@@ -4,7 +4,8 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || '0.0.0.0';  // Listen on all interfaces for Tailscale
 
 // Middleware
 app.use(express.json());
@@ -250,7 +251,10 @@ app.get('/', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-    console.log(`🦞 Karen Dashboard Server running at http://localhost:${PORT}`);
+app.listen(PORT, HOST, () => {
+    console.log(`🦞 Karen Dashboard Server running at:`);
+    console.log(`  Local: http://localhost:${PORT}`);
+    console.log(`  Network: http://${HOST}:${PORT}`);
+    console.log(`  Tailscale: http://100.75.72.26:${PORT} (if on Tailscale)`);
     console.log('Press Ctrl+C to stop');
 });
