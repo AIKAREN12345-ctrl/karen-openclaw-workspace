@@ -93,16 +93,9 @@
 
 ### DAILY-SESSION-CLEANUP
 - **Scheduled:** 23:00 (1x daily)
-- **Action:** Archive old sessions and restart OpenClaw fresh
+- **Action:** System cleanup reminder
 - **Purpose:** Prevent Task Flow overload from accumulated sessions
-- **Process:**
-  1. Backup sessions.json to dated archive
-  2. Log archive entry to memory/session-archives.md
-  3. Restart gateway to clear active sessions
-- **Note:** Critical for system stability with 8 research jobs
-- **Subagent:** Kimi k2.5 with web_fetch + DuckDuckGo
-- **Timeout:** 300s (5 minutes)
-- **Search Method:** `https://duckduckgo.com/html?q={query}`
+- **Note:** Receives cleanup event; session archive already ran at 22:55
 
 ### TRIGGER-RESEARCH-RESET
 - **Scheduled:** 00:00 (midnight)
