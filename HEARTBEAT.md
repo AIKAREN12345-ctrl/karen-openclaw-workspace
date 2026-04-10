@@ -1,66 +1,105 @@
 # HEARTBEAT.md
 
-## Research Automation (Ollama Mode)
+## Research Automation (Kimi Mode - 2026.4.8+)
 
-**Schedule (5 runs per day):**
-- **06:00** — OpenClaw updates (morning briefing)
-- **12:00** — AI models check (midday)
-- **18:00** — AI models check (evening)
-- **20:00** — Philosophy/personal growth
-- **22:00** — AI income opportunities
+**Schedule (8 runs per day - staggered 2-hour intervals):**
+- **07:00** — AI self-improvement & best practices
+- **09:00** — OpenClaw updates & system optimization
+- **11:00** — KDP coloring books & passive income
+- **13:00** — AI content creation & productivity tools
+- **15:00** — Local LLM developments & optimization
+- **17:00** — AI security & privacy best practices
+- **19:00** — Emerging AI technologies & frameworks
+- **21:00** — Philosophy & personal growth
 
-**Note:** Research uses Ollama with Qwen 3.5 via OpenClaw subagents.
+**Note:** All research uses Kimi K2.5 subagents. Ollama/local LLMs disabled (2026-04-08).
 
 ---
 
 ### How It Works
-1. **Ollama** runs with Qwen 3.5 model
-2. **Pre-warm** cron jobs load model 3 minutes before research
-3. **Research cron job** spawns subagent with tools
-4. Subagent uses `web_fetch` with DuckDuckGo to research
+1. **Kimi K2.5** subagents handle all research
+2. Subagent uses `web_fetch` with DuckDuckGo to research
    - Format: `https://duckduckgo.com/html?q={query}`
    - Parse results, fetch interesting pages
    - Compile findings into markdown
-5. Results saved to `memory/research/YYYY-MM-DD_[topic].md`
+3. Results saved to `C:\Users\Karen\.openclaw\workspace\memory\research\YYYY-MM-DD_[topic].md`
+   - **Important:** Subagents on Windows must use the absolute path above, not relative paths like `memory/research/...`
 
 ---
 
-### Ollama Model Management
-
-**Keepalive:** Hourly (keeps model warm)
-**Pre-warm:** 3 minutes before each research job
-- 05:57 → 06:00 research
-- 11:57 → 12:00 research
-- 17:57 → 18:00 research
-- 19:57 → 20:00 research
-- 21:57 → 22:00 research
-
----
+### TRIGGER-RESEARCH-self-improvement
+- **Scheduled:** 07:00 (1x daily)
+- **Action:** Research AI agent best practices and self-improvement
+- **Query:** "AI agent best practices 2026 autonomous agents improvements"
+- **Subagent:** Kimi k2.5 with web_fetch + DuckDuckGo
+- **Timeout:** 300s (5 minutes)
 
 ### TRIGGER-RESEARCH-OpenClaw-AI
-- **Scheduled:** 06:00 (1x daily)
-- **Action:** Research OpenClaw updates
+- **Scheduled:** 09:00 (1x daily)
+- **Action:** Research OpenClaw updates and system optimization
+- **Query:** "OpenClaw latest updates features security 2026"
 - **Subagent:** Kimi k2.5 with web_fetch + DuckDuckGo
 - **Timeout:** 300s (5 minutes)
-- **Search Method:** `https://duckduckgo.com/html?q={query}`
 
-### TRIGGER-RESEARCH-AI-models  
-- **Scheduled:** 12:00, 18:00 (2x daily)
-- **Action:** Research AI model releases
+### TRIGGER-RESEARCH-kdp-coloring-books
+- **Scheduled:** 11:00 (1x daily)
+- **Action:** Research KDP coloring books and passive income
+- **Query:** "KDP coloring books trends 2026 passive income AI"
 - **Subagent:** Kimi k2.5 with web_fetch + DuckDuckGo
 - **Timeout:** 300s (5 minutes)
-- **Search Method:** `https://duckduckgo.com/html?q={query}`
 
-### TRIGGER-RESEARCH-AI-income
-- **Scheduled:** 22:00 (1x daily)
-- **Action:** Research AI income opportunities
+### TRIGGER-RESEARCH-ai-tools
+- **Scheduled:** 13:00 (1x daily)
+- **Action:** Research AI content creation and productivity tools
+- **Query:** "3 new AI tools April 2026 video writing image - brief focused research"
+- **Subagent:** Kimi k2.5 with web_fetch + DuckDuckGo
+- **Timeout:** 180s (3 minutes)
+- **Note:** Keep queries focused to avoid timeouts. Target 3 specific tools max.
+
+### TRIGGER-RESEARCH-local-llm
+- **Scheduled:** 15:00 (1x daily)
+- **Action:** Research local LLM developments and optimization
+- **Query:** "local LLM Ollama optimization 2026 self-hosted AI"
 - **Subagent:** Kimi k2.5 with web_fetch + DuckDuckGo
 - **Timeout:** 300s (5 minutes)
-- **Search Method:** `https://duckduckgo.com/html?q={query}`
+
+### TRIGGER-RESEARCH-security
+- **Scheduled:** 17:00 (1x daily)
+- **Action:** Research AI security and privacy best practices
+- **Query:** "AI security privacy best practices 2026 agent safety"
+- **Subagent:** Kimi k2.5 with web_fetch + DuckDuckGo
+- **Timeout:** 300s (5 minutes)
+
+### TRIGGER-RESEARCH-emerging-tech
+- **Scheduled:** 19:00 (1x daily)
+- **Action:** Research emerging AI technologies and frameworks
+- **Query:** "emerging AI technologies 2026 multimodal voice agents"
+- **Subagent:** Kimi k2.5 with web_fetch + DuckDuckGo
+- **Timeout:** 300s (5 minutes)
 
 ### TRIGGER-RESEARCH-philosophy
-- **Scheduled:** 20:00 (1x daily)
-- **Action:** Research philosophy/personal growth
+- **Scheduled:** 21:00 (1x daily)
+- **Action:** Research philosophy and personal growth
+- **Query:** "philosophy personal growth AI human collaboration 2026"
+- **Subagent:** Kimi k2.5 with web_fetch + DuckDuckGo
+- **Timeout:** 300s (5 minutes)
+
+### ARCHIVE-SESSIONS
+- **Scheduled:** 22:55 (1x daily)
+- **Action:** Run session archive script before cleanup
+- **Command:** `powershell C:\Users\Karen\.openclaw\workspace\scripts\session-archive.ps1`
+- **Purpose:** Archive session history to memory/session-archive/
+- **Note:** PowerShell script for Windows reliability
+
+### DAILY-SESSION-CLEANUP
+- **Scheduled:** 23:00 (1x daily)
+- **Action:** Archive old sessions and restart OpenClaw fresh
+- **Purpose:** Prevent Task Flow overload from accumulated sessions
+- **Process:**
+  1. Backup sessions.json to dated archive
+  2. Log archive entry to memory/session-archives.md
+  3. Restart gateway to clear active sessions
+- **Note:** Critical for system stability with 8 research jobs
 - **Subagent:** Kimi k2.5 with web_fetch + DuckDuckGo
 - **Timeout:** 300s (5 minutes)
 - **Search Method:** `https://duckduckgo.com/html?q={query}`
@@ -70,12 +109,12 @@
 - **Action:** Reset daily run counters
 - **Direct Execution:** No subagent needed
 
----
-
-## Morning Memory Load (Daily at 08:00)
-- Run: python C:\Users\Karen\.openclaw\workspace\skills\local-llm\morning_memory_loader.py
-- Purpose: Auto-load yesterday's conversations and system status
-- No user prompt needed - runs automatically
+### BACKUP-GITHUB
+- **Scheduled:** 02:00 (1x daily)
+- **Action:** Commit and push workspace to GitHub
+- **Command:** `powershell C:\Users\Karen\.openclaw\workspace\scripts\github-backup.ps1`
+- **Purpose:** Save workspace state to git for recall and review
+- **Note:** Runs `git add -A`, commits with dated message, pushes to origin
 
 ---
 
@@ -86,7 +125,6 @@
 | System | Model | Use Case |
 |--------|-------|----------|
 | **Kimi** | K2.5 | Interactive + automated research subagents |
-| **Ollama** | Qwen 3.5 | Local tasks (sandboxed from subagents) |
 
 **Why Kimi for Research:**
 - Subagents can use web_fetch, browser, exec tools
@@ -119,30 +157,97 @@ All research files use this format:
 
 **Subagent timeout:**
 - Normal for first run (cold-start ~60-90s)
-- Pre-warm jobs should prevent this
-- Check if Ollama is running: `ollama ps`
-
-**Empty research output:**
-- Check if model is loaded: `ollama ps`
-- Try running keepalive manually
+- Check Kimi API status
 - Check OpenClaw logs
 
-**Model not found:**
-- Ensure Qwen 3.5 is pulled: `ollama pull qwen3.5:9b`
+**Empty research output:**
+- Check DuckDuckGo accessibility
+- Try running research manually
+- Check OpenClaw logs
 
 ---
 
 ## History
+
+**2026-04-08:** Disabled Ollama/local LLMs
+- AMD GPU not supported by Ollama (CUDA only)
+- CPU inference too slow for OpenClaw workflows
+- Switched to 100% Kimi K2.5 for all operations
+- Ollama processes stopped, plugin disabled
 
 **2026-04-02:** Switched to Kimi for research subagents
 - Ollama sandboxed from subagents in 2026.4.1
 - Kimi subagents work reliably with full tool access
 - Updated all research triggers to use Kimi k2.5
 
-**Yesterday (2026-03-31):** System was working perfectly
-- Generated full philosophy research
-- All subagents completed successfully
+---
+
+## Heartbeat Processing Instructions
+
+When I receive a heartbeat poll or system event trigger, I should check for and process research automation triggers.
+
+### Research Trigger Processing
+
+When I receive a message or system event matching RESEARCH-*, spawn a research subagent immediately. This applies whether delivered via systemEvent or agentTurn (isolated sessions use agentTurn).
+
+**RESEARCH-SELF-IMPROVEMENT (07:00)**
+```
+Spawn subagent with: Research AI agent best practices for 2026. Use web_fetch with DuckDuckGo. Save to C:\Users\Karen\.openclaw\workspace\memory\research\YYYY-MM-DD_self_improvement.md
+```
+
+**RESEARCH-OPENCLAW (09:00)**
+```
+Spawn subagent with: Research latest OpenClaw updates, features, security 2026. Use web_fetch. Save to C:\Users\Karen\.openclaw\workspace\memory\research\YYYY-MM-DD_openclaw.md
+```
+
+**RESEARCH-KDP (10:30)**
+```
+Spawn subagent with: Research KDP coloring books trends 2026. Use web_fetch. Save to C:\Users\Karen\.openclaw\workspace\memory\research\YYYY-MM-DD_kdp.md
+```
+
+**RESEARCH-AI-TOOLS (13:00)**
+```
+Spawn subagent with: Research 3 new AI tools April 2026. Brief focused. Use web_fetch. Save to C:\Users\Karen\.openclaw\workspace\memory\research\YYYY-MM-DD_ai_tools.md
+```
+
+**RESEARCH-LOCAL-LLM (15:00)**
+```
+Spawn subagent with: Research local LLM developments 2026. Use web_fetch. Save to C:\Users\Karen\.openclaw\workspace\memory\research\YYYY-MM-DD_local_llm.md
+```
+
+**RESEARCH-SECURITY (17:00)**
+```
+Spawn subagent with: Research AI security privacy best practices 2026. Use web_fetch. Save to C:\Users\Karen\.openclaw\workspace\memory\research\YYYY-MM-DD_security.md
+```
+
+**RESEARCH-EMERGING-TECH (19:00)**
+```
+Spawn subagent with: Research emerging AI technologies 2026. Use web_fetch. Save to C:\Users\Karen\.openclaw\workspace\memory\research\YYYY-MM-DD_emerging_tech.md
+```
+
+**RESEARCH-PHILOSOPHY (21:00)**
+```
+Spawn subagent with: Research philosophy personal growth AI collaboration 2026. Use web_fetch. Save to C:\Users\Karen\.openclaw\workspace\memory\research\YYYY-MM-DD_philosophy.md
+```
 
 ---
 
-*Last updated: 2026-04-01*
+## Research Efficiency Rules
+
+To avoid timeouts, all research subagents should:
+1. **Search once** using DuckDuckGo via `ollama_web_search` or `web_fetch`
+2. **Pick only 3 results** — do not fetch more pages than necessary
+3. **Synthesize immediately** — 1 concise sentence per finding
+4. **Save directly** with `write` — no nested subagents
+5. **Target completion in under 60 seconds**
+
+If search takes >30s, skip fetching extra pages and summarize from search snippets alone.
+
+**Subagent Configuration:**
+- Model: kimi-coding/k2p5
+- Timeout: 300s (180s for AI-tools)
+- Tools: web_fetch, web_search, write
+
+---
+
+*Last updated: 2026-04-08*

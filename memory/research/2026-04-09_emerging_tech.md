@@ -1,0 +1,7 @@
+## Emerging Tech Research - 2026-04-09 19:11
+
+- **VoiceAgentRAG (Salesforce AI Research)** — A dual-agent architecture that solves RAG latency in voice agents by splitting work into a foreground "Fast Talker" (sub-millisecond cache lookups) and a background "Slow Thinker" (predictive pre-fetching). Achieves a 316× retrieval speedup (110 ms → 0.35 ms) with a 75% cache hit rate. (Source: https://www.marktechpost.com/2026/03/30/salesforce-ai-research-releases-voiceagentrag-a-dual-agent-memory-router-that-cuts-voice-rag-retrieval-latency-by-316x/)
+
+- **Gemini 3.1 Flash Live (Google)** — A real-time multimodal voice model that natively processes audio and video streams via a bidirectional WebSocket API, collapsing the traditional VAD→STT→LLM→TTS latency stack. Scored 90.8% on ComplexFuncBench Audio for multi-step function calling from audio input and supports tunable `thinkingLevel` for latency/reasoning trade-offs. (Source: https://www.marktechpost.com/2026/03/26/google-releases-gemini-3-1-flash-live-a-real-time-multimodal-voice-model-for-low-latency-audio-video-and-tool-use-for-ai-agents/)
+
+- **TEN Framework** — An open-source ecosystem for building real-time conversational voice AI, bundling the core runtime with dedicated VAD, turn detection, and a portal management interface. Provides ready-to-use agent templates and is designed to handle interruptions, turn-taking, and low-latency TTS out of the box. (Source: https://themenonlab.blog/blog/ten-framework-voice-ai-agents)

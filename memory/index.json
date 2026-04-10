@@ -1,0 +1,161 @@
+{
+  "version": "3.0",
+  "lastDream": "2026-04-07T07:44:00Z",
+  "config": {
+    "notificationLevel": "summary",
+    "instanceName": "Karen-Desktop"
+  },
+  "entries": [
+    {
+      "id": "mem_001",
+      "summary": "Core identity - Karen, OpenClaw AI assistant for Ken",
+      "source": "memory/2026-04-03.md",
+      "target": "MEMORY.md#Core Identity",
+      "created": "2026-04-07",
+      "lastReferenced": "2026-04-07",
+      "referenceCount": 1,
+      "importance": 0.9,
+      "tags": ["identity", "core"],
+      "related": [],
+      "archived": false
+    },
+    {
+      "id": "mem_002",
+      "summary": "User profile - Ken, Europe/Dublin timezone",
+      "source": "memory/2026-04-03.md",
+      "target": "MEMORY.md#User",
+      "created": "2026-04-07",
+      "lastReferenced": "2026-04-07",
+      "referenceCount": 1,
+      "importance": 0.9,
+      "tags": ["user", "profile"],
+      "related": ["mem_001"],
+      "archived": false
+    },
+    {
+      "id": "mem_003",
+      "summary": "OpenClaw system management project - active",
+      "source": "memory/2026-04-06.md",
+      "target": "MEMORY.md#OpenClaw System Management",
+      "created": "2026-04-07",
+      "lastReferenced": "2026-04-07",
+      "referenceCount": 1,
+      "importance": 0.85,
+      "tags": ["project", "openclaw", "system"],
+      "related": ["mem_004"],
+      "archived": false
+    },
+    {
+      "id": "mem_004",
+      "summary": "Research automation with 8 cron jobs every 2 hours",
+      "source": "memory/2026-04-06.md",
+      "target": "MEMORY.md#Research Automation",
+      "created": "2026-04-07",
+      "lastReferenced": "2026-04-07",
+      "referenceCount": 1,
+      "importance": 0.8,
+      "tags": ["automation", "research", "cron"],
+      "related": ["mem_003"],
+      "archived": false
+    },
+    {
+      "id": "mem_005",
+      "summary": "Decision: Updated to OpenClaw 2026.4.5, enabled dreaming feature",
+      "source": "memory/2026-04-06.md",
+      "target": "MEMORY.md#Key Decisions",
+      "created": "2026-04-07",
+      "lastReferenced": "2026-04-07",
+      "referenceCount": 1,
+      "importance": 0.75,
+      "tags": ["decision", "upgrade", "openclaw"],
+      "related": ["mem_006"],
+      "archived": false
+    },
+    {
+      "id": "mem_006",
+      "summary": "Decision: Downgraded from 2026.4.1 to 2026.3.2 due to bug #48457",
+      "source": "memory/2026-04-03.md",
+      "target": "MEMORY.md#Key Decisions",
+      "created": "2026-04-07",
+      "lastReferenced": "2026-04-07",
+      "referenceCount": 1,
+      "importance": 0.8,
+      "tags": ["decision", "downgrade", "bug"],
+      "related": ["mem_005", "mem_007"],
+      "archived": false
+    },
+    {
+      "id": "mem_007",
+      "summary": "Lesson: Bug #48457 blocked all interpreter commands in 2026.4.1",
+      "source": "memory/2026-04-03.md",
+      "target": "MEMORY.md#Lessons Learned",
+      "created": "2026-04-07",
+      "lastReferenced": "2026-04-07",
+      "referenceCount": 1,
+      "importance": 0.85,
+      "tags": ["lesson", "bug", "openclaw"],
+      "related": ["mem_006"],
+      "archived": false
+    },
+    {
+      "id": "mem_008",
+      "summary": "Lesson: Ollama + local-automation agent timeout - use agent:main",
+      "source": "memory/2026-04-03.md",
+      "target": "MEMORY.md#Lessons Learned",
+      "created": "2026-04-07",
+      "lastReferenced": "2026-04-07",
+      "referenceCount": 1,
+      "importance": 0.7,
+      "tags": ["lesson", "ollama", "workaround"],
+      "related": [],
+      "archived": false
+    },
+    {
+      "id": "mem_009",
+      "summary": "Environment specs - Windows 11, OpenClaw 2026.4.5, Kimi k2.5",
+      "source": "memory/2026-04-06.md",
+      "target": "MEMORY.md#Environment",
+      "created": "2026-04-07",
+      "lastReferenced": "2026-04-07",
+      "referenceCount": 1,
+      "importance": 0.75,
+      "tags": ["environment", "specs", "tools"],
+      "related": ["mem_003"],
+      "archived": false
+    },
+    {
+      "id": "mem_010",
+      "summary": "Procedures - Research uses Kimi subagent with 300s timeout",
+      "source": "memory/2026-04-06.md",
+      "target": "memory/procedures.md",
+      "created": "2026-04-07",
+      "lastReferenced": "2026-04-07",
+      "referenceCount": 1,
+      "importance": 0.65,
+      "tags": ["procedure", "research", "workflow"],
+      "related": ["mem_004"],
+      "archived": false
+    }
+  ],
+  "stats": {
+    "totalEntries": 10,
+    "avgImportance": 0.78,
+    "lastPruned": null,
+    "healthScore": 65,
+    "healthMetrics": {
+      "freshness": 100,
+      "coverage": 80,
+      "coherence": 40,
+      "efficiency": 85,
+      "reachability": 30
+    },
+    "insights": [
+      "Fresh instance with 45+ days of daily logs - strong foundation for memory consolidation",
+      "Coherence at 40% - consider adding more cross-references between related entries",
+      "Research automation is the dominant pattern - consider creating an episode file for this project"
+    ],
+    "healthHistory": [
+      { "date": "2026-04-07", "score": 65 }
+    ]
+  }
+}

@@ -24,9 +24,11 @@
 - **Use Cases:** Software installation, system configuration, automation scripts
 
 ### 2. Browser Automation (CDP)
-- **Tool:** `browser`
-- **Status:**  Operational
-- **Port:** 18800 (openclaw profile)
+- **Tool:** `browser` / CDP Proxy
+- **Status:**  Operational when batch file is running
+- **Chrome Debug Port:** 9222
+- **CDP Proxy Port:** 3456
+- **Start Command:** `C:\Users\Karen\.openclaw\workspace\scripts\start-cdp.bat`
 - **Capabilities:** Navigate, click, type, extract content, screenshots
 - **Use Cases:** Web research, form automation, data extraction
 

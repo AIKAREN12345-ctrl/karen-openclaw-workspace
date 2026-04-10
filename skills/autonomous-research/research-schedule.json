@@ -1,0 +1,90 @@
+{
+  "schedule": {
+    "description": "Staggered research schedule - spreads load across day",
+    "timezone": "Europe/Dublin",
+    "jobs": [
+      {
+        "name": "self-improvement-ai",
+        "time": "07:00",
+        "topic": "AI agent best practices and self-improvement techniques",
+        "query": "AI agent best practices 2026 autonomous agents improvements",
+        "frequency": "daily",
+        "model": "kimi-coding/k2p5",
+        "timeout": 300
+      },
+      {
+        "name": "openclaw-system",
+        "time": "09:00",
+        "topic": "OpenClaw updates and system optimization",
+        "query": "OpenClaw latest updates features security",
+        "frequency": "daily",
+        "model": "kimi-coding/k2p5",
+        "timeout": 300
+      },
+      {
+        "name": "kdp-passive-income",
+        "time": "11:00",
+        "topic": "KDP coloring books and passive income",
+        "query": "KDP coloring books trends 2026 passive income AI",
+        "frequency": "daily",
+        "model": "kimi-coding/k2p5",
+        "timeout": 300
+      },
+      {
+        "name": "ai-tools-creation",
+        "time": "13:00",
+        "topic": "AI content creation and productivity tools",
+        "query": "AI content creation tools 2026 productivity automation",
+        "frequency": "daily",
+        "model": "kimi-coding/k2p5",
+        "timeout": 300
+      },
+      {
+        "name": "local-llm",
+        "time": "15:00",
+        "topic": "Local LLM developments and optimization",
+        "query": "local LLM Ollama optimization 2026 self-hosted AI",
+        "frequency": "daily",
+        "model": "kimi-coding/k2p5",
+        "timeout": 300
+      },
+      {
+        "name": "security-privacy",
+        "time": "17:00",
+        "topic": "AI security and privacy best practices",
+        "query": "AI security privacy best practices 2026 agent safety",
+        "frequency": "daily",
+        "model": "kimi-coding/k2p5",
+        "timeout": 300
+      },
+      {
+        "name": "emerging-tech",
+        "time": "19:00",
+        "topic": "Emerging AI technologies and frameworks",
+        "query": "emerging AI technologies 2026 multimodal voice agents",
+        "frequency": "daily",
+        "model": "kimi-coding/k2p5",
+        "timeout": 300
+      },
+      {
+        "name": "philosophy-growth",
+        "time": "21:00",
+        "topic": "Philosophy and personal growth",
+        "query": "philosophy personal growth AI human collaboration 2026",
+        "frequency": "daily",
+        "model": "kimi-coding/k2p5",
+        "timeout": 300
+      }
+    ],
+    "staggering": {
+      "description": "2-hour gaps between research jobs to prevent overload",
+      "minGapMinutes": 120,
+      "maxConcurrent": 1
+    },
+    "output": {
+      "directory": "memory/research",
+      "format": "YYYY-MM-DD_{topic}.md",
+      "maxAgeDays": 30
+    }
+  }
+}

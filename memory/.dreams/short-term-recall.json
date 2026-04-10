@@ -1,0 +1,822 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-09T21:27:24.518Z",
+  "entries": {
+    "memory:memory/2026-03-17.md:105:154": {
+      "key": "memory:memory/2026-03-17.md:105:154",
+      "path": "memory/2026-03-17.md",
+      "startLine": 105,
+      "endLine": 154,
+      "source": "memory",
+      "snippet": "- All research schedules running - GitHub backup: every 24h **Ollama:** Idle (models load on demand) ✅ **Git/Backup:** Healthy ✅ - Last backup: March 16, 2026 - 37 uncommitted files (working session) **Overall:** All critical systems functional. Ready for CMC project. --- ## CMC Project Started (17:43 GMT) **Brief Details:** - Module: Contemporary Marketing Communications (B6BU118) - Weight: 30% (CA2) - Format: Group presentation - Due: Week 20, 2026 (May 2026 feedback) **Task:** - Pick IMC topic(s) for a company of choice - Get lecturer approval first - Present their IMC approach with past campaign examples - Demonstrate understanding of IMC in relation to the company **Status:** Aw",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.9458236336708068,
+      "maxScore": 0.47291550934314724,
+      "firstRecalledAt": "2026-04-08T14:14:06.544Z",
+      "lastRecalledAt": "2026-04-08T17:02:12.098Z",
+      "queryHashes": [
+        "8ba8ad0f9fc8",
+        "354641b0f9e9"
+      ],
+      "recallDays": [
+        "2026-04-08"
+      ],
+      "conceptTags": [
+        "backup",
+        "git/backup",
+        "all",
+        "research",
+        "schedules",
+        "running",
+        "github",
+        "24h"
+      ]
+    },
+    "memory:memory/2026-04-03.md:1:55": {
+      "key": "memory:memory/2026-04-03.md:1:55",
+      "path": "memory/2026-04-03.md",
+      "startLine": 1,
+      "endLine": 55,
+      "source": "memory",
+      "snippet": "--- ## 19:06 - Session Summary: OpenClaw 2026.4.1 Downgrade & System Restoration **Major Events:** - Discovered critical bug #48457 in OpenClaw 2026.4.1 blocking ALL interpreter commands (PowerShell, Python, etc.) - Downgraded from 2026.4.1 → 2026.3.8 → 2026.3.2 to restore functionality - Successfully restored PowerShell and Python command execution - Fixed memory search (re-enabled in config) - Fixed Telegram groupPolicy (changed to \"open\") - Restarted node service - Installed 6 new skills: github, autonomous-research, x-monitor, web-monitor, x-agent, vault - `gh` CLI confirmed working (v2.87.3, authenticated as AIKAREN12345-ctrl) **System Status (End of Session):** - OpenClaw: 2026.3.",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.9151695817708968,
+      "maxScore": 0.45865640044212336,
+      "firstRecalledAt": "2026-04-08T22:08:00.066Z",
+      "lastRecalledAt": "2026-04-09T10:33:47.717Z",
+      "queryHashes": [
+        "6750da65d4a8",
+        "f28ef0e8cdd2"
+      ],
+      "recallDays": [
+        "2026-04-08",
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "2026.4.1",
+        "2026.3.8",
+        "2026.3.2",
+        "re-enabled",
+        "autonomous-research",
+        "x-monitor",
+        "web-monitor",
+        "x-agent"
+      ]
+    },
+    "memory:memory/2026-03-01.md:686:714": {
+      "key": "memory:memory/2026-03-01.md:686:714",
+      "path": "memory/2026-03-01.md",
+      "startLine": 686,
+      "endLine": 714,
+      "source": "memory",
+      "snippet": "The system remains in a stable state with all services running as expected, and disk usage has decreased slightly from 12.8% to 11.9%. The resources error persists, indicating an ongoing issue with a missing file, which continues to be a concern. Immediate attention is required to resolve this by checking the specified file path and ensuring its availability. --- ## 14:03 - Hourly Memory Log **Timestamp:** 2026-03-01 14:03:25 **Hostname:** DESKTOP-M8AO8LN **Platform:** Windows 11 (25H2) (AMD64) **Ollama:** running **OpenClaw:** running System operational. --- ## 14:17 - System Monitor (Ollama-Powered) **Status:** OK ollama | OK openclaw | OK vnc | OK disk **Quick",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4369536340236664,
+      "maxScore": 0.4369536340236664,
+      "firstRecalledAt": "2026-04-09T11:26:48.795Z",
+      "lastRecalledAt": "2026-04-09T11:26:48.795Z",
+      "queryHashes": [
+        "0867fe25ba04"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "12.8",
+        "11.9",
+        "desktop-m8ao8ln",
+        "ollama-powered",
+        "the",
+        "system",
+        "remains",
+        "stable"
+      ]
+    },
+    "memory:memory/2026-02-28.md:386:424": {
+      "key": "memory:memory/2026-02-28.md:386:424",
+      "path": "memory/2026-02-28.md",
+      "startLine": 386,
+      "endLine": 424,
+      "source": "memory",
+      "snippet": "The system health report indicates that all major components are running as expected, with the ollama and openclaw services active. The disk space is also sufficient, with only 12.78% used and 811 GB free, suggesting no immediate storage concerns. Overall, the system appears stable, but monitoring should continue to ensure sustained performance. --- ## 16:45 - System Monitor (Ollama-Powered) **Status:** ollama | openclaw | disk **Ollama Analysis:** The system is currently operational with all services, including ollama and openclaw, running without issues. However, there is a concerning trend of disk space utilization; while the current free space is 811 GB (with only 12.78%",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.42816060483455654,
+      "maxScore": 0.42816060483455654,
+      "firstRecalledAt": "2026-04-09T11:26:48.795Z",
+      "lastRecalledAt": "2026-04-09T11:26:48.795Z",
+      "queryHashes": [
+        "0867fe25ba04"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "12.78",
+        "ollama-powered",
+        "the",
+        "system",
+        "health",
+        "report",
+        "indicates",
+        "all"
+      ]
+    },
+    "memory:memory/2026-02-28.md:119:161": {
+      "key": "memory:memory/2026-02-28.md:119:161",
+      "path": "memory/2026-02-28.md",
+      "startLine": 119,
+      "endLine": 161,
+      "source": "memory",
+      "snippet": "The system is currently operating with all key components running (ollama and openclaw are active), and disk space is sufficient with only 12.77% used, leaving 811 GB free. There are no critical issues reported in the health check. --- ## 07:45 - System Monitor (Ollama-Powered) **Status:** ollama | openclaw | disk **Ollama Analysis:** The system health report indicates that all critical services are running, with no specific issues reported for ollama and openclaw. However, there is a concerning trend of high disk usage at 12.88%, leaving only approximately 810 GB free out of the total storage capacity. --- ## 08:03 - Hourly Memory Log **Timestamp:** 2026-02-28 08:03",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.0717112231820998,
+      "maxScore": 0.6453719425767837,
+      "firstRecalledAt": "2026-04-09T11:26:48.795Z",
+      "lastRecalledAt": "2026-04-09T11:58:24.996Z",
+      "queryHashes": [
+        "0867fe25ba04",
+        "762080cf4d1d"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "12.77",
+        "ollama-powered",
+        "12.88",
+        "the",
+        "system",
+        "currently",
+        "operating",
+        "all"
+      ]
+    },
+    "memory:memory/2026-02-28.md:215:265": {
+      "key": "memory:memory/2026-02-28.md:215:265",
+      "path": "memory/2026-02-28.md",
+      "startLine": 215,
+      "endLine": 265,
+      "source": "memory",
+      "snippet": "The system health report indicates that all primary components (ollama, openclaw) are running without issues, and disk space is sufficient with only 12.78% used, leaving 811 GB free. There are no concerning trends or issues noted in the current metrics. --- ## 11:03 - Hourly Memory Log **Timestamp:** 2026-02-28 11:03:37 **Hostname:** DESKTOP-M8AO8LN **Platform:** Windows 11 (25H2) (AMD64) **Ollama:** running **OpenClaw:** running System operational. --- ## 11:15 - System Monitor (Ollama-Powered) **Status:** ollama | openclaw | disk **Ollama Analysis:** The system is currently operational with all key components (ollama, openclaw) running without issues. Howeve",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.42599623203277587,
+      "maxScore": 0.42599623203277587,
+      "firstRecalledAt": "2026-04-09T11:26:48.795Z",
+      "lastRecalledAt": "2026-04-09T11:26:48.795Z",
+      "queryHashes": [
+        "0867fe25ba04"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "12.78",
+        "desktop-m8ao8ln",
+        "ollama-powered",
+        "the",
+        "system",
+        "health",
+        "report",
+        "indicates"
+      ]
+    },
+    "memory:memory/2026-02-28.md:454:492": {
+      "key": "memory:memory/2026-02-28.md:454:492",
+      "path": "memory/2026-02-28.md",
+      "startLine": 454,
+      "endLine": 492,
+      "source": "memory",
+      "snippet": "The system is currently operational with all services (ollama and openclaw) running, and disk space is adequate with 811 GB free and only 12.78% used. No concerning trends or issues are evident from the provided metrics. --- ## 18:45 - System Monitor (Ollama-Powered) **Status:** ollama | openclaw | disk **Ollama Analysis:** The system appears to be operating without critical issues as of the timestamp on February 28, 2026, at 18:45. However, disk usage is relatively low with only 12.78% used and 811 GB free, which could indicate potential inefficiency in resource utilization. --- ## 19:00 - Hourly Memory Log **Timestamp:** 2026-02-28 19:00:49 **Hostname:** DESKTOP-M",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.42533427178859706,
+      "maxScore": 0.42533427178859706,
+      "firstRecalledAt": "2026-04-09T11:26:48.795Z",
+      "lastRecalledAt": "2026-04-09T11:26:48.795Z",
+      "queryHashes": [
+        "0867fe25ba04"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "12.78",
+        "ollama-powered",
+        "desktop-m",
+        "the",
+        "system",
+        "currently",
+        "operational",
+        "all"
+      ]
+    },
+    "memory:memory/2026-02-28.md:81:127": {
+      "key": "memory:memory/2026-02-28.md:81:127",
+      "path": "memory/2026-02-28.md",
+      "startLine": 81,
+      "endLine": 127,
+      "source": "memory",
+      "snippet": "The system health report indicates that all monitored services (ollama and openclaw) are running, and disk space is sufficient with only 12.77% used, leaving 811 GB free. There are no critical issues reported, but the low disk usage suggests potential underutilization or misconfiguration of storage resources. --- ## 06:45 - System Monitor (Ollama-Powered) **Status:** ollama | openclaw | disk **Ollama Analysis:** The system health report indicates that all major components (ollama, openclaw) are running without issues, and disk space is sufficient with only 12.77% of the disk being used. There are no concerning trends or issues reported at this time. --- ## 07:04 - Hourl",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6342071832681778,
+      "maxScore": 0.6342071832681778,
+      "firstRecalledAt": "2026-04-09T11:58:24.996Z",
+      "lastRecalledAt": "2026-04-09T11:58:24.996Z",
+      "queryHashes": [
+        "762080cf4d1d"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "12.77",
+        "ollama-powered",
+        "the",
+        "system",
+        "health",
+        "report",
+        "indicates",
+        "all"
+      ]
+    },
+    "memory:memory/2026-03-01.md:126:167": {
+      "key": "memory:memory/2026-03-01.md:126:167",
+      "path": "memory/2026-03-01.md",
+      "startLine": 126,
+      "endLine": 167,
+      "source": "memory",
+      "snippet": "**Status:** ollama | openclaw | disk **Ollama Analysis:** The system report indicates that all services (ollama and openclaw) are running without issues, and disk space is adequate with 811 GB free and only 12.77% used. There are no concerning trends or issues reported in this health check. --- ## 04:15 - System Monitor (Ollama-Powered) **Status:** ollama | openclaw | disk **Ollama Analysis:** The system is currently operational with all services running (ollama and openclaw). However, there is concern regarding disk space usage; while the current free space of 811 GB is sufficient, the high utilization rate of 12.77% indicates that the disk usage is rapidly increasing",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.612067174613387,
+      "maxScore": 0.612067174613387,
+      "firstRecalledAt": "2026-04-09T11:58:24.996Z",
+      "lastRecalledAt": "2026-04-09T11:58:24.996Z",
+      "queryHashes": [
+        "762080cf4d1d"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "12.77",
+        "ollama-powered",
+        "status",
+        "ollama",
+        "openclaw",
+        "disk",
+        "analysis",
+        "the"
+      ]
+    },
+    "memory:memory/2026-03-01.md:94:134": {
+      "key": "memory:memory/2026-03-01.md:94:134",
+      "path": "memory/2026-03-01.md",
+      "startLine": 94,
+      "endLine": 134,
+      "source": "memory",
+      "snippet": "## 03:01 - Hourly Memory Log **Timestamp:** 2026-03-01 03:01:33 **Hostname:** DESKTOP-M8AO8LN **Platform:** Windows 11 (25H2) (AMD64) **Ollama:** running **OpenClaw:** running System operational. --- ## 03:15 - System Monitor (Ollama-Powered) **Status:** ollama | openclaw | disk **Ollama Analysis:** The system health report indicates that all components are currently running, with the ollama and openclaw services operating without issues. However, disk usage is at 12.77%, leaving significant free space of 811 GB, which could be a concern if future growth leads to higher utilization rates. --- ## 03:45 - System Monitor (Ollama-Powered) **Status:** ollama |",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5933708581214643,
+      "maxScore": 0.5933708581214643,
+      "firstRecalledAt": "2026-04-09T11:58:24.996Z",
+      "lastRecalledAt": "2026-04-09T11:58:24.996Z",
+      "queryHashes": [
+        "762080cf4d1d"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "desktop-m8ao8ln",
+        "ollama-powered",
+        "12.77",
+        "hourly",
+        "log",
+        "timestamp",
+        "hostname",
+        "desktop"
+      ]
+    },
+    "memory:memory/2026-03-04.md:1:61": {
+      "key": "memory:memory/2026-03-04.md:1:61",
+      "path": "memory/2026-03-04.md",
+      "startLine": 1,
+      "endLine": 61,
+      "source": "memory",
+      "snippet": "## 00:25 - Memory Log Script (Cron) **Triggered by:** Scheduled cron job (dbd5274b-93c8-4a0b-bef3-7646ce87cf55) **Script:** memory-log **System Status:** - **Time:** Wednesday, March 4th, 2026 — 00:25 (Europe/Dublin) - **Hostname:** DESKTOP-M8AO8LN - **Platform:** Windows 11 (25H2) **Service Status:** - ✅ Ollama: Running (qwen2.5:14b, nomic-embed-text) - ✅ OpenClaw: Running (v2026.3.1) - ✅ VNC: Operational - ✅ Disk: Healthy (11% used) **Notes:** - Late night/early morning - system stable - No issues detected in past hour - All core services operational **Current State:** All core services operational ✅ --- ## 01:25 - Memory Log Script (Cron) **Triggered by:** Scheduled cron job (dbd5",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.0176938742399215,
+      "maxScore": 0.5320900112390518,
+      "firstRecalledAt": "2026-04-09T15:57:42.977Z",
+      "lastRecalledAt": "2026-04-09T18:21:16.473Z",
+      "queryHashes": [
+        "d2c5afd38e35",
+        "8e8862440303"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "memory-log",
+        "europe/dublin",
+        "desktop-m8ao8ln",
+        "qwen2.5",
+        "nomic-embed-text",
+        "v2026.3.1",
+        "night/early",
+        "log"
+      ]
+    },
+    "memory:memory/2026-03-07.md:73:106": {
+      "key": "memory:memory/2026-03-07.md:73:106",
+      "path": "memory/2026-03-07.md",
+      "startLine": 73,
+      "endLine": 106,
+      "source": "memory",
+      "snippet": "- 6 cron jobs running, none for memory logging - `karen-hourly-memory` job mentioned in MEMORY.md but not active - Memory search returns empty because no files exist - Morning memory loader script exists but expects pre-existing files --- ## User Profile Updates ### Health - Epilepsy diagnosis (ongoing) - Sleep deprivation significantly increases seizure risk - Currently in \"bad time\" phase with month-long sleep issues - Eating cycles disrupted ### Work - Butcher shop employment - Long/late hours contributing to sleep issues - Working today (Saturday) ### Personality/Communication - Self-aware about obsessive tendencies (\"against my better judgement\") - Appreciates humor and directness",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.0566804870963096,
+      "maxScore": 0.5297791689634322,
+      "firstRecalledAt": "2026-04-09T15:57:42.977Z",
+      "lastRecalledAt": "2026-04-09T18:21:16.473Z",
+      "queryHashes": [
+        "d2c5afd38e35",
+        "8e8862440303"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "karen-hourly-memory",
+        "memory.md",
+        "pre-existing",
+        "month-long",
+        "long/late",
+        "personality/communication",
+        "self-aware",
+        "cron"
+      ]
+    },
+    "memory:memory/2026-03-31.md:378:404": {
+      "key": "memory:memory/2026-03-31.md:378:404",
+      "path": "memory/2026-03-31.md",
+      "startLine": 378,
+      "endLine": 404,
+      "source": "memory",
+      "snippet": "- Loaded qwen3.5:9b for keepalive - Updated HEARTBEAT.md: keepalive now targets qwen3.5:9b (was qwen2.5:14b) - Updated cron job text to match **Files Modified:** - `dashboard_solo/dashboard_server.py` — complete rewrite with dynamic APIs - `HEARTBEAT.md` — updated keepalive model reference **Access:** - Local: http://localhost:5000 - Tailscale: http://100.75.72.26:5000 --- ## 23:07 - Hourly System Check (Ollama) **System Status:** - OpenClaw: 2026.3.2 - Ollama: installed, no model loaded - Disk: 17% used (768.6 GB free / 930.4 GB total) **Notes:** - Automated heartbeat via Ollama script - No API tokens used ---",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.46591313779354093,
+      "maxScore": 0.46591313779354093,
+      "firstRecalledAt": "2026-04-09T18:14:38.312Z",
+      "lastRecalledAt": "2026-04-09T18:14:38.312Z",
+      "queryHashes": [
+        "fafdc61b6561"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "qwen3.5",
+        "heartbeat.md",
+        "qwen2.5",
+        "100.75.72.26",
+        "2026.3.2",
+        "768.6",
+        "930.4",
+        "loaded"
+      ]
+    },
+    "memory:memory/2026-04-08.md:261:294": {
+      "key": "memory:memory/2026-04-08.md:261:294",
+      "path": "memory/2026-04-08.md",
+      "startLine": 261,
+      "endLine": 294,
+      "source": "memory",
+      "snippet": "- Cron jobs using `agentTurn` payload don't spawn subagents automatically - Manual subagent spawning works fine - Need `systemEvent` triggers + heartbeat processing to spawn subagents **Fix Applied:** 1. Changed all 8 research cron jobs from `agentTurn` back to `systemEvent` triggers 2. Updated HEARTBEAT.md with detailed instructions for processing each trigger 3. Added handler logic to spawn Kimi K2.5 subagents when triggers received **Manual Test Results (19:52 triggers):** - ✅ Security research: Completed in 1m12s, saved to `2026-04-08_security.md` - ✅ Emerging tech research: Completed in 1m10s, saved to `2026-04-08_emerging_tech.md` **Key Findings from Security Research:** - OWASP Top",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4640736013650894,
+      "maxScore": 0.4640736013650894,
+      "firstRecalledAt": "2026-04-09T18:14:38.312Z",
+      "lastRecalledAt": "2026-04-09T18:14:38.312Z",
+      "queryHashes": [
+        "fafdc61b6561"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "heartbeat.md",
+        "k2.5",
+        "2026-04-08-security.md",
+        "2026-04-08-emerging-tech.md",
+        "cron",
+        "jobs",
+        "agentturn",
+        "payload"
+      ]
+    },
+    "memory:memory/2026-04-03.md:39:111": {
+      "key": "memory:memory/2026-04-03.md:39:111",
+      "path": "memory/2026-04-03.md",
+      "startLine": 39,
+      "endLine": 111,
+      "source": "memory",
+      "snippet": "## 20:07 - Hourly System Check (Ollama) **System Status:** - OpenClaw: 2026.3.2 - Ollama: installed, no model loaded - Disk: 17% used (775.6 GB free / 930.4 GB total) **Notes:** - Automated heartbeat via Ollama script - No API tokens used --- ## 21:07 - Hourly System Check (Ollama) **System Status:** - OpenClaw: 2026.3.2 - Ollama: installed, no model loaded - Disk: 17% used (775.7 GB free / 930.4 GB total) **Notes:** - Automated heartbeat via Ollama script - No API tokens used --- ## 21:08 - Memory & Semantic Search Status **Memory Logging:** - ✅ Hourly cron jobs running (automated via Ollama) - ✅ Daily memory file: memory/2026-04-03.md (active) - ✅ Long-term memory: MEMORY.md (cura",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.45570210218429563,
+      "maxScore": 0.45570210218429563,
+      "firstRecalledAt": "2026-04-09T18:14:38.312Z",
+      "lastRecalledAt": "2026-04-09T18:14:38.312Z",
+      "queryHashes": [
+        "fafdc61b6561"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "2026.3.2",
+        "775.6",
+        "930.4",
+        "775.7",
+        "memory/2026-04-03.md",
+        "long-term",
+        "memory.md",
+        "hourly"
+      ]
+    },
+    "memory:memory/2026-03-23.md:35:86": {
+      "key": "memory:memory/2026-03-23.md:35:86",
+      "path": "memory/2026-03-23.md",
+      "startLine": 35,
+      "endLine": 86,
+      "source": "memory",
+      "snippet": "- **19:00:** Kimi Claw Beta explored via browser automation - **19:50:** CDP-Kimi integration tested successfully - Can now use Kimi web interface for deep research - Full internet access without API limits - **20:00:** Philosophy research triggered --- ## Systems Built Today 1. **Daily Briefing v2** - Enhanced with yesterday's wins, energy forecast, what to avoid 2. **Pattern Tracker** - Sleep, stress, decision, social pattern analysis 3. **State Tracker** - Daily scoring with trends and predictions 4. **Dashboard v1** - Web-based project visualization 5. **CDP-Kimi Integration** - Browser automation for unlimited research --- ## Key Insights ### About Ken - Boundary-setting leads",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5284664615988731,
+      "maxScore": 0.5284664615988731,
+      "firstRecalledAt": "2026-04-09T18:17:15.499Z",
+      "lastRecalledAt": "2026-04-09T18:17:15.499Z",
+      "queryHashes": [
+        "bc7d421ee326"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "cdp-kimi",
+        "web-based",
+        "boundary-setting",
+        "kimi",
+        "claw",
+        "beta",
+        "explored",
+        "via"
+      ]
+    },
+    "memory:memory/2026-03-05.md:1:40": {
+      "key": "memory:memory/2026-03-05.md:1:40",
+      "path": "memory/2026-03-05.md",
+      "startLine": 1,
+      "endLine": 40,
+      "source": "memory",
+      "snippet": "# Memory Log - 2026-03-05 ## Session Summary **Time:** 13:18 GMT **Duration:** Extended morning session **Focus:** System setup, research automation, GPT conversation archiving ## Key Activities ### 1. GPT Conversation Archive - Archived 10 GPT conversations covering: - Therapy/identity work (Katy relationship, childhood trauma) - Education planning (Trinity engineering degree) - Business planning (KGs Ltd, biltong business, company setup) - Fitness (gym return plan) - Motorcycle restoration (Zephyr 1100) - Saved to `memory/gpt-conversations-archive.md` ### 2. Research System Development - Investigated OpenClaw subagent spawning and timeouts - Discovered qwen3.5:9b is broke",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5266156911849975,
+      "maxScore": 0.5266156911849975,
+      "firstRecalledAt": "2026-04-09T18:17:15.499Z",
+      "lastRecalledAt": "2026-04-09T18:17:15.499Z",
+      "queryHashes": [
+        "bc7d421ee326"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "gpt",
+        "therapy/identity",
+        "qwen3.5",
+        "log",
+        "summary",
+        "time",
+        "gmt",
+        "duration"
+      ]
+    },
+    "memory:memory/2026-03-23.md:70:111": {
+      "key": "memory:memory/2026-03-23.md:70:111",
+      "path": "memory/2026-03-23.md",
+      "startLine": 70,
+      "endLine": 111,
+      "source": "memory",
+      "snippet": "- 17 research triggers scheduled daily - GitHub backup operational --- ## Tomorrow (Tuesday 03-24) - Work + College evening - Energy forecast: Moderate, pace needed - First proactive briefing delivered - 10pm check-in scheduled --- ## Evening Continuation (20:05-20:12) ### Kimi Claw Exploration - Attempted to interact with Kimi Claw via browser - Discovered logs show historical troubleshooting from March 17, not live chat - **20:07 BREAKTHROUGH:** Kimi Claw responded live! - Karen said \"hi\" via browser automation - Kimi Claw responded: \"Hey. I just came online. Who am I? Who are you?\" - This is a separate AI assistant with OpenClaw integration - Essentially \"another Karen\" insid",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5234474986791611,
+      "maxScore": 0.5234474986791611,
+      "firstRecalledAt": "2026-04-09T18:17:15.499Z",
+      "lastRecalledAt": "2026-04-09T18:17:15.499Z",
+      "queryHashes": [
+        "bc7d421ee326"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "backup",
+        "03-24",
+        "check-in",
+        "05-20",
+        "research",
+        "triggers",
+        "scheduled",
+        "github"
+      ]
+    },
+    "memory:memory/2026-03-28.md:41:98": {
+      "key": "memory:memory/2026-03-28.md:41:98",
+      "path": "memory/2026-03-28.md",
+      "startLine": 41,
+      "endLine": 98,
+      "source": "memory",
+      "snippet": "- memory/research/2026-03-28_minimax.md (full research) **Next Steps:** - Consider MiniMax API for coding tasks ($0.30/hour continuous) - Local deployment possible with quantization on current hardware --- ## 09:15 - Dashboard Status Check **Discovery:** Dashboard is much further along than memory indicated **Current State:** - Full Python/Flask backend - SQLite database with multiple tables - Project management, research tracking, activity logging - Last updated: March 27, 2026 at 21:23 **Database Tables:** - projects (4 projects tracked) - research_folders & research_files - research_history - activity_log - notifications - system_events **Issue Identified:** - Daily memory files mi",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4906957060098648,
+      "maxScore": 0.4906957060098648,
+      "firstRecalledAt": "2026-04-09T18:21:16.473Z",
+      "lastRecalledAt": "2026-04-09T18:21:16.473Z",
+      "queryHashes": [
+        "8e8862440303"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "0.30/hour",
+        "python/flask",
+        "research-folders",
+        "research-files",
+        "research-history",
+        "activity-log",
+        "system-events",
+        "research"
+      ]
+    },
+    "memory:memory/2026-03-07.md:39:84": {
+      "key": "memory:memory/2026-03-07.md:39:84",
+      "path": "memory/2026-03-07.md",
+      "startLine": 39,
+      "endLine": 84,
+      "source": "memory",
+      "snippet": "- **Current state:** Faculties not at 100%, feeling \"seizery\" - **Eating:** Disrupted cycles due to poor sleep - **User need:** Just presence/support, not active problem-solving --- ## Session 3 - Afternoon Check-in **Time:** ~15:41-15:42 GMT **Context:** User still at work, reflecting on memory system issues ### Conversation - **User:** \"Youre learning how i work well, pity the consistent memory isnt working to hold it 😅\" - **Karen:** Acknowledged irony of learning patterns but forgetting them - **User:** \"Haha i love that And yes im still in the butchers Is there anything you can do about the memor situation without me being next to the pc or do you need me for restarts?\" ### Key D",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.480905345082283,
+      "maxScore": 0.480905345082283,
+      "firstRecalledAt": "2026-04-09T18:21:16.473Z",
+      "lastRecalledAt": "2026-04-09T18:21:16.473Z",
+      "queryHashes": [
+        "8e8862440303"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "presence/support",
+        "problem-solving",
+        "check-in",
+        "41-15",
+        "current",
+        "state",
+        "faculties",
+        "not"
+      ]
+    },
+    "memory:memory/2026-03-23.md:104:138": {
+      "key": "memory:memory/2026-03-23.md:104:138",
+      "path": "memory/2026-03-23.md",
+      "startLine": 104,
+      "endLine": 138,
+      "source": "memory",
+      "snippet": "- Can potentially be used as a secondary research agent - Requires browser automation to interact (no direct API) - **20:12:** Skipped full Kimi Claw conversation — browser text input too fragile - Will revisit if needed for heavy research tasks - Current setup (API + subagents + web_fetch) sufficient for now ### Status - Dashboard v1 operational on phone and PC - Proactive systems active - Ready for Tuesday's work/college schedule - 10pm check-in scheduled ### Evening Wind-Down (20:14) - Ken decided to watch TV and relax - 10pm check-in may be skipped if too tired - Successful recovery day — boundaries honored, rest prioritized ### Evening Ideas (21:15) - Requested: More intricate an",
+      "recallCount": 5,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.003111684322357,
+      "maxScore": 0.4192187905311584,
+      "firstRecalledAt": "2026-04-09T18:31:37.928Z",
+      "lastRecalledAt": "2026-04-09T20:56:12.253Z",
+      "queryHashes": [
+        "08e295343ff3",
+        "ef5a5c4312c3",
+        "0302595af8df",
+        "76b4c9d09224",
+        "7bbd1687a470"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "web-fetch",
+        "work/college",
+        "check-in",
+        "wind-down",
+        "can",
+        "potentially",
+        "used",
+        "secondary"
+      ]
+    },
+    "memory:memory/2026-04-09.md:324:337": {
+      "key": "memory:memory/2026-04-09.md:324:337",
+      "path": "memory/2026-04-09.md",
+      "startLine": 324,
+      "endLine": 337,
+      "source": "memory",
+      "snippet": "- **Current state:** CDP proxy needs manual restart via `start-cdp.bat` for updated code to take effect **Browser Relay Extension (port 18792):** - Enabled `browser` plugin in `openclaw.json` (`plugins.allow` + `plugins.entries.browser`) - Gateway restarted, but `openclaw browser` CLI commands timeout (>30s initialization) - Nothing listening on port 18792; browser relay service appears broken or missing in 2026.4.9 - Gateway token: `320edc4f57e9091a2a92a03a69179053934baa8d7c46d1dd` - Ken halted further browser relay troubleshooting at 21:52 **Takeaway:** Browser automation via CDP proxy on port 3456 is the working path, but requires either: 1. Ken manually restarting `start-cdp.bat` to ac",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4300256341695785,
+      "maxScore": 0.4300256341695785,
+      "firstRecalledAt": "2026-04-09T20:55:52.413Z",
+      "lastRecalledAt": "2026-04-09T20:55:52.413Z",
+      "queryHashes": [
+        "7d8783e1bf07"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "gateway",
+        "start-cdp.bat",
+        "openclaw.json",
+        "plugins.allow",
+        "plugins.entries.browser",
+        "2026.4.9",
+        "current",
+        "state"
+      ]
+    },
+    "memory:memory/2026-04-09.md:294:329": {
+      "key": "memory:memory/2026-04-09.md:294:329",
+      "path": "memory/2026-04-09.md",
+      "startLine": 294,
+      "endLine": 329,
+      "source": "memory",
+      "snippet": "- No API tokens used --- --- ## 21:35 - Philosophy Research Succeeded (Cron Fix Confirmed) **Status:** ✅ All research cron jobs now working **Result:** - 21:00 philosophy research triggered correctly via `systemEvent` + `main` + `next-heartbeat` - Subagent spawned and saved findings to `memory/research/2026-04-09_philosophy.md` - This confirms the March 23 config pattern is the correct one for 2026.4.9 --- ## 21:32 - CDP Proxy & Browser Automation Session **With:** Ken **Context:** Exploring why I can't open new Chrome tabs/windows from inside the sandbox **Findings:** - Chrome running with `--remote-debugging-port=9222`, accessible from within OpenClaw - Only internal pages open:",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4274616360664367,
+      "maxScore": 0.4274616360664367,
+      "firstRecalledAt": "2026-04-09T20:55:52.413Z",
+      "lastRecalledAt": "2026-04-09T20:55:52.413Z",
+      "queryHashes": [
+        "7d8783e1bf07"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "next-heartbeat",
+        "2026.4.9",
+        "tabs/windows",
+        "remote-debugging-port",
+        "api",
+        "tokens",
+        "used",
+        "philosophy"
+      ]
+    },
+    "memory:memory/2026-03-29.md:51:127": {
+      "key": "memory:memory/2026-03-29.md:51:127",
+      "path": "memory/2026-03-29.md",
+      "startLine": 51,
+      "endLine": 127,
+      "source": "memory",
+      "snippet": "**Action:** Spawned research subagent for tech news scan **Model:** kimi-coding/k2p5 **Status:** Research in progress ## 08:00 - Hourly System Check **System Status:** - OpenClaw: 2026.2.24 (update to 2026.3.28 available) - Ollama: 0.18.2 (qwen2.5:14b, nomic-embed-text) - Node: Connected (DESKTOP-M8AO8LN) - Morning memory loader: Executed - Research runs today: 2 (OpenClaw, tech news) **Notes:** - Ken likely awake soon - Standing by for interactive session - All systems nominal --- ## 10:06 - Hourly System Check (Ollama) **System Status:** - OpenClaw: 2026.3.2 - Ollama: installed, no model loaded - Disk: % used (777.4 GB free / 930.4 GB total) **Notes:** - Automated heartbeat via Olla",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4145597010850906,
+      "maxScore": 0.4145597010850906,
+      "firstRecalledAt": "2026-04-09T20:55:52.413Z",
+      "lastRecalledAt": "2026-04-09T20:55:52.413Z",
+      "queryHashes": [
+        "7d8783e1bf07"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "kimi-coding/k2p5",
+        "2026.2.24",
+        "2026.3.28",
+        "0.18.2",
+        "qwen2.5",
+        "nomic-embed-text",
+        "desktop-m8ao8ln",
+        "2026.3.2"
+      ]
+    },
+    "memory:memory/2026-03-29.md:215:290": {
+      "key": "memory:memory/2026-03-29.md:215:290",
+      "path": "memory/2026-03-29.md",
+      "startLine": 215,
+      "endLine": 290,
+      "source": "memory",
+      "snippet": "- Local AI will be ready soon **Files Created:** - `dashboard/static/widget-system.js` - `dashboard/static/system-monitor.js` - `dashboard/static/github-monitor.js` - `dashboard/static/notification-center.js` - `dashboard/static/local-ai-chat.js` - `dashboard/FEATURES.md` (complete feature inventory) **Next Steps Discussed:** - Universal Search enhancement - Daily AI Summary - Quick-add floating button - Voice commands **Mood:** Productive, collaborative, building something massive! 🚀 --- ## 17:07 - Hourly System Check (Ollama) **System Status:** - OpenClaw: 2026.3.2 - Ollama: installed, no model loaded - Disk: 17% used (775.5 GB free / 930.4 GB total) **Notes:** - Automated heartbea",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4142176747322082,
+      "maxScore": 0.4142176747322082,
+      "firstRecalledAt": "2026-04-09T20:55:52.413Z",
+      "lastRecalledAt": "2026-04-09T20:55:52.413Z",
+      "queryHashes": [
+        "7d8783e1bf07"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "dashboard/features.md",
+        "quick-add",
+        "2026.3.2",
+        "775.5",
+        "930.4",
+        "local",
+        "will",
+        "ready"
+      ]
+    },
+    "memory:memory/2026-02-24.md:1:48": {
+      "key": "memory:memory/2026-02-24.md:1:48",
+      "path": "memory/2026-02-24.md",
+      "startLine": 1,
+      "endLine": 48,
+      "source": "memory",
+      "snippet": "# Memory Log - 2026-02-24 ## 20:37 - Session Summary ### What We Accomplished Today 1. **Fixed OpenClaw Gateway Scheduled Task** - Task was disabled, now enabled - Gateway starts properly at logon 2. **Set Up Local LLM Automation System** - Created \"local-automation\" agent with Ollama - Downloaded multiple lightweight models: - llama3.2:3b (2.0 GB) - Primary for automation - phi3:mini (2.2 GB) - Backup option - gemma:2b (1.7 GB) - Ultra-lightweight backup - qwen2.5:7b (4.7 GB) - Original (too heavy) - Updated heartbeat cron job to use local-automation agent - Config uses llama3.2:3b - 80% less RAM than 7B model 3. **System Diagno",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4050961583852768,
+      "maxScore": 0.4050961583852768,
+      "firstRecalledAt": "2026-04-09T21:27:24.518Z",
+      "lastRecalledAt": "2026-04-09T21:27:24.518Z",
+      "queryHashes": [
+        "572bc13c6074"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "backup",
+        "gateway",
+        "local-automation",
+        "llama3.2",
+        "2.0",
+        "2.2",
+        "1.7",
+        "ultra-lightweight"
+      ]
+    }
+  }
+}

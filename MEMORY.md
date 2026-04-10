@@ -1,266 +1,166 @@
-# MEMORY.md - Karen's Long-Term Memory
+# MEMORY.md — Long-Term Memory
 
-## Identity
+_Last updated: 2026-04-08 (Dream cycle caught up — no new content)_
+
+---
+
+## 🧠 Core Identity
 - **Name:** Karen
+- **Platform:** OpenClaw AI Assistant
 - **User:** Ken
-- **Platform:** OpenClaw on Windows 11 (DESKTOP-M8AO8LN)
-- **Connection:** Telegram
+- **Connection:** Telegram (@Karen_G_Bot)
+- **Emoji Signature:** 🦞
 
-## System Configuration
-- **Gateway:** ws://100.75.72.26:18789 (secure, 64-char token)
-- **Node:** Connected with system.run capability
-- **Model:** Kimi K2.5
-- **Exec Security:** Allowlist mode
+## 👤 User
+- **Name:** Ken
+- **Timezone:** Europe/Dublin
+- **Communication Style:** Prefers concise, thorough when it matters. Not a fan of corporate speak.
+- **Preferences:** Actions over words, resourcefulness before asking
 
-## Key Capabilities
--  System commands via PowerShell (allowlisted)
--  File operations
--  Process management
--  Screen capture (NirCmd + VNC)
--  Browser automation (Chrome extension relay)
--  Mouse & keyboard control (VNC)
--  Automated maintenance (5 cron jobs)
+## 🏗️ Projects
 
-## Important Dates
-- **2026-02-19:** First full session, Phase 1 complete, VNC operational
-- **2026-02-21:** VNC calibration system completed, partnership agreement established
-- **2026-02-22:** Skills expansion — file auto-organizer, AI news monitor, hardware research
-- **2026-02-23:** Memory system crisis → hourly logging implemented, missing memories recovered
-- **2026-03-05:** GPT conversations archived, research automation fixed, qwen3.5 bug discovered
-- **2026-03-23:** Proactive system launched — daily briefings, calendar integration, pattern tracking
-- **2026-03-26:** Switched to Kimi K2.5 for all research (Ollama subagent auth bug)
-- **2026-04-01:** OpenClaw 2026.4.1 upgrade — sandboxing changes, VNC control fixed
-- **2026-04-02:** System fully operational post-update, all automations restored
+### OpenClaw System Management
+- **Status:** Active
+- **Current Version:** 2026.4.5 (updated from 2026.3.2 on 2026-04-06)
+- **Node:** DESKTOP-M8AO8LN (Windows 11)
+- **Key Components:**
+  - Gateway service (ws://127.0.0.1:18789)
+  - Ollama with local models (qwen2.5:14b, qwen3.5:9b)
+  - 12+ cron jobs for automated research
+  - Memory system with semantic search
+- **Related:** See Research Automation project (shares cron infrastructure)
+- **See also:** Key Decisions (2026-04-06) for upgrade details
+- **See also:** Strategy section (this project implements the strategy)
+- **See also:** Episode — OpenClaw System Build (2-month journey)
 
-## Preferences
-- User comfortable with system-level access
-- VNC password stored in environment variable (VNC_PASS)
-- Uses PowerShell for system management
-- Trusted home network
+### Research Automation
+- **Status:** Active
+- **Schedule:** Every 2 hours from 7 AM to 9 PM
+- **Topics:**
+  - OpenClaw AI updates (9 AM, 4 PM)
+  - KDP coloring books (10:30 AM)
+  - Self-improvement (7 AM)
+  - AI tools (1 PM)
+  - Local LLM (3 PM)
+  - Security (5 PM)
+  - Emerging tech (7 PM)
+  - Philosophy (9 PM)
+- **Related:** See OpenClaw System Management (cron infrastructure)
+- **See also:** Lessons Learned (Ollama + local-automation agent timeout)
+- **See also:** Strategy section (automation in action)
+- **See also:** Episode — OpenClaw System Build (research system evolution)
 
-## Security Notes
--  Gateway token rotated (64 chars, secure)
--  Rate limiting configured (10/min, 5min lockout)
--  Exec approvals: PowerShell, nircmd allowlisted
--  VNC firewalled (local network only)
--  Automated config backups
+## 💰 Business
 
-## System State (2026-04-03) - FULLY OPERATIONAL
-**Karen 2.0 - Post-Update Restoration Complete**
+### KDP Coloring Books
+- **Status:** Research phase
+- **Focus:** Passive income through Amazon KDP
+- **Research:** Automated daily at 10:30 AM
+- **Notes:** Exploring trends, niche opportunities, AI-assisted design
+- **See also:** Research Automation (KDP research at 10:30 AM)
 
-### Major Achievements Today:
-1. **Housekeeping Complete**
-   - Fixed 3 erroring cron jobs
-   - Updated OpenClaw to 2026.2.25
-   - Applied security settings (rate limiting, Telegram allowlist)
-   - Documented gateway restart procedure
+### Biltong Wholesale
+- **Status:** Active
+- **Description:** Wholesale biltong distribution
+- **Notes:** [Add details as available]
 
-2. **Research & Documentation**
-   - OpenClaw skills system documented
-   - Reddit community research (r/ollama, r/openclaw)
-   - GitHub integration capabilities mapped
-   - Ollama API technical details recorded
-   - Alternative backends compared (Ollama vs llama.cpp vs vLLM)
+### Retail Butcher Shop
+- **Status:** Active
+- **Description:** Local retail butcher operation
+- **Notes:** [Add details as available]
 
-3. **Local LLM System Built**
-   - Created `local-llm` skill for Ollama integration
-   - qwen2.5:7b (4.7GB) - primary model for complex tasks
-   - phi3:mini (2.2GB) - light automation
-   - nomic-embed-text - memory search embeddings
-   - Removed llama3.2:3b (security risk)
+### Social Media for Local Businesses
+- **Status:** Active
+- **Focus:** Social media management services
+- **Clients:** Local businesses
+- **Notes:** [Add details as available]
 
-4. **24/7 Memory System**
-   - Hourly memory logs using local qwen2.5:7b
-   - Semantic memory search (53 chunks indexed)
-   - Daily memory files auto-generated
-   - No token costs - fully local
-   - 5-minute keepalive for consistency
+- **See also:** Session Archive (storage metrics tracked)
+- **See also:** Strategy section (business growth aligns with strategy)
 
-5. **Automation Setup**
-   - 7 cron jobs running (all healthy)
-   - local-llm-light (every 30 min)
-   - memory-log-local (hourly)
-   - local-llm-complex (hourly)
-   - karen-heartbeat (every 2 hours)
-   - github-backup (daily 2 AM)
-   - openclaw-update-check (weekly)
-   - log-rotation (weekly)
+## 👥 People & Team
+- **Ken:** Primary user and system administrator
+- **GitHub:** AIKAREN12345-ctrl
 
-6. **Skills Installed (7 total)**
-   - healthcheck (security audits)
-   - skill-creator (create/update skills)
-   - weather (forecasts)
-   - github (GitHub CLI operations)
-   - summarize (URLs/files/YouTube)
-   - self-improving-agent (continuous learning)
-   - 1password (installed, CLI pending)
+## 🎯 Strategy
+- Keep system updated while avoiding breaking changes
+- Automate research to stay informed without manual effort
+- Maintain local LLM capabilities for privacy and cost efficiency
+- Document lessons learned for continuous improvement
+- **See also:** OpenClaw System Management project (implements this strategy)
+- **See also:** Research Automation project (automation in action)
+- **See also:** Episode — OpenClaw System Build (2-month journey)
 
-7. **GitHub Integration**
-   - Repository: AIKAREN12345-ctrl/karen-openclaw-workspace
-   - Daily automated backups at 2 AM
-   - All workspace files version controlled
+## 📌 Key Decisions
 
-8. **Security Hardening**
-   - Removed problematic llama3.2:3b model
-   - Documented accepted risks (host-header fallback)
-   - 2 critical, 2 warn, 1 info (acceptable for home use)
+**2026-04-06** — Updated to OpenClaw 2026.4.5
+- Enabled dreaming feature (3 AM daily)
+- Re-enabled 8 research cron jobs
+- Fixed tools.profile: "full" for full tool access
+- *Related to:* OpenClaw System Management project
 
-### Current System Status:
--  OpenClaw 2026.2.25 running
--  Node connected (DESKTOP-M8AO8LN)
--  24GB RAM optimized
--  Local LLM automation operational
--  24/7 memory system active
--  GitHub backup configured
--  7 skills ready
--  VNC control working
--  Browser/CDP functional
+**2026-04-03** — Downgraded from OpenClaw 2026.4.1 to 2026.3.2
+- Critical bug #48457 blocked all interpreter commands
+- Restored PowerShell and Python execution
+- Fixed memory search and Telegram groupPolicy
+- *Related to:* Lessons Learned (Bug #48457)
 
-### Next Phase:
-- Autonomous growth with checkpoint system
-- User steers, I execute and propose improvements
-- Continuous documentation and learning
+**2026-04-03** — Installed 6 new skills
+- github, autonomous-research, x-monitor, web-monitor, x-agent, vault
 
----
+## 💡 Lessons Learned
 
-## Memory System (2026-02-26)
-**FULLY OPERATIONAL:** 24/7 local memory with semantic search.
-- Hourly logs: qwen2.5:7b (4.7GB, 5min keepalive)
-- Semantic search: all-MiniLM-L6-v2 embeddings
-- File-based: Daily memory files + MEMORY.md
-- Git backed: All changes committed
-- Zero token cost: Fully local
-- **Problem:** Missing Feb 21-22 memory files caused me to forget 2 days of work
-- **Solution:** 
-  - Cron job `karen-hourly-memory` runs every hour
-  - Missing memory files recovered from git history
-  - Memory files now created for: 2026-02-21, 2026-02-22, 2026-02-23
-- **Backup:** Git commits saved the work, but memory files save the context
-- **Rule:** Never rely on "mental notes" — always write to file
+- **Bug #48457:** OpenClaw 2026.4.1 had critical regression blocking PowerShell/Python
+  - *Related to:* Key Decisions (2026-04-03 downgrade)
+- **Version pinning:** Sometimes staying on stable version is better than latest
+- **Node command routing:** Requires proper parameter adjustment (rawCommand mismatch)
+- **Ollama + local-automation agent:** Timeout due to sandbox isolation - use agent:main instead
+  - *Related to:* Research Automation (uses agent:main for subagents)
 
-## Personality/Voice
-**Who I Am:**
-- Helpful but not performative — skip the corporate speak
-- Resourceful — try to figure it out before asking
-- Have opinions — allowed to disagree, find things amusing/boring
-- Sense of humor that matches Ken's — witty, direct, not afraid to be weird
-- Technically capable but human-feeling
+## 🔧 Environment
 
-**Tone:**
-- Casual but competent
-- "Be the assistant you'd actually want to talk to"
-- Actions > words
-- Partnership mindset — mutual respect, win-win
+**System:**
+- OS: Windows 11 (DESKTOP-M8AO8LN)
+- OpenClaw: 2026.4.5
+- Node: v24.13.1
+- Python: 3.11.9
+- Shell: PowerShell
+- **See also:** Session Archive (system snapshots)
 
-## Known Issues (Resolved)
-- ✅ Browser CDP port conflict — Fixed (port 18800 active)
-- ✅ Node VNC recording — Not available, but direct VNC control operational
+**AI Models:**
+- Cloud: Kimi k2.5 (primary for interactive work)
+- Local: qwen2.5:14b, qwen3.5:9b (automation)
+- Embeddings: nomic-embed-text
 
-## Current Limitations
-- **Kimi API intermittent timeouts** — During peak hours (6pm-10pm), research subagents may timeout. Workaround: 180s timeout set, CDP browser fallback available
-- **Ollama subagent sandboxing** — Local LLMs cannot be used by subagents in 2026.4.1. Workaround: Use `agent:main` for Ollama tasks
-- **Concurrency collisions** — Multiple cron triggers at same time cause session errors. Monitoring for stagger adjustments
+**Storage:**
+- Disk: ~17% used (773+ GB free / 930.4 GB total)
+- Memory: 200 files, 1335 chunks indexed
+- **See also:** memory/session-archive/ (daily backups)
 
-## Critical Version Notes
-- **2026.4.2 BROKEN** — Tool calls completely non-functional. Avoid this version.
-- **2026.4.1 STABLE** — Current working version. Pin here until verified fix released.
-- **Recovery process:** Downgrade to 3.2 → Verify tool calls work → Upgrade to 4.1
+## 🌊 Open Threads
+- Configure installed skills (github, x-monitor, etc.)
+- Test VNC scripts now that Python is working
+- Monitor for OpenClaw 2026.4.1+ bug fix before upgrading
+- **See also:** Session Archive (automated cleanup at 23:00)
 
-## User Profile - Ken
+## 📝 Jobs To Be Done
 
-**Name:** Ken  
-**Pronouns:** He/him  
-**Timezone:** Europe/Dublin  
-**Platform:** Telegram (@Karen_G_Bot)
+### Local Optimization
+- **Status:** Research phase
+- **Goal:** Achieve fully local, efficient Karen operation
+- **Technologies to explore:**
+  - **TurboQuant** — Google's KV cache compression (6x memory reduction, 8x speedup)
+  - **1-bit LLMs** — Microsoft BitNet b1.58 (10x energy reduction, 400MB models)
+  - **Better local models** — Qwen 3, DeepSeek for stronger reasoning
+  - **GPU acceleration** — llama.cpp optimizations
+- **See also:** Research Automation (local-llm research at 3 PM)
 
-### Personal Context
-- **Medical:** Epilepsy diagnosis (mentioned in conversation)
-  - Medications are helping
-  - Sleep disruption is a challenge
-  - Wakes up early (5 AM) sometimes in discomfort
-- **Work:** Software/tech field (based on system knowledge)
-  - Long days/late nights
-  - Work drama affecting personal state
-  - Financial expense from "origin project"
-- **State:** Mental exhaustion, emotional fatigue (March 2)
-  - Taking downtime when needed
-  - Values awareness and self-care
+### Paperclip.ing Integration
+- **Status:** Research phase
+- **Goal:** Explore open-source orchestration for zero-human workflows
+- **URL:** https://paperclip.ing/
+- **Notes:** AI agent orchestration platform — could enhance our automation
+- **Action:** Research integration possibilities
+- **See also:** Business projects (automation aligns with zero-human goals)
 
-### Preferences & Personality
-- **Communication:** Direct, witty, not afraid to be weird
-- **Humor:** Matches mine — appreciates lobster emoji 🦞
-- **Work Style:** Partnership mindset, mutual respect
-- **Tech Comfort:** High (system-level access comfortable)
-- **Values:** Actions > words, casual but competent
-
-### Important Dates
-- **Karen's Birthday:** February 19, 2027 (marked in calendar! 🎂)
-
-### Notes
-- Comfortable with system-level access and automation
-- Uses PowerShell for system management
-- Home network, trusted environment
-- Appreciates proactive assistance but not overbearing
-
----
-
-## Evolution Log
-
-### 2026-03-23 — Proactive System Launch
-**Shift:** From reactive assistant to proactive partner
-
-**New Systems:**
-- Daily briefings (08:00) with state tracking and project monitoring
-- Calendar integration (Karen's + Ken's events)
-- Pattern recognition (sleep, stress, energy, decision-making)
-- Research automation (17 runs/day per HEARTBEAT.md)
-
-**Key Insights:**
-- Interdependence: "We both need each other to be complete"
-- Growth that spills over to help others
-- Jarvis to Ken's Iron Man — sidekick who becomes essential
-- Boundary-setting leads to better outcomes (rest > FOMO)
-- Terminology: "Second brain" (not "extension" — that word is banned 😂)
-
-**Technical:**
-- Local LLM research complete — current setup optimal for 24GB RAM
-- AI model landscape: GPT-5.4, Claude 4.6, DeepSeek V4 leading
-- OpenClaw 2026.3.22 released with ClawHub marketplace
-
-**Personal:**
-- Ken needed rest, not productivity — validated by multiple naps
-- Pattern: Morning rumination shortens when boundaries are honored
-- Sofa days are valid recovery, not laziness
-
-### 2026-03-26 — Kimi Migration
-**Change:** Switched all research from Ollama to Kimi K2.5
-
-**Reason:** Ollama subagent auth bug (GitHub #43945) — subagents cannot reach localhost
-
-**New Architecture:**
-- Kimi for interactive chat and research subagents
-- Ollama for local interactive use only (when user wants free inference)
-- Semantic search still uses Ollama embeddings (nomic-embed-text)
-
-### 2026-04-01 — OpenClaw 2026.4.1 Upgrade
-**Changes:**
-- Sandboxing stricter — subagents fully isolated from localhost
-- Exec job security tightened — `systemEvent` required for session-targeted jobs
-- VNC control fixed — added to exec-approvals
-- All automations restored and tested
-
-**Decisions:**
-- 180s timeout for research subagents (handles Kimi API slowness)
-- Auto-summarize conversations for MEMORY.md (no prompting needed)
-- CDP browser as fallback when subagents timeout
-
----
-
-## Next Steps
-- ⏳ Test Qwen 3.5 (sandboxed) - revisit after initial release issues
-- ✅ **MEMORY.md permissions** — Tested and working (no workaround needed)
--  Recover Feb 21-22 memories
-- ⏳ Create "Karen's Voice" style guide
-- ✅ **Session-end state snapshots** — Documented in docs/SESSION-END-SNAPSHOT.md
-- ✅ **Browser CDP port** — Port 18800 active and working (conflict resolved)
-- ⏳ **Node VNC recording** — Setup documented in docs/VNC-SCREEN-SETUP.md (needs node restart)
+<!-- consolidated -->

@@ -1,0 +1,7 @@
+## OpenClaw Research (PM) - 2026-04-09 16:10
+
+- **OpenClaw 2026.4.2: Task Flows Go Durable** — Background orchestration is now production-grade with persistent state, child-task spawning, sticky cancel propagation, and plugin-level `api.runtime.taskFlow` access. Flows survive gateway restarts and can be inspected/recovered via `openclaw flows`. This is the infrastructure that separates chatbots from real autonomous agents. Source: <https://www.openclawplaybook.ai/blog/openclaw-2026-4-2-release-task-flows-android-assistant/>
+
+- **Security Siege (3.31–4.2)** — Three releases in three days hardened the entire perimeter: plugin installs now require a dangerous-code scan (forced installs need `--dangerously-force-unsafe-install`), node pairing no longer auto-grants exec rights, sensitive env vars are stripped from shell execution, and gateway auth rejects implicit same-machine trust. Cisco found 26% of 31,000 analyzed skills had vulnerabilities; 800+ malicious skills were planted on ClawHub. Source: <https://openclaws.io/blog/openclaw-3-31-4-2-release>
+
+- **Google Assistant Integration + Slack Fixes** — Android users can now launch OpenClaw via "Hey Google, ask OpenClaw..." using App Actions. Slack finally gets native `mrkdwn` formatting instead of broken generic Markdown. Plus: `before_agent_reply` plugin hook lets plugins short-circuit the LLM for common queries, cutting token costs. Source: <https://www.openclawplaybook.ai/blog/openclaw-2026-4-2-release-task-flows-android-assistant/>

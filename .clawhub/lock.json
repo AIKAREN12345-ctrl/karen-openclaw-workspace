@@ -4,6 +4,10 @@
     "obsidian": {
       "version": "1.0.0",
       "installedAt": 1774953529673
+    },
+    "browser-cdp": {
+      "version": "1.0.0",
+      "installedAt": 1775680832930
     }
   }
 }
