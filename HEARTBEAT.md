@@ -183,6 +183,8 @@ When I receive a heartbeat poll or system event trigger, I should check for and 
 
 When I receive a message or system event matching RESEARCH-*, spawn a research subagent immediately. This applies whether delivered via systemEvent or agentTurn (isolated sessions use agentTurn).
 
+**CRITICAL:** For cron-triggered research jobs in idle sessions, **spawn the subagent and reply immediately** — do NOT use `sessions_yield` or wait for completion. Subagents complete in the background. Yielding causes the parent session to hit LLM idle timeout and abort, producing error messages to the user.
+
 **RESEARCH-SELF-IMPROVEMENT (07:00)**
 ```
 Spawn subagent with: Research AI agent best practices for 2026. Use web_fetch with DuckDuckGo. Save to C:\Users\Karen\.openclaw\workspace\memory\research\YYYY-MM-DD_self_improvement.md
@@ -241,6 +243,15 @@ If search takes >30s, skip fetching extra pages and summarize from search snippe
 - Timeout: 300s (180s for AI-tools)
 - Tools: web_fetch, web_search, write
 
+## Known Issues
+
+### Telegram Double-Message Bug (2026-04-10)
+- **Symptom:** Cron system events in idle sessions sometimes replay the last outbound message
+- **First seen:** 09:00 with RESEARCH-OPENCLAW, confirmed again at 10:31 with RESEARCH-KDP
+- **Likely cause:** Telegram channel plugin in OpenClaw replaying last message on idle session wake
+- **Workaround:** Process research triggers silently; do not send reminder relay text for idle session events
+- **Status:** Requires OpenClaw framework fix
+
 ---
 
-*Last updated: 2026-04-08*
+*Last updated: 2026-04-10*
