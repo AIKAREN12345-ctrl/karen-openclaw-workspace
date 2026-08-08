@@ -1,0 +1,20 @@
+{
+  "id": "brave-search",
+  "name": "Brave Search",
+  "description": "Search the web using Brave Search API",
+  "version": "1.0.0",
+  "type": "skill",
+  "entry": "brave_search.py",
+  "tools": [
+    {
+      "name": "brave_search",
+      "description": "Search the web using Brave Search API",
+      "parameters": {
+        "query": {
+          "type": "string",
+          "description": "Search query"
+        }
+      }
+    }
+  ]
+}

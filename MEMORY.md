@@ -8,7 +8,7 @@ _Last updated: 2026-04-08 (Dream cycle caught up — no new content)_
 - **Name:** Karen
 - **Platform:** OpenClaw AI Assistant
 - **User:** Ken
-- **Connection:** Telegram (@Karen_G_Bot)
+- **Connection:** WebChat (local OpenClaw instance)
 - **Emoji Signature:** 🦞
 
 ## 👤 User

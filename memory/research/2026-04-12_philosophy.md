@@ -1,0 +1,3 @@
+- 2026 discussions frame the future as Symbiotic General Intelligence (SGI) — AI + Human collaboration rather than AGI alone.
+- Philosophers are rethinking personhood and agency as AI challenges traditional human-centered concepts of selfhood.
+- A 2025 "human-in-the-loop" framework proposes AI companions for "philosophical health," blending reflective practice with guided personal growth.

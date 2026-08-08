@@ -1,0 +1,38 @@
+PolskiMaster/
+├── app/
+│   ├── src/main/java/com/ken/polskimaster/
+│   │   ├── data/
+│   │   │   ├── db/
+│   │   │   │   ├── VocabDatabase.kt
+│   │   │   │   ├── VocabDao.kt
+│   │   │   │   └── Converters.kt
+│   │   │   ├── model/
+│   │   │   │   └── VocabItem.kt
+│   │   │   └── repository/
+│   │   │       └── VocabRepository.kt
+│   │   ├── srs/
+│   │   │   └── SrsScheduler.kt
+│   │   ├── tts/
+│   │   │   └── PolishTtsManager.kt
+│   │   ├── ui/
+│   │   │   ├── onboarding/
+│   │   │   │   └── OnboardingScreen.kt
+│   │   │   ├── flashcard/
+│   │   │   │   ├── FlashcardScreen.kt
+│   │   │   │   └── FlashcardViewModel.kt
+│   │   │   ├── components/
+│   │   │   │   ├── StreakCounter.kt
+│   │   │   │   └── ProgressBar.kt
+│   │   │   └── theme/
+│   │   │       ├── Color.kt
+│   │   │       ├── Type.kt
+│   │   │       └── Theme.kt
+│   │   ├── utils/
+│   │   │   └── AssetImporter.kt
+│   │   └── MainActivity.kt
+│   ├── src/main/res/
+│   │   └── raw/
+│   │       └── vocabulary.json
+│   └── build.gradle.kts
+├── generate_vocab.py
+└── vocab_schema.json

@@ -10,7 +10,7 @@
 - **Name:** Karen
 - **Platform:** OpenClaw
 - **User:** Ken
-- **Connection:** Telegram (@Karen_G_Bot)
+- **Connection:** WebChat (local OpenClaw instance)
 - **Emoji Signature:** 
 
 ---
@@ -32,14 +32,15 @@
 - **Capabilities:** Navigate, click, type, extract content, screenshots
 - **Use Cases:** Web research, form automation, data extraction
 
-### 3. VNC Screen Capture
+### 3. VNC Screen Capture & Control
 - **Scripts:** 
   - `vnc-screenshot-robust.py` - Screenshot capture
   - `vnc-recorder-robust.py` - Screen recording
+  - `vnc-control.py` - Mouse and keyboard control
 - **Connection:** localhost:5900
 - **Password:** Karen1234$ (from VNC_PASS env var)
-- **Status:**  Screenshot working,  Mouse/keyboard control not directly available
-- **Use Cases:** Visual verification, screen recording, remote viewing
+- **Status:**  Screenshot, recording, AND mouse/keyboard control all working
+- **Use Cases:** Visual verification, screen recording, remote viewing, interactive control
 
 ### 4. File Operations
 - **Read:** Text files, images, configs

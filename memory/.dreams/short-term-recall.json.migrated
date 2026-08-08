@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-09T21:27:24.518Z",
+  "updatedAt": "2026-04-15T06:57:12.819Z",
   "entries": {
     "memory:memory/2026-03-17.md:105:154": {
       "key": "memory:memory/2026-03-17.md:105:154",
@@ -74,18 +74,20 @@
       "endLine": 714,
       "source": "memory",
       "snippet": "The system remains in a stable state with all services running as expected, and disk usage has decreased slightly from 12.8% to 11.9%. The resources error persists, indicating an ongoing issue with a missing file, which continues to be a concern. Immediate attention is required to resolve this by checking the specified file path and ensuring its availability. --- ## 14:03 - Hourly Memory Log **Timestamp:** 2026-03-01 14:03:25 **Hostname:** DESKTOP-M8AO8LN **Platform:** Windows 11 (25H2) (AMD64) **Ollama:** running **OpenClaw:** running System operational. --- ## 14:17 - System Monitor (Ollama-Powered) **Status:** OK ollama | OK openclaw | OK vnc | OK disk **Quick",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.4369536340236664,
+      "totalScore": 0.8327560633420944,
       "maxScore": 0.4369536340236664,
       "firstRecalledAt": "2026-04-09T11:26:48.795Z",
-      "lastRecalledAt": "2026-04-09T11:26:48.795Z",
+      "lastRecalledAt": "2026-04-15T06:57:12.819Z",
       "queryHashes": [
-        "0867fe25ba04"
+        "0867fe25ba04",
+        "010009ca87fc"
       ],
       "recallDays": [
-        "2026-04-09"
+        "2026-04-09",
+        "2026-04-15"
       ],
       "conceptTags": [
         "12.8",
@@ -105,18 +107,22 @@
       "endLine": 424,
       "source": "memory",
       "snippet": "The system health report indicates that all major components are running as expected, with the ollama and openclaw services active. The disk space is also sufficient, with only 12.78% used and 811 GB free, suggesting no immediate storage concerns. Overall, the system appears stable, but monitoring should continue to ensure sustained performance. --- ## 16:45 - System Monitor (Ollama-Powered) **Status:** ollama | openclaw | disk **Ollama Analysis:** The system is currently operational with all services, including ollama and openclaw, running without issues. However, there is a concerning trend of disk space utilization; while the current free space is 811 GB (with only 12.78%",
-      "recallCount": 1,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.42816060483455654,
-      "maxScore": 0.42816060483455654,
+      "totalScore": 1.4798255957798399,
+      "maxScore": 0.6530689396099485,
       "firstRecalledAt": "2026-04-09T11:26:48.795Z",
-      "lastRecalledAt": "2026-04-09T11:26:48.795Z",
+      "lastRecalledAt": "2026-04-15T06:57:12.819Z",
       "queryHashes": [
-        "0867fe25ba04"
+        "0867fe25ba04",
+        "c6ab1119d7b9",
+        "010009ca87fc"
       ],
       "recallDays": [
-        "2026-04-09"
+        "2026-04-09",
+        "2026-04-13",
+        "2026-04-15"
       ],
       "conceptTags": [
         "12.78",
@@ -136,19 +142,23 @@
       "endLine": 161,
       "source": "memory",
       "snippet": "The system is currently operating with all key components running (ollama and openclaw are active), and disk space is sufficient with only 12.77% used, leaving 811 GB free. There are no critical issues reported in the health check. --- ## 07:45 - System Monitor (Ollama-Powered) **Status:** ollama | openclaw | disk **Ollama Analysis:** The system health report indicates that all critical services are running, with no specific issues reported for ollama and openclaw. However, there is a concerning trend of high disk usage at 12.88%, leaving only approximately 810 GB free out of the total storage capacity. --- ## 08:03 - Hourly Memory Log **Timestamp:** 2026-02-28 08:03",
-      "recallCount": 2,
+      "recallCount": 4,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1.0717112231820998,
-      "maxScore": 0.6453719425767837,
+      "totalScore": 2.378897531505729,
+      "maxScore": 0.6610740788241893,
       "firstRecalledAt": "2026-04-09T11:26:48.795Z",
-      "lastRecalledAt": "2026-04-09T11:58:24.996Z",
+      "lastRecalledAt": "2026-04-14T12:43:46.805Z",
       "queryHashes": [
         "0867fe25ba04",
-        "762080cf4d1d"
+        "762080cf4d1d",
+        "c6ab1119d7b9",
+        "f8bf01835d9a"
       ],
       "recallDays": [
-        "2026-04-09"
+        "2026-04-09",
+        "2026-04-13",
+        "2026-04-14"
       ],
       "conceptTags": [
         "12.77",
@@ -168,18 +178,20 @@
       "endLine": 265,
       "source": "memory",
       "snippet": "The system health report indicates that all primary components (ollama, openclaw) are running without issues, and disk space is sufficient with only 12.78% used, leaving 811 GB free. There are no concerning trends or issues noted in the current metrics. --- ## 11:03 - Hourly Memory Log **Timestamp:** 2026-02-28 11:03:37 **Hostname:** DESKTOP-M8AO8LN **Platform:** Windows 11 (25H2) (AMD64) **Ollama:** running **OpenClaw:** running System operational. --- ## 11:15 - System Monitor (Ollama-Powered) **Status:** ollama | openclaw | disk **Ollama Analysis:** The system is currently operational with all key components (ollama, openclaw) running without issues. Howeve",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.42599623203277587,
-      "maxScore": 0.42599623203277587,
+      "totalScore": 1.0780900001867963,
+      "maxScore": 0.6520937681540204,
       "firstRecalledAt": "2026-04-09T11:26:48.795Z",
-      "lastRecalledAt": "2026-04-09T11:26:48.795Z",
+      "lastRecalledAt": "2026-04-13T19:27:48.494Z",
       "queryHashes": [
-        "0867fe25ba04"
+        "0867fe25ba04",
+        "c6ab1119d7b9"
       ],
       "recallDays": [
-        "2026-04-09"
+        "2026-04-09",
+        "2026-04-13"
       ],
       "conceptTags": [
         "12.78",
@@ -230,18 +242,22 @@
       "endLine": 127,
       "source": "memory",
       "snippet": "The system health report indicates that all monitored services (ollama and openclaw) are running, and disk space is sufficient with only 12.77% used, leaving 811 GB free. There are no critical issues reported, but the low disk usage suggests potential underutilization or misconfiguration of storage resources. --- ## 06:45 - System Monitor (Ollama-Powered) **Status:** ollama | openclaw | disk **Ollama Analysis:** The system health report indicates that all major components (ollama, openclaw) are running without issues, and disk space is sufficient with only 12.77% of the disk being used. There are no concerning trends or issues reported at this time. --- ## 07:04 - Hourl",
-      "recallCount": 1,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.6342071832681778,
-      "maxScore": 0.6342071832681778,
+      "totalScore": 1.9208916174197914,
+      "maxScore": 0.6534747141355026,
       "firstRecalledAt": "2026-04-09T11:58:24.996Z",
-      "lastRecalledAt": "2026-04-09T11:58:24.996Z",
+      "lastRecalledAt": "2026-04-14T12:43:46.805Z",
       "queryHashes": [
-        "762080cf4d1d"
+        "762080cf4d1d",
+        "c6ab1119d7b9",
+        "f8bf01835d9a"
       ],
       "recallDays": [
-        "2026-04-09"
+        "2026-04-09",
+        "2026-04-13",
+        "2026-04-14"
       ],
       "conceptTags": [
         "12.77",
@@ -261,18 +277,20 @@
       "endLine": 167,
       "source": "memory",
       "snippet": "**Status:** ollama | openclaw | disk **Ollama Analysis:** The system report indicates that all services (ollama and openclaw) are running without issues, and disk space is adequate with 811 GB free and only 12.77% used. There are no concerning trends or issues reported in this health check. --- ## 04:15 - System Monitor (Ollama-Powered) **Status:** ollama | openclaw | disk **Ollama Analysis:** The system is currently operational with all services running (ollama and openclaw). However, there is concern regarding disk space usage; while the current free space of 811 GB is sufficient, the high utilization rate of 12.77% indicates that the disk usage is rapidly increasing",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.612067174613387,
-      "maxScore": 0.612067174613387,
+      "totalScore": 1.225377492256328,
+      "maxScore": 0.6133103176429411,
       "firstRecalledAt": "2026-04-09T11:58:24.996Z",
-      "lastRecalledAt": "2026-04-09T11:58:24.996Z",
+      "lastRecalledAt": "2026-04-14T12:43:46.805Z",
       "queryHashes": [
-        "762080cf4d1d"
+        "762080cf4d1d",
+        "f8bf01835d9a"
       ],
       "recallDays": [
-        "2026-04-09"
+        "2026-04-09",
+        "2026-04-14"
       ],
       "conceptTags": [
         "12.77",
@@ -323,19 +341,21 @@
       "endLine": 61,
       "source": "memory",
       "snippet": "## 00:25 - Memory Log Script (Cron) **Triggered by:** Scheduled cron job (dbd5274b-93c8-4a0b-bef3-7646ce87cf55) **Script:** memory-log **System Status:** - **Time:** Wednesday, March 4th, 2026 — 00:25 (Europe/Dublin) - **Hostname:** DESKTOP-M8AO8LN - **Platform:** Windows 11 (25H2) **Service Status:** - ✅ Ollama: Running (qwen2.5:14b, nomic-embed-text) - ✅ OpenClaw: Running (v2026.3.1) - ✅ VNC: Operational - ✅ Disk: Healthy (11% used) **Notes:** - Late night/early morning - system stable - No issues detected in past hour - All core services operational **Current State:** All core services operational ✅ --- ## 01:25 - Memory Log Script (Cron) **Triggered by:** Scheduled cron job (dbd5",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1.0176938742399215,
+      "totalScore": 1.4890209168195723,
       "maxScore": 0.5320900112390518,
       "firstRecalledAt": "2026-04-09T15:57:42.977Z",
-      "lastRecalledAt": "2026-04-09T18:21:16.473Z",
+      "lastRecalledAt": "2026-04-13T20:16:12.783Z",
       "queryHashes": [
         "d2c5afd38e35",
-        "8e8862440303"
+        "8e8862440303",
+        "e4547ab615e0"
       ],
       "recallDays": [
-        "2026-04-09"
+        "2026-04-09",
+        "2026-04-13"
       ],
       "conceptTags": [
         "memory-log",
@@ -816,6 +836,289 @@
         "2.2",
         "1.7",
         "ultra-lightweight"
+      ]
+    },
+    "memory:memory/2026-02-28.md:326:364": {
+      "key": "memory:memory/2026-02-28.md:326:364",
+      "path": "memory/2026-02-28.md",
+      "startLine": 326,
+      "endLine": 364,
+      "source": "memory",
+      "snippet": "The system health report indicates that all primary components (ollama, openclaw) are running without issues and disk space is sufficient with only 12.78% used out of the total available space (free_gb: 811 GB). No concerning trends or issues were detected in this snapshot. --- ## 14:45 - System Monitor (Ollama-Powered) **Status:** ollama | openclaw | disk **Ollama Analysis:** The system health report indicates that all primary services (ollama and openclaw) are running, and disk space is sufficient with only 12.78% used, leaving 811 GB free. There are no critical issues reported, but monitoring should continue to ensure sustained performance. --- ## 15:04 - Hourly Memo",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.045879798235345,
+      "maxScore": 0.6646935871261835,
+      "firstRecalledAt": "2026-04-13T19:27:48.494Z",
+      "lastRecalledAt": "2026-04-14T12:15:03.839Z",
+      "queryHashes": [
+        "c6ab1119d7b9",
+        "717d7c1e6609"
+      ],
+      "recallDays": [
+        "2026-04-13",
+        "2026-04-14"
+      ],
+      "conceptTags": [
+        "12.78",
+        "free-gb",
+        "ollama-powered",
+        "the",
+        "system",
+        "health",
+        "report",
+        "indicates"
+      ]
+    },
+    "memory:memory/2026-02-28.md:356:394": {
+      "key": "memory:memory/2026-02-28.md:356:394",
+      "path": "memory/2026-02-28.md",
+      "startLine": 356,
+      "endLine": 394,
+      "source": "memory",
+      "snippet": "The system health report indicates that all critical components (ollama, openclaw) are running without issues, and disk space is sufficient with only 12.78% used, leaving ample free space at 811 GB. There are no concerning trends or issues noted in the provided metrics. --- ## 15:45 - System Monitor (Ollama-Powered) **Status:** ollama | openclaw | disk **Ollama Analysis:** The system health report indicates that all components are currently running, with the ollama and openclaw services active. The disk space is adequate, with only 12.78% used and 811 GB free, which does not raise any concerns at this time. --- ## 16:05 - Hourly Memory Log **Timestamp:** 2026-02-28 1",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.0599292702813228,
+      "maxScore": 0.6631673522133907,
+      "firstRecalledAt": "2026-04-13T19:27:48.494Z",
+      "lastRecalledAt": "2026-04-15T06:57:12.819Z",
+      "queryHashes": [
+        "c6ab1119d7b9",
+        "010009ca87fc"
+      ],
+      "recallDays": [
+        "2026-04-13",
+        "2026-04-15"
+      ],
+      "conceptTags": [
+        "12.78",
+        "ollama-powered",
+        "the",
+        "system",
+        "health",
+        "report",
+        "indicates",
+        "all"
+      ]
+    },
+    "memory:memory/2026-04-03.md:96:114": {
+      "key": "memory:memory/2026-04-03.md:96:114",
+      "path": "memory/2026-04-03.md",
+      "startLine": 96,
+      "endLine": 114,
+      "source": "memory",
+      "snippet": "**Notes:** - Automated heartbeat via Ollama script - No API tokens used --- ## 23:07 - Hourly System Check (Ollama) **System Status:** - OpenClaw: 2026.3.2 - Ollama: installed, no model loaded - Disk: 17% used (775.7 GB free / 930.4 GB total) **Notes:** - Automated heartbeat via Ollama script - No API tokens used ---",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4849496006965637,
+      "maxScore": 0.4849496006965637,
+      "firstRecalledAt": "2026-04-14T09:18:38.425Z",
+      "lastRecalledAt": "2026-04-14T09:18:38.425Z",
+      "queryHashes": [
+        "0c87239f53ee"
+      ],
+      "recallDays": [
+        "2026-04-14"
+      ],
+      "conceptTags": [
+        "2026.3.2",
+        "775.7",
+        "930.4",
+        "automated",
+        "heartbeat",
+        "via",
+        "ollama",
+        "script"
+      ]
+    },
+    "memory:memory/2026-04-01.md:399:432": {
+      "key": "memory:memory/2026-04-01.md:399:432",
+      "path": "memory/2026-04-01.md",
+      "startLine": 399,
+      "endLine": 432,
+      "source": "memory",
+      "snippet": "- Disk: 18% used (766.8 GB free / 930.4 GB total) **Notes:** - Automated heartbeat via Ollama script - No API tokens used --- ## 22:07 - Hourly System Check (Ollama) **System Status:** - OpenClaw: 2026.3.2 - Ollama: installed, no model loaded - Disk: 18% used (766.8 GB free / 930.4 GB total) **Notes:** - Automated heartbeat via Ollama script - No API tokens used --- ## 23:07 - Hourly System Check (Ollama) **System Status:** - OpenClaw: 2026.3.2 - Ollama: installed, no model loaded - Disk: 18% used (766.8 GB free / 930.4 GB total) **Notes:** - Automated heartbeat via Ollama script - No API tokens used ---",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4809432923793792,
+      "maxScore": 0.4809432923793792,
+      "firstRecalledAt": "2026-04-14T09:18:38.425Z",
+      "lastRecalledAt": "2026-04-14T09:18:38.425Z",
+      "queryHashes": [
+        "0c87239f53ee"
+      ],
+      "recallDays": [
+        "2026-04-14"
+      ],
+      "conceptTags": [
+        "766.8",
+        "930.4",
+        "2026.3.2",
+        "disk",
+        "used",
+        "free",
+        "total",
+        "automated"
+      ]
+    },
+    "memory:memory/2026-04-05.md:320:345": {
+      "key": "memory:memory/2026-04-05.md:320:345",
+      "path": "memory/2026-04-05.md",
+      "startLine": 320,
+      "endLine": 345,
+      "source": "memory",
+      "snippet": "## 22:07 - Hourly System Check (Ollama) **System Status:** - OpenClaw: 2026.3.2 - Ollama: installed, no model loaded - Disk: 17% used (773.7 GB free / 930.4 GB total) **Notes:** - Automated heartbeat via Ollama script - No API tokens used --- ## 23:07 - Hourly System Check (Ollama) **System Status:** - OpenClaw: 2026.3.2 - Ollama: installed, no model loaded - Disk: 17% used (773.7 GB free / 930.4 GB total) **Notes:** - Automated heartbeat via Ollama script - No API tokens used ---",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.47833350300788874,
+      "maxScore": 0.47833350300788874,
+      "firstRecalledAt": "2026-04-14T09:18:38.425Z",
+      "lastRecalledAt": "2026-04-14T09:18:38.425Z",
+      "queryHashes": [
+        "0c87239f53ee"
+      ],
+      "recallDays": [
+        "2026-04-14"
+      ],
+      "conceptTags": [
+        "2026.3.2",
+        "773.7",
+        "930.4",
+        "hourly",
+        "system",
+        "check",
+        "ollama",
+        "status"
+      ]
+    },
+    "memory:memory/2026-04-06.md:291:376": {
+      "key": "memory:memory/2026-04-06.md:291:376",
+      "path": "memory/2026-04-06.md",
+      "startLine": 291,
+      "endLine": 376,
+      "source": "memory",
+      "snippet": "- No API tokens used --- ## 16:07 - Hourly System Check (Ollama) **System Status:** - OpenClaw: 2026.3.2 - Ollama: running (qwen3.5:9b) - Disk: 18% used (760 GB free / 930.4 GB total) **Notes:** - Automated heartbeat via Ollama script - No API tokens used --- ## 17:07 - Hourly System Check (Ollama) **System Status:** - OpenClaw: 2026.3.2 - Ollama: running (qwen3.5:9b) - Disk: 18% used (759.3 GB free / 930.4 GB total) **Notes:** - Automated heartbeat via Ollama script - No API tokens used --- ## 18:07 - Hourly System Check (Ollama) **System Status:** - OpenClaw: 2026.3.2 - Ollama: running (qwen3.5:9b) - Disk: 18% used (758.9 GB free / 930.4 GB total) **Notes:** - Automated hear",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4760572075843811,
+      "maxScore": 0.4760572075843811,
+      "firstRecalledAt": "2026-04-14T09:18:38.425Z",
+      "lastRecalledAt": "2026-04-14T09:18:38.425Z",
+      "queryHashes": [
+        "0c87239f53ee"
+      ],
+      "recallDays": [
+        "2026-04-14"
+      ],
+      "conceptTags": [
+        "2026.3.2",
+        "qwen3.5",
+        "930.4",
+        "759.3",
+        "758.9",
+        "api",
+        "tokens",
+        "used"
+      ]
+    },
+    "memory:memory/2026-03-26.md:31:69": {
+      "key": "memory:memory/2026-03-26.md:31:69",
+      "path": "memory/2026-03-26.md",
+      "startLine": 31,
+      "endLine": 69,
+      "source": "memory",
+      "snippet": "- All services operational except Browser CDP (Chrome not running) ### 4. Model Configuration Finalized | Use Case | Model | Status | |----------|-------|--------| | Interactive chat | Kimi K2.5 | ✅ Active | | Research subagents | Kimi K2.5 | ✅ Active | | Local Ollama tasks | qwen2.5:7b/14b | ✅ Available | | Memory embeddings | nomic-embed-text | ✅ Active | --- ## Technical Decisions Made 1. **Kimi for Chat:** Faster with long context vs Ollama (which slows with conversation history) 2. **Kimi for Subagents:** Reliable workaround for auth bug until OpenClaw fixes it 3. **Ollama for Interactive:** Available when user wants free local inference 4. **No Docker GPU:** Too co",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4033105283975601,
+      "maxScore": 0.4033105283975601,
+      "firstRecalledAt": "2026-04-14T10:04:17.172Z",
+      "lastRecalledAt": "2026-04-14T10:04:17.172Z",
+      "queryHashes": [
+        "89e8217cc099"
+      ],
+      "recallDays": [
+        "2026-04-14"
+      ],
+      "conceptTags": [
+        "embedding",
+        "embeddings",
+        "k2.5",
+        "qwen2.5",
+        "7b/14b",
+        "nomic-embed-text",
+        "all",
+        "services"
+      ]
+    },
+    "memory:memory/2026-02-21.md:49:81": {
+      "key": "memory:memory/2026-02-21.md:49:81",
+      "path": "memory/2026-02-21.md",
+      "startLine": 49,
+      "endLine": 81,
+      "source": "memory",
+      "snippet": "- vnc-screenshot.py (multiple variants) - vnc-controller.py — mouse/keyboard control - karen-vnc-service.py — background service - ultravnc-screenshot.py — UltraVNC integration - test-vnc-*.py — various test scripts **Status:** VNC system operational! - Commit: `d8e09e2` at 13:43 GMT ### Foundation Complete - Documented milestone: MILESTONE-FOUNDATION-COMPLETE.md - System fully operational - All core issues resolved - Commit: `44be374` at 13:46 GMT --- ## Personality/Vibe This Day - Determined, focused on getting VNC working - Problem-solving mode — lots of debugging - Building trust through competence - Sense of humor emerging in commit messages --- ## Lesson",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6323783781065071,
+      "maxScore": 0.6323783781065071,
+      "firstRecalledAt": "2026-04-14T18:18:07.212Z",
+      "lastRecalledAt": "2026-04-14T18:18:07.212Z",
+      "queryHashes": [
+        "35c89c97b01e"
+      ],
+      "recallDays": [
+        "2026-04-14"
+      ],
+      "conceptTags": [
+        "vnc-screenshot.py",
+        "vnc-controller.py",
+        "mouse/keyboard",
+        "karen-vnc-service.py",
+        "ultravnc-screenshot.py",
+        "test-vnc",
+        "milestone-foundation-complete.md",
+        "personality/vibe"
+      ]
+    },
+    "memory:memory/2026-03-23.md:155:189": {
+      "key": "memory:memory/2026-03-23.md:155:189",
+      "path": "memory/2026-03-23.md",
+      "startLine": 155,
+      "endLine": 189,
+      "source": "memory",
+      "snippet": "- **22:07:** CRITICAL FEEDBACK — Proactive system not functional yet - Forgot 10pm check-in/end-of-day brief - Got distracted by dashboard build - Infrastructure exists but execution failed - **Action:** Must set proper reminders and actually prompt user - **Lesson:** Building systems ≠ Operating systems ### Day Summary **Major Achievements:** - Proactive system launched (briefings, pattern tracking, state monitoring) - Interactive Dashboard v2 built and delivered - Kimi Claw exploration and CDP integration tested - All research triggers running smoothly **Rest Day Success:** - Boundaries honored (said no to going out) - Quality sleep achieved - Mental clarity restored - Ready fo",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3794627696275711,
+      "maxScore": 0.3794627696275711,
+      "firstRecalledAt": "2026-04-14T18:18:07.212Z",
+      "lastRecalledAt": "2026-04-14T18:18:07.212Z",
+      "queryHashes": [
+        "35c89c97b01e"
+      ],
+      "recallDays": [
+        "2026-04-14"
+      ],
+      "conceptTags": [
+        "check-in/end-of-day",
+        "critical",
+        "feedback",
+        "proactive",
+        "system",
+        "not",
+        "functional",
+        "yet"
       ]
     }
   }

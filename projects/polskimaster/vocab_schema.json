@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PolskiMaster Vocabulary Entry",
+  "type": "object",
+  "properties": {
+    "id": { "type": "integer" },
+    "polish": { "type": "string" },
+    "english": { "type": "string" },
+    "ipa": { "type": "string" },
+    "difficulty": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "category": { "type": "string" },
+    "example_pl": { "type": "string" },
+    "example_en": { "type": "string" }
+  },
+  "required": ["id", "polish", "english", "ipa", "difficulty", "category"]
+}
